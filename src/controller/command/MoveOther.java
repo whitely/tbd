@@ -1,10 +1,13 @@
 package controller.command;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 
 import controller.Controllable;
+import units.Locatable;
 import units.Subject;
 import units.elementals.Elemental;
+import utils.ControllableMap;
 import utils.RNG;
 
 public class MoveOther extends Command{
@@ -35,6 +38,15 @@ public class MoveOther extends Command{
 		Point desiredLocation = (Point)params[2];
 		double distance = Math.sqrt((desiredLocation.x - subject.getLocation().x)^2 + (desiredLocation.y - subject.getLocation().y)^2); 
 		//TODO: verify this formula with Random
+		for(Object objA : params){
+			for(Controllable contB : ControllableMap.getVals()) {
+				Locatable a = (Locatable)objA;
+				Locatable b = (Locatable)contB;
+				if(checkCollision(a,b)){
+					return false;
+				}
+			}
+		}
 		if (controllable instanceof Subject && RNG.getRandom().nextDouble()*subject.getIntelligence()*subject.getStrength()>=.3*distance*((Subject)controllable).getMass()*DIFFICULTY){
 			return true;
 		}
@@ -42,6 +54,12 @@ public class MoveOther extends Command{
 			return true;
 		}
 		return false;
+	}
+	
+	public boolean checkCollision(Locatable a, Locatable b){
+		Rectangle rectA = new Rectangle(a.getLocation().x,a.getLocation().y,a.getWidth(),a.getHeight());
+		Rectangle rectB = new Rectangle(b.getLocation().x,b.getLocation().y,b.getWidth(),b.getHeight());
+		return rectA.intersects(rectB);
 	}
 
 }
