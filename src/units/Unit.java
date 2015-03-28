@@ -15,7 +15,8 @@ public abstract class Unit implements Locatable, Controllable, Drawable {
 	
 	protected Unit(Point location, int width, int height) {
 		this.location = location;
-		this.health = height;
+		this.health = 0;
+		this.height = height;
 		this.width = width;
 		id = new UUID();
 	}

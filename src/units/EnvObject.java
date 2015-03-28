@@ -12,8 +12,18 @@ public class EnvObject extends Unit{
 	protected Unit dropItem;
 	protected String assetPath;
 	
-	public EnvObject(Point location, int width, int height) {
+	public EnvObject(Point location, int width, int height)
+	{
 		super(location, width, height);
+		regenerationRate = 0;
+		projectilePassability = true;
+		speedMultiplier = 1;
+		damageSubject = 0;
+	}
+	
+	public EnvObject()
+	{
+		super(new Point(0, 0), 0, 0);
 		regenerationRate = 0;
 		projectilePassability = true;
 		speedMultiplier = 1;
@@ -25,9 +35,34 @@ public class EnvObject extends Unit{
 		return regenerationRate;
 	}
 	
-	public void setRegenerationRate(int r)
+	public void setRegenerationRate(int val)
 	{
-		regenerationRate = r;
+		regenerationRate = val;
+	}
+	
+	public boolean getProjectilePassability()
+	{
+		return projectilePassability;
+	}
+	
+	public void setProjectilePassability(boolean val)
+	{
+		projectilePassability = val;
+	}
+	
+	public double getSpeedMultiplier()
+	{
+		return speedMultiplier;
+	}
+	
+	public void setSpeedMultiplier(double val)
+	{
+		speedMultiplier = val;
+	}
+	
+	public void setAssetPath(String val)
+	{
+		assetPath = val;
 	}
 
 	@Override
@@ -82,10 +117,6 @@ public class EnvObject extends Unit{
 
 	public boolean isProjectilePassability() {
 		return projectilePassability;
-	}
-
-	public double getSpeedMultiplier() {
-		return speedMultiplier;
 	}
 
 }
