@@ -2,7 +2,6 @@ package units;
 
 
 public abstract class Terrain extends EnvObject {
-
 	protected int damageAmt;
 	protected int speed;
 	protected String graphics;
