@@ -5,17 +5,17 @@ import java.util.ArrayList;
 
 import utils.UUID;
 import controller.ControlLink;
-import controller.Controllable;
 import controller.command.Command;
 import affinity.AffinityStrategy;
 
-public class Subject implements Controllable{
+public class Subject extends Unit {
 	private AffinityStrategy affinityStrat;
 	private Point location;
 	private int grace;
 	private int intelligence;
 	private int strength;
 	private int traitPoints;
+	private int volume;
 	//private PosnObject posn;
 	private String name;
 	
@@ -25,69 +25,49 @@ public class Subject implements Controllable{
 		id = new UUID();
 	}
 	
-	public AffinityStrategy getAffinityStrat()
-	{
+	public AffinityStrategy getAffinityStrat() {
 		return affinityStrat; 
 	}
 	
-	public int getGrace()
-	{
+	public int getGrace() {
 		return grace;
 	}
 	
-	public void setGrace(int val)
-	{
+	public void setGrace(int val) {
 		grace = val;
 	}
 	
-	public int getIntelligence()
-	{
+	public int getIntelligence() {
 		return intelligence;
 	}
 	
-	public void setIntelligence(int val)
-	{
+	public void setIntelligence(int val) {
 		intelligence = val;
 	}
 	
-	public int getStrength()
-	{
+	public int getStrength() {
 		return strength;
 	}
 	
-	public void setStrength(int val)
-	{
+	public void setStrength(int val) {
 		strength = val;
 	}
 	
-	//TODO: posn getter and setter
-	
-	public int getTraitPoints()
-	{
+	public int getTraitPoints() {
 		return traitPoints;
 	}
 	
-	public void setTraitPoints(int val)
-	{
+	public void setTraitPoints(int val) {
 		traitPoints = val;
 	}
 	
-	public String getName()
-	{
+	public String getName() {
 		return name;
 	}
 	
-	public void setName(String val)
-	{
+	public void setName(String val) {
 		name = val;
 	}
-
-	@Override
-	public Point getLocation() {
-		return location;
-	}
-	
-	
 
 	@Override
 	public ControlLink getControlLink() {
@@ -109,5 +89,13 @@ public class Subject implements Controllable{
 	@Override
 	public UUID getID() {
 		return id;
+	}
+	
+	public int getVolume(){
+		return volume;
+	}
+	
+	public void setVolume(){
+		this.volume = volume;
 	}
 }
