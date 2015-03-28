@@ -19,12 +19,12 @@ public class Summon extends Command{
 	
 	@Override
 	public void executeCommand(Object[] params) {
-		ControllableMap.put((Subject)params[0]);
+		ControllableMap.put((Controllable)params[1]);
 	}
 
 	@Override
 	public void undoCommand(Object[] params) {
-		
+		ControllableMap.remove(((Controllable)params[1]).getID().get());
 	}
 
 	@Override
