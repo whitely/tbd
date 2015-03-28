@@ -6,15 +6,9 @@ import controller.Controllable;
 import units.Subject;
 
 public class ControllableMap {
-<<<<<<< HEAD
-	private static HashMap<String, Subject> hash;
-	
-	public void SubjectMap()
-=======
 	private static volatile HashMap<String, Controllable> hash;
 	
 	private ControllableMap()
->>>>>>> origin/master
 	{
 		hash = new HashMap<>();
 	}
