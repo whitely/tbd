@@ -34,7 +34,7 @@ public class MoveOther extends Command{
 		Controllable controllable = (Controllable)params[1];
 		Point desiredLocation = (Point)params[2];
 		double distance = Math.sqrt((desiredLocation.x - subject.getLocation().x)^2 + (desiredLocation.y - subject.getLocation().y)^2); 
-
+		//TODO: verify this formula with Random
 		if (controllable instanceof Subject && RNG.getRandom().nextDouble()*subject.getIntelligence()*subject.getStrength()>.3*distance*((Subject)controllable).getMass()*DIFFICULTY){
 			return true;
 		}
