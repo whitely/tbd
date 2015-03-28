@@ -10,7 +10,7 @@ public class Subject {
 	//private PosnObject posn;
 	private String name;
 	
-	public affinityStrat getAffinityStrat()
+	public AffinityStrategy getAffinityStrat()
 	{
 		return affinityStrat; 
 	}
