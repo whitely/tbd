@@ -5,7 +5,7 @@ import java.awt.Point;
 import units.Subject;
 import utils.RNG;
 
-public class Move extends Command{
+public class MoveOther extends Command{
 	/*
 	 * Parameters:
 	 * Subject, desiredLocation
