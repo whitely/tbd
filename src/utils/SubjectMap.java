@@ -2,10 +2,11 @@ package utils;
 
 import java.util.HashMap;
 
+import controller.Controllable;
 import units.Subject;
 
 public class SubjectMap {
-	private HashMap<String, Subject> hash;
+	private static HashMap<String, Subject> hash;
 	
 	public SubjectMap()
 	{
@@ -21,4 +22,9 @@ public class SubjectMap {
 	{
 		return hash.get(id);
 	}
+	
+	public static Controllable get(UUID uuid) {
+		
+	}
+
 }
