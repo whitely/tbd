@@ -10,7 +10,6 @@ import affinity.AffinityStrategy;
 
 public class Subject extends Unit {
 	private AffinityStrategy affinityStrat;
-	private Point location;
 	private int grace;
 	private int intelligence;
 	private int strength;
