@@ -1,48 +1,26 @@
 package world;
 
 public class RectTerrain extends Terrain {
-	protected int x1;
-	protected int y1;
-	protected int x2;
-	protected int y2;
+	protected int width;
+	protected int height;
 	
-	public int getx1()
+	public int getWidth()
 	{
-		return x1;
+		return width;
 	}
 	
-	public void setx1(int val)
+	public void setWidth(int w)
 	{
-		x1 = val;
+		width = w;
 	}
 	
-	public int gety1()
+	public int getHeight()
 	{
-		return y1;
+		return height;
 	}
 	
-	public void sety1(int val)
+	public void setHeight(int h)
 	{
-		y1 = val;
-	}
-	
-	public int getx2()
-	{
-		return x2;
-	}
-	
-	public void setx2(int val)
-	{
-		x2 = val;
-	}
-	
-	public int gety2()
-	{
-		return y2;
-	}
-	
-	public void sety2(int val)
-	{
-		y2 = val;
+		height = h;
 	}
 }

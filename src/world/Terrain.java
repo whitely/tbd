@@ -4,6 +4,17 @@ public abstract class Terrain {
 	protected int damageAmt;
 	protected int speed;
 	protected String graphics;
+	protected Point location;
+	
+	public Point getLocation()
+	{
+		return location;
+	}
+	
+	public void setLocation(Point loc)
+	{
+		location = loc;
+	}
 	
 	public int getDamageAmt()
 	{
@@ -15,7 +26,7 @@ public abstract class Terrain {
 		damageAmt = val;
 	}
 	
-	public int setSpeed()
+	public int getSpeed()
 	{
 		return speed;
 	}
