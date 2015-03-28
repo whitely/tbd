@@ -3,7 +3,7 @@ package units;
 import java.awt.Point;
 import java.util.ArrayList;
 
-import utils.SubjectID;
+import utils.UUID;
 import controller.ControlLink;
 import controller.Controllable;
 import controller.command.Command;
@@ -19,10 +19,10 @@ public class Subject implements Controllable{
 	//private PosnObject posn;
 	private String name;
 	
-	public final SubjectID id;
+	public final UUID id;
 	
 	public Subject() {
-		id = new SubjectID();
+		id = new UUID();
 	}
 	
 	public AffinityStrategy getAffinityStrat()
@@ -86,6 +86,8 @@ public class Subject implements Controllable{
 	public Point getLocation() {
 		return location;
 	}
+	
+	
 
 	@Override
 	public ControlLink getControlLink() {
@@ -97,5 +99,15 @@ public class Subject implements Controllable{
 	public ArrayList<Command> getSlaveCommands() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void setLocation(Point location) {
+		this.location = location;
+	}
+
+	@Override
+	public UUID getID() {
+		return id;
 	}
 }

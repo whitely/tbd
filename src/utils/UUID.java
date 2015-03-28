@@ -2,10 +2,10 @@ package utils;
 
 import java.util.Random;
 
-public class SubjectID {
+public class UUID {
 	private final String id;
 	
-	public SubjectID() {
+	public UUID() {
 		String s = "";
 		
 		for(int i = 0; i < 16; i++)
