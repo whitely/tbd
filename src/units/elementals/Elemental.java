@@ -12,8 +12,7 @@ public class Elemental implements Controllable{
 	
 	@Override
 	public Point getLocation() {
-		// TODO Auto-generated method stub
-		return null;
+		return location;
 	}
 
 	@Override
