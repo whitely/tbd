@@ -11,7 +11,8 @@ public class AttackCommand extends Command{
  * target
  *  
  */
-
+private int damage;
+	
 public boolean isPossible() {
 	Subject subject = (Subject)params[0];
 	Subject target = (Subject)params[1];
@@ -30,6 +31,7 @@ protected void executeCommand(Object[] params) {
 	damageTotal += RNG.getRandom().nextInt(4) + 1;
 	}
 	target.setHealth(target.getHealth() - damageTotal);
+	damage = damageTotal;
 }
 
 @Override
