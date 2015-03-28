@@ -1,5 +1,4 @@
 package units;
-import java.awt.Point;
 import java.util.ArrayList;
 
 import controller.ControlLink;
@@ -11,6 +10,8 @@ public class EnvObject extends Unit{
 	protected int damageSubject;
 	protected Unit dropItem;
 	protected String assetPath;
+	private int height;
+	private int width;
 	
 	public EnvObject() {
 		super();
@@ -46,5 +47,21 @@ public class EnvObject extends Unit{
 	public String getAssetPath() {
 		// TODO Auto-generated method stub
 		return assetPath;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
 	}
 }
