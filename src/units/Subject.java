@@ -3,6 +3,7 @@ package units;
 import java.awt.Point;
 import java.util.ArrayList;
 
+import utils.SubjectID;
 import controller.ControlLink;
 import controller.Controllable;
 import controller.command.Command;
@@ -16,6 +17,12 @@ public class Subject implements Controllable{
 	private int traitPoints;
 	//private PosnObject posn;
 	private String name;
+	
+	public final SubjectID id;
+	
+	public Subject() {
+		id = new SubjectID();
+	}
 	
 	public AffinityStrategy getAffinityStrat()
 	{
