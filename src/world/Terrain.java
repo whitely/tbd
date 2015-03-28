@@ -1,5 +1,7 @@
 package world;
 
+import java.awt.Point;
+
 public abstract class Terrain {
 	protected int damageAmt;
 	protected int speed;
