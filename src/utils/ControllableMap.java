@@ -17,6 +17,11 @@ public class ControllableMap {
 			new ControllableMap();
 	}
 	
+	public static void remove(String id) {
+		check();
+		hash.remove(id);
+	}
+	
 	public static void put(Controllable c) {
 		check();
 		hash.put(c.getID().get(), c);

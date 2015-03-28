@@ -5,6 +5,7 @@ import java.awt.Point;
 import controller.Controllable;
 import units.Subject;
 import units.elementals.Elemental;
+import utils.ControllableMap;
 import utils.RNG;
 
 
@@ -18,13 +19,11 @@ public class Summon extends Command{
 	
 	@Override
 	public void executeCommand(Object[] params) {
-		// TODO Auto-generated method stub
-		
+		ControllableMap.put((Subject)params[0]);
 	}
 
 	@Override
 	public void undoCommand(Object[] params) {
-		// TODO Auto-generated method stub
 		
 	}
 
