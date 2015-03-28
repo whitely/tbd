@@ -37,7 +37,9 @@ protected void executeCommand(Object[] params) {
 @Override
 protected void undoCommand(Object[] params) {
 	// TODO Auto-generated method stub
-	
+	Subject subject = (Subject)params[0];
+	Subject target = (Subject)params[1];
+	target.setHealth(target.getHealth() + damage);
 }
 	
 	
