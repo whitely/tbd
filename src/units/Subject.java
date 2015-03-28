@@ -86,6 +86,8 @@ public class Subject implements Controllable{
 	public Point getLocation() {
 		return location;
 	}
+	
+	
 
 	@Override
 	public ControlLink getControlLink() {
@@ -95,6 +97,17 @@ public class Subject implements Controllable{
 
 	@Override
 	public ArrayList<Command> getSlaveCommands() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setLocation(Point location) {
+		this.location = location;
+	}
+
+	@Override
+	public UUID getID() {
 		// TODO Auto-generated method stub
 		return null;
 	}
