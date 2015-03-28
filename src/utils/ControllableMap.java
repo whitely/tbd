@@ -3,7 +3,6 @@ package utils;
 import java.util.HashMap;
 
 import controller.Controllable;
-import units.Subject;
 
 public class ControllableMap {
 	private static volatile HashMap<String, Controllable> hash;
@@ -18,10 +17,9 @@ public class ControllableMap {
 			new ControllableMap();
 	}
 	
-	public static void put(String id, Subject subject)
-	{
+	public static void put(Controllable c) {
 		check();
-		hash.put(id, subject);
+		hash.put(c.getID().get(), c);
 	}
 	
 	public static Controllable get(String id)
