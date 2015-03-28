@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import affinity.AffinityStrategy;
 import controller.ControlLink;
-import controller.command.Attack;
+import controller.command.AttackCommand;
 import controller.command.Command;
-import controller.command.Move;
+import controller.command.MoveSelf;
 import controller.command.Summon;
 
 public class Subject extends Unit {
@@ -76,9 +76,9 @@ public class Subject extends Unit {
 	public ArrayList<Class> getSlaveCommands() {
 		//TODO: include here all new commands which may be acted on Subject
 		ArrayList<Class> c = new ArrayList<Class>();
-		c.add(Move.class);
+		c.add(MoveSelf.class);
 		c.add(Summon.class);
-		c.add(Attack.class);
+		c.add(AttackCommand.class);
 		return c;
 	}
 

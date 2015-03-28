@@ -5,8 +5,9 @@ import java.awt.Point;
 import utils.UUID;
 import controller.Controllable;
 
-public abstract class Unit implements Locatable, Controllable {
+public abstract class Unit implements Locatable, Controllable, Drawable {
 	protected Point location;
+	protected int health;
 	public UUID id;
 	
 	protected Unit() {
@@ -19,6 +20,16 @@ public abstract class Unit implements Locatable, Controllable {
 	
 	public void setLocation(Point location) {
 		this.location = location;
+	}
+	
+	public int getHealth()
+	{
+		return health;
+	}
+	
+	public void setHealth(int h)
+	{
+		health = h;
 	}
 	
 	public UUID getID() {
