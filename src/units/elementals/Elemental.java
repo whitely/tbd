@@ -7,6 +7,7 @@ import controller.ControlLink;
 import controller.command.Attack;
 import controller.command.AttackCommand;
 import controller.command.Command;
+import controller.command.Destroy;
 import controller.command.MoveSelf;
 import controller.command.Summon;
 
