@@ -1,4 +1,4 @@
-package world;
+package units;
 
 public abstract class Terrain {
 	protected int damageAmt;
