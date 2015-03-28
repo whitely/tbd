@@ -1,4 +1,5 @@
 package units;
+import java.awt.Point;
 import java.util.ArrayList;
 
 import controller.ControlLink;
@@ -10,11 +11,9 @@ public class EnvObject extends Unit{
 	protected int damageSubject;
 	protected Unit dropItem;
 	protected String assetPath;
-	protected int height;
-	protected int width;
 	
-	public EnvObject() {
-		super();
+	public EnvObject(Point location, int width, int height) {
+		super(location, width, height);
 		regenerationRate = 0;
 		projectilePassability = true;
 		speedMultiplier = 1;

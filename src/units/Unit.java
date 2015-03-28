@@ -9,9 +9,14 @@ import controller.Controllable;
 public abstract class Unit implements Locatable, Controllable, Drawable {
 	protected Point location;
 	protected int health;
+	protected int height;
+	protected int width;
 	public UUID id;
 	
-	protected Unit() {
+	protected Unit(Point location, int width, int height) {
+		this.location = location;
+		this.health = height;
+		this.width = width;
 		id = new UUID();
 	}
 	
@@ -35,6 +40,16 @@ public abstract class Unit implements Locatable, Controllable, Drawable {
 	
 	public UUID getID() {
 		return id;
+	}
+
+	@Override
+	public int getHeight() {
+		return height;
+	}
+
+	@Override
+	public int getWidth() {
+		return width;
 	}
 	
 }

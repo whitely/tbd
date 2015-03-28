@@ -16,7 +16,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import controller.Controllable;
-import units.RectTerrain;
 import units.Terrain;
 import utils.ControllableMap;
 import world.World;
@@ -49,17 +48,21 @@ public class drawingPanel extends JPanel implements Observer {
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D)g;
-		ArrayList<ArrayList<RectTerrain>> terrain = World.getTerrain();
-		int currentX = 0;
-		for (int i = 0; i<terrain.size(); i++){
-			int currentY = 0;
-			for (int j = 0; j<terrain.get(0).size(); j++){
-				RectTerrain t = terrain.get(i).get(j);
-				BufferedImage img = getImageForText(t.getGraphics());
-				g2.drawImage(getImageForText(t.getGraphics()),currentX, currentY,t.getWidth(),t.getHeight(),null);
-				currentY += t.getHeight();
-			}
+		ArrayList<Terrain> t = World.getTerrain();
+		for (int i = 0; i<t.size(); i++){
+			g2.drawImage(getImageForText(t.get(i).getGraphics()),t.get(0).getLocation().x, t.get(0).getLocation().y,t.get(0).getWidth(),t.get(0).getHeight(),null);
 		}
+		//old code:
+//		int currentX = 0;
+//		for (int i = 0; i<terrain.size(); i++){
+//			int currentY = 0;
+//			for (int j = 0; j<terrain.get(0).size(); j++){
+//				RectTerrain t = terrain.get(i).get(j);
+//				BufferedImage img = getImageForText(t.getGraphics());
+//				g2.drawImage(getImageForText(t.getGraphics()),currentX, currentY,t.getWidth(),t.getHeight(),null);
+//				currentY += t.getHeight();
+//			}
+//		}
 		g2.draw3DRect(50, 50, 100, 200, false);
 		
 		int x = 50, y = 50;

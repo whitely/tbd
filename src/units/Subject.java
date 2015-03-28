@@ -26,6 +26,10 @@ public class Subject extends Unit {
 	private int height;
 	private int width;
 	
+	public Subject(Point location) {
+		super(location);
+	}
+	
 	public int getHeight() {
 		return height;
 	}
@@ -40,10 +44,6 @@ public class Subject extends Unit {
 
 	public void setWidth(int width) {
 		this.width = width;
-	}
-		
-	public Subject() {
-		super();
 	}
 	
 	public void createControlLink(Controllable target){

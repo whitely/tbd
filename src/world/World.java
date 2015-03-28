@@ -7,8 +7,8 @@ import java.util.Observable;
 import java.util.Stack;
 
 import units.Locatable;
-import units.RectTerrain;
 import units.Unit;
+import units.Terrain;
 import utils.ControllableMap;
 import controller.Controllable;
 import controller.command.Command;
@@ -18,10 +18,12 @@ public class World extends Observable {
 	private static Stack<Command> commandHistory;
 	private static Stack<Command> singleTurnCommandHistory;
 	private int turnCounter;
-	private static ArrayList<ArrayList<RectTerrain>> terrain;
+	private static ArrayList<Terrain> terrain;
 	
 	public World() {
-		terrain = new ArrayList<ArrayList<RectTerrain>>();
+		terrain = new ArrayList<Terrain>();
+		//begin code for testing drawing panel
+		terrain.add(new Terrain(new Point(2,2),5));
 		commandHistory = new Stack<Command>();
 		singleTurnCommandHistory = new Stack<Command>();
 		turnCounter = 0;
@@ -61,7 +63,7 @@ public class World extends Observable {
 		
 	}
 	
-	public static ArrayList<ArrayList<RectTerrain>> getTerrain(){
+	public static ArrayList<Terrain> getTerrain(){
 		return terrain;
 	}
 	
