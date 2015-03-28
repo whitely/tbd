@@ -26,7 +26,8 @@ public class Move extends Command{
 	@Override
 	public boolean isPossible() {
 		//this formula was not approved by Random
-		if (RNG.getRandom().nextDouble()*((Subject)params[0]).getGrace()>.3){
+		Subject s = (Subject)params[0];
+		if (RNG.getRandom().nextDouble()*s.getGrace()>.3){
 			return true;
 		}
 		return false;
