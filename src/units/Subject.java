@@ -1,8 +1,14 @@
 package units;
 
+import java.awt.Point;
+import java.util.ArrayList;
+
+import controller.Command;
+import controller.ControlLink;
+import controller.Controllable;
 import affinity.AffinityStrategy;
 
-public class Subject {
+public class Subject implements Controllable{
 	private AffinityStrategy affinityStrat;
 	private int grace;
 	private int intelligence;
@@ -66,5 +72,23 @@ public class Subject {
 	public void setName(String val)
 	{
 		name = val;
+	}
+
+	@Override
+	public Point getLocation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ControlLink getControlLink() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Command> getSlaveCommands() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
