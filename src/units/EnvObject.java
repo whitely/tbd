@@ -65,4 +65,28 @@ public class EnvObject extends Unit{
 		this.width = width;
 	}
 
+	public int getDamageSubject() {
+		return damageSubject;
+	}
+
+	public void setDamageSubject(int damageSubject) {
+		this.damageSubject = damageSubject;
+	}
+
+	public Unit getDropItem() {
+		return dropItem;
+	}
+
+	public void setDropItem(Unit dropItem) {
+		this.dropItem = dropItem;
+	}
+
+	public boolean isProjectilePassability() {
+		return projectilePassability;
+	}
+
+	public double getSpeedMultiplier() {
+		return speedMultiplier;
+	}
+
 }
