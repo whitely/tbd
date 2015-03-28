@@ -16,6 +16,7 @@ public class Subject extends Unit {
 	private int strength;
 	private int traitPoints;
 	private int volume;
+	private int mass;
 	private String name;
 		
 	public Subject() {
