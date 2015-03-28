@@ -44,7 +44,7 @@ public class World extends Observable {
 		
 	}
 	
-	public ArrayList<RectTerrain> getTerrain(){
+	public ArrayList<ArrayList<RectTerrain>> getTerrain(){
 		return terrain;
 	}
 	
