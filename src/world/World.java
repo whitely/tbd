@@ -1,11 +1,16 @@
 package world;
 
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Stack;
 
 import utils.ControllableMap;
 import controller.Controllable;
 import controller.command.Command;
+import units.Locatable;
+import units.Unit;
 
 public class World extends Observable {
 	
@@ -23,6 +28,8 @@ public class World extends Observable {
 		todo.execute();
 		commandHistory.push(todo);
 		singleTurnCommandHistory.push(todo);
+		// iterate through all Locatables used
+		// TODO
 	}
 	
 	public void undoLastCommand() {
@@ -30,8 +37,12 @@ public class World extends Observable {
 		singleTurnCommandHistory.pop().undo();
 	}
 	
-	public void checkCollisions() {
-		
+	public void checkCollision(Locatable a, Locatable b) {
+		// TODO
+	}
+	
+	public void checkInside(Point a, Point b) {
+		// TODO
 	}
 	
 	public void goToNextTurn(){
