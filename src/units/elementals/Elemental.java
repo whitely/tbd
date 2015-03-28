@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import units.Unit;
 import controller.ControlLink;
-import controller.command.Attack;
 import controller.command.AttackCommand;
 import controller.command.Command;
 import controller.command.Destroy;
