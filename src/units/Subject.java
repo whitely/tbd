@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import affinity.AffinityStrategy;
 import controller.ControlLink;
-import controller.command.Attack;
+import controller.command.AttackCommand;
 import controller.command.Command;
 import controller.command.MoveSelf;
 import controller.command.Summon;
@@ -78,7 +78,7 @@ public class Subject extends Unit {
 		ArrayList<Class> c = new ArrayList<Class>();
 		c.add(MoveSelf.class);
 		c.add(Summon.class);
-		c.add(Attack.class);
+		c.add(AttackCommand.class);
 		return c;
 	}
 
