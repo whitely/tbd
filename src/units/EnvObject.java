@@ -1,5 +1,7 @@
 package units;
-import java.awt.Point;
+import java.util.ArrayList;
+
+import controller.ControlLink;
 
 public class EnvObject extends Unit{
 	protected int regenerationRate;
@@ -25,4 +27,18 @@ public class EnvObject extends Unit{
 	{
 		regenerationRate = r;
 	}
+
+	@Override
+	public ControlLink getControlLink() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Class> getSlaveCommands() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
 }
