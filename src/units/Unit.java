@@ -8,6 +8,7 @@ import controller.Controllable;
 public abstract class Unit implements Locatable, Controllable, Drawable {
 	protected Point location;
 	protected int health;
+	protected String graphics;
 	public UUID id;
 	
 	protected Unit() {
@@ -30,6 +31,16 @@ public abstract class Unit implements Locatable, Controllable, Drawable {
 	public void setHealth(int h)
 	{
 		health = h;
+	}
+	
+	public String getGraphics()
+	{
+		return graphics;
+	}
+	
+	public void setGraphics(String newGraphics)
+	{
+		graphics = newGraphics;
 	}
 	
 	public UUID getID() {
