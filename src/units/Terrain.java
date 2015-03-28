@@ -1,6 +1,8 @@
-package world;
+package units;
 
-public abstract class Terrain {
+
+public abstract class Terrain extends EnvObject {
+
 	protected int damageAmt;
 	protected int speed;
 	protected String graphics;
@@ -15,7 +17,7 @@ public abstract class Terrain {
 		damageAmt = val;
 	}
 	
-	public int setSpeed()
+	public int getSpeed()
 	{
 		return speed;
 	}

@@ -18,7 +18,7 @@ public class World {
 	}
 	
 	public void undoLastCommand() {
-		
+		commandHistory.pop().undo();
 	}
 	
 }
