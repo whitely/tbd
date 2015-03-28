@@ -31,28 +31,11 @@ public class World extends Observable {
 		todo.execute();
 		commandHistory.push(todo);
 		singleTurnCommandHistory.push(todo);
-		
-		for(Object objA : todo.getParameters()){
-			for(Controllable contB : ControllableMap.getVals()) {
-				Locatable a = (Locatable)objA;
-				Locatable b = (Locatable)contB;
-				checkCollision(a,b);
-			}
-		}
-		
 	}
 	
 	public void undoLastCommand() {
 		commandHistory.pop().undo();
 		singleTurnCommandHistory.pop().undo();
-	}
-	
-	public static void checkCollision(Locatable a, Locatable b) {
-		// TODO
-	}
-	
-	public static void checkInside(Point a, Point b) {
-		// TODO
 	}
 	
 	public void goToNextTurn(){
