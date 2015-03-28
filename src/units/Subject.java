@@ -4,9 +4,9 @@ import affinity.AffinityStrategy;
 
 public class Subject {
 	private AffinityStrategy affinityStrat;
-	private int G;
-	private int I;
-	private int S;
+	private int grace;
+	private int intelligence;
+	private int strength;
 	//private PosnObject posn;
 	private String name;
 	
@@ -15,34 +15,34 @@ public class Subject {
 		return affinityStrat; 
 	}
 	
-	public int getG()
+	public int getGrace()
 	{
-		return G;
+		return grace;
 	}
 	
-	public void setG(int val)
+	public void setGrace(int val)
 	{
-		G = val;
+		grace = val;
 	}
 	
-	public int getI()
+	public int getIntelligence()
 	{
-		return I;
+		return intelligence;
 	}
 	
-	public void setI(int val)
+	public void setIntelligence(int val)
 	{
-		I = val;
+		intelligence = val;
 	}
 	
-	public int getS()
+	public int getStrength()
 	{
-		return S;
+		return strength;
 	}
 	
-	public void setS(int val)
+	public void setStrength(int val)
 	{
-		S = val;
+		strength = val;
 	}
 	
 	//TODO: posn getter and setter
