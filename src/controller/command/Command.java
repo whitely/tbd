@@ -9,6 +9,7 @@ public abstract class Command {
 		if (params.length > 0){
 			ready = true;
 		}
+		isPossible();
 	}
 	
 	public void execute(){

@@ -9,6 +9,8 @@ import utils.ControllableMap;
 import utils.RNG;
 
 public class Destroy extends Command{
+	//TODO: find good difficulty factor to allow decent chance of destroy
+	private final double DIFFICULTY = 1;
 	
 	@Override
 	public boolean isPossible() {
@@ -30,12 +32,12 @@ public class Destroy extends Command{
 	
 	@Override
 	public void executeCommand(Object[] params) {
-		ControllableMap.remove((Controllable)params[1]);
+		ControllableMap.remove(((Controllable) params[1]).getID().get());
 	}
 
 	@Override
 	public void undoCommand(Object[] params) {
-		ControllableMap.put(((Controllable)params[1]).getID().get());
+		ControllableMap.put((Controllable)params[1]);
 	}
 
 }
