@@ -1,10 +1,16 @@
 package units;
 
+import java.awt.Point;
 
-public abstract class Terrain extends EnvObject {
+
+public class Terrain extends EnvObject {
 	protected int damageAmt;
 	protected int speed;
 	protected String graphics;
+	
+	public Terrain(Point location, int width, int height){
+		super(location, width, height);
+	}
 	
 	public int getDamageAmt()
 	{
