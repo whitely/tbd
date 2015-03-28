@@ -11,6 +11,8 @@ import controller.command.Command;
 public class Elemental implements Controllable{
 	protected Point location;
 	private int joules;
+	private UUID id;
+	
 	
 	@Override
 	public Point getLocation() {
@@ -42,8 +44,7 @@ public class Elemental implements Controllable{
 
 	@Override
 	public UUID getID() {
-		// TODO Auto-generated method stub
-		return null;
+		return id;
 	}
 
 }
