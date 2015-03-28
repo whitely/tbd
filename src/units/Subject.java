@@ -76,11 +76,6 @@ public class Subject extends Unit {
 		return null;
 	}
 
-	@Override
-	public void setLocation(Point location) {
-		this.location = location;
-	}
-	
 	public int getVolume(){
 		return volume;
 	}
