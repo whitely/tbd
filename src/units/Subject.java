@@ -140,16 +140,4 @@ public class Subject extends Unit {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public String getGraphics() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setGraphics(String newGraphics) {
-		// TODO Auto-generated method stub
-		
-	}
 }

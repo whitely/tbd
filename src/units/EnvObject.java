@@ -49,21 +49,6 @@ public class EnvObject extends Unit{
 		return assetPath;
 	}
 
-<<<<<<< HEAD
-	@Override
-	public String getGraphics() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setGraphics(String newGraphics) {
-		// TODO Auto-generated method stub
-		
-	}
-
-=======
->>>>>>> new_branch_name
 	public int getHeight() {
 		return height;
 	}
@@ -79,8 +64,5 @@ public class EnvObject extends Unit{
 	public void setWidth(int width) {
 		this.width = width;
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> new_branch_name
 }
