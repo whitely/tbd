@@ -16,12 +16,6 @@ public abstract class Elemental extends Unit{
 	protected Elemental() {
 		super();
 	}
-	
-	@Override
-	public ControlLink getControlLink() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public ArrayList<Class> getSlaveCommands() {
@@ -35,7 +29,6 @@ public abstract class Elemental extends Unit{
 	}
 
 	public double getJoules() {
-		// TODO Auto-generated method stub
 		return joules;
 	}
 
