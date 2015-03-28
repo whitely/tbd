@@ -24,7 +24,7 @@ public class TestView extends JFrame {
 	private final int X_SCREEN_SIZE = ((int) tk.getScreenSize().getWidth());
 	private final int Y_SCREEN_SIZE = ((int) tk.getScreenSize().getHeight());
 	
-	private static int MOVE_TIME_MS = 20;
+	private static int REPAINT_TIME_MS = 20;
 	
 	private static drawingPanel panel1;
 	private JButton b;
@@ -151,8 +151,8 @@ public class TestView extends JFrame {
 			//world.update();
 		}
 	};
-	// change timer value to determine speed
-	static Timer repaintTimer = new Timer(MOVE_TIME_MS, timerAction);
+	// change timer value to determine repaint speed
+	static Timer repaintTimer = new Timer(REPAINT_TIME_MS, timerAction);
 	
 	public static void main(String[] args) {
 		new TestView().setVisible(true);

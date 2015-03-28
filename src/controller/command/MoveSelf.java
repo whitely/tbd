@@ -3,6 +3,8 @@ package controller.command;
 import java.awt.Point;
 
 import units.Subject;
+import utils.CollisionChecker;
+import utils.ControllableMap;
 import utils.RNG;
 
 public class MoveSelf extends Command{
