@@ -23,7 +23,6 @@ public boolean isPossible() {
 	
 @Override
 protected void executeCommand(Object[] params) {
-	// TODO Auto-generated method stub
 	int damageTotal = 0;
 	Subject subject = (Subject)params[0];
 	Subject target = (Subject)params[1];
@@ -36,7 +35,6 @@ protected void executeCommand(Object[] params) {
 
 @Override
 protected void undoCommand(Object[] params) {
-	// TODO Auto-generated method stub
 	Subject subject = (Subject)params[0];
 	Subject target = (Subject)params[1];
 	target.setHealth(target.getHealth() + damage);
