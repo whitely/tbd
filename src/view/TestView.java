@@ -46,28 +46,28 @@ public class TestView extends JFrame {
 		w.addObserver(panel1);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("THE FARM");
-		setLayout(null);
-		setSize(800,800);
+		setSize(700,700);
 		setLocation(X_SCREEN_SIZE/2-400, Y_SCREEN_SIZE/2-400);
 		setResizable(false);
 		setExtendedState(Frame.MAXIMIZED_BOTH);
+				
+//		setLayout(new BorderLayout());
+		add(panel1);
+		panel1.setLayout(new BorderLayout());
+		panel1.setLocation(0, 0);
+		panel1.setSize(700,700);
 		
 		b = new JButton("Add a Subject");
+		panel1.add(b, BorderLayout.SOUTH);
+		b.setLocation(50,50);
+		b.setSize(500,500);
+		
 		b.addActionListener(new ButtonListener());
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				w.addPerson(new Subject(new Point(1,1),5,5));
 			}
 		});
-		
-//		setLayout(new BorderLayout());
-		panel1.setLayout(null);
-		add(panel1);
-		panel1.setLocation(0, 0);
-		panel1.setSize(800,800);
-		panel1.add(b);
-		b.setLocation(50,50);
-		b.setSize(500,500);
 	}
 	
 	private class ButtonListener implements ActionListener {
