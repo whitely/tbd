@@ -25,7 +25,6 @@ public class MoveSelf extends Command{
 
 	@Override
 	public boolean isPossible() {
-		//this formula was not approved by Random
 		Subject s = (Subject)params[0];
 		if (RNG.getRandom().nextDouble()*s.getGrace()>.3){
 			return true;

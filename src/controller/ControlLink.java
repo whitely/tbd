@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 
 import controller.command.Command;
+import controller.command.Destroy;
 import controller.command.Summon;
 import units.Subject;
 
@@ -46,6 +47,15 @@ public class ControlLink {
 		obj[0]= master; 
 		obj[1] = slave;
 		obj[2]= desiredLocation;
+		c.setParameters(obj);
+		return c;
+	}
+	
+	public Command createDestroyCommand(Controllable master, Controllable slave, Point desiredLocation){
+		Command c = new Destroy();
+		Object[] obj = new Object[2];
+		obj[0]= master; 
+		obj[1] = slave;
 		c.setParameters(obj);
 		return c;
 	}
