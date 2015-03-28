@@ -1,7 +1,7 @@
 package controller.command;
 
 
-public class Create implements Command{
+public class Create extends Command{
 
 	@Override
 	public void execute() {
