@@ -11,6 +11,7 @@ import affinity.AffinityStrategy;
 
 public class Subject implements Controllable{
 	private AffinityStrategy affinityStrat;
+	private Point location;
 	private int grace;
 	private int intelligence;
 	private int strength;
@@ -83,8 +84,7 @@ public class Subject implements Controllable{
 
 	@Override
 	public Point getLocation() {
-		// TODO Auto-generated method stub
-		return null;
+		return location;
 	}
 
 	@Override

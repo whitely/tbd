@@ -1,7 +1,7 @@
 package controller.command;
 
 public abstract class Command {
-	private Object[] params;
+	protected Object[] params;
 	private boolean ready;
 	
 	public void setParameters(Object[] params){
@@ -23,6 +23,8 @@ public abstract class Command {
 		}
 	}
 	
-	public abstract void executeCommand(Object[] params);
-	public abstract void undoCommand(Object[] params);
+	public abstract boolean isPossible();
+	
+	protected abstract void executeCommand(Object[] params);
+	protected abstract void undoCommand(Object[] params);
 }
