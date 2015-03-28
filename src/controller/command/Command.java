@@ -23,6 +23,6 @@ public abstract class Command {
 		}
 	}
 	
-	public abstract void executeCommand(Object[] params);
-	public abstract void undoCommand(Object[] params);
+	protected abstract void executeCommand(Object[] params);
+	protected abstract void undoCommand(Object[] params);
 }
