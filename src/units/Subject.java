@@ -1,6 +1,5 @@
 package units;
 
-import java.awt.Point;
 import java.util.ArrayList;
 
 import affinity.AffinityStrategy;
