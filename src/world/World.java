@@ -9,13 +9,13 @@ import controller.command.Command;
 
 public class World extends Observable {
 	
-	private Stack<Command> commandHistory;
+	private static Stack<Command> commandHistory;
 	
 	public World() {
 		commandHistory = new Stack<Command>();
 	}
 	
-	public void doCommand(Command todo) {
+	public static void doCommand(Command todo) {
 		todo.execute();
 		commandHistory.push(todo);
 	}
