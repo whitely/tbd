@@ -15,7 +15,6 @@ public class Subject extends Unit {
 	private int strength;
 	private int traitPoints;
 	private int volume;
-	//private PosnObject posn;
 	private String name;
 	
 	public final UUID id;
@@ -94,7 +93,7 @@ public class Subject extends Unit {
 		return volume;
 	}
 	
-	public void setVolume(){
+	public void setVolume(int volume){
 		this.volume = volume;
 	}
 }
