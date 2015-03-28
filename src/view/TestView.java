@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Frame;
+import java.awt.Panel;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -11,6 +12,7 @@ import java.awt.event.ActionListener;
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JPanel;
 import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
@@ -26,8 +28,9 @@ public class TestView extends JFrame {
 	
 	private static int MOVE_TIME_MS = 20;
 	
-	private static drawingPanel panel1;
-	private JButton b;
+	private static drawingPanel drawingPanel;
+	private static JPanel panelR, panelS;
+	private JButton button1, button2;
 	
 	private World w;
 	
@@ -42,34 +45,51 @@ public class TestView extends JFrame {
 	}
 	
 	private void layoutGUI() {
-		panel1 = new drawingPanel();
-		w.addObserver(panel1);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("THE FARM");
 		setSize(700,700);
 		setLocation(X_SCREEN_SIZE/2-400, Y_SCREEN_SIZE/2-400);
 		setResizable(false);
-		setExtendedState(Frame.MAXIMIZED_BOTH);
 				
-//		setLayout(new BorderLayout());
-		add(panel1);
-		panel1.setLayout(new BorderLayout());
-		panel1.setLocation(0, 0);
-		panel1.setSize(700,700);
+		drawingPanel = new drawingPanel();
+		w.addObserver(drawingPanel);
+		add(drawingPanel);
+		drawingPanel.setLayout(new BorderLayout());
 		
-		b = new JButton("Add a Subject");
-		panel1.add(b, BorderLayout.SOUTH);
-		b.setLocation(50,50);
-		b.setSize(500,500);
+		panelR = new JPanel();
+		panelR.setLayout(new BorderLayout());
+		add(panelR, BorderLayout.EAST);
+
+		panelS = new JPanel();
+		panelS.setLayout(new BorderLayout());
+		add(panelS, BorderLayout.SOUTH);
 		
-		b.addActionListener(new ButtonListener());
-		b.addActionListener(new ActionListener() {
+		button1 = new JButton("Add a Subject");
+		panelR.add(button1, BorderLayout.NORTH);
+		button1.addActionListener(new ButtonListener());
+		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				w.addPerson(new Subject(new Point(1,1),5,5));
 			}
 		});
+//		button2 = new JButton("Add a Subject2");
+//		panelS.add(button2, BorderLayout.WEST);
+//		button2.addActionListener(new ButtonListener());
+//		button2.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				w.addPerson(new Subject(new Point(1,1),5,5));
+//			}
+//		});
+		
+		drawingPanel.repaint();
 	}
 	
+	private Object JPanel() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("User clicked button with text '" + ((JButton)(e.getSource())).getText() + "'.");			
@@ -147,7 +167,7 @@ public class TestView extends JFrame {
 	static ActionListener timerAction = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			// continuous timer code here:
-			panel1.repaint();
+			drawingPanel.repaint();
 			//world.update();
 		}
 	};

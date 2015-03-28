@@ -16,6 +16,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import controller.Controllable;
+import units.EnvObject;
 import units.Terrain;
 import utils.ControllableMap;
 import world.World;
@@ -51,7 +52,7 @@ public class drawingPanel extends JPanel implements Observer {
 		Graphics2D g2 = (Graphics2D)g;
 		ArrayList<Terrain> t = World.getTerrain();
 		for (int i = 0; i<t.size(); i++){
-			g2.drawImage(getImageForText(t.get(i).getGraphics()),t.get(0).getLocation().x, t.get(0).getLocation().y,t.get(0).getWidth(),t.get(0).getHeight(),null);
+			g2.drawImage(getImageForText(((EnvObject)t.get(i)).getAssetPath()),t.get(0).getLocation().x, t.get(0).getLocation().y,t.get(0).getWidth(),t.get(0).getHeight(),null);
 		}
 		//g2.draw3DRect(50, 50, 100, 200, false);
 		
@@ -66,7 +67,7 @@ public class drawingPanel extends JPanel implements Observer {
 		//TODO: add all new tile types here with keyword
 		if (graphicString.equals("desert")){
 			return desertImg;
-		} else if (graphicString.equals("grass")){
+		} else if (graphicString.equals("Tile Graphics/Grass.png")){
 			return grassImg;
 		} else if (graphicString.equals("lava")){
 			return lavaImg;
