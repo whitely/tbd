@@ -7,11 +7,16 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import units.Subject;
+import world.World;
+
 @SuppressWarnings("serial")
 public class TestView extends JFrame {
 	
 	private drawingPanel p;
 	private JButton b;
+	
+	private World w;
 	
 	public TestView() {
 		setupModel();
@@ -19,16 +24,17 @@ public class TestView extends JFrame {
 	}
 	
 	private void setupModel() {
-		
+		w = new World();
 	}
 	
 	private void layoutGUI() {
 		p = new drawingPanel();
+		w.addObserver(p);
 		b = new JButton("Add a Subject");
 		b.addActionListener(new ButtonListener());
 		b.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Clicked.");
+				w.addPerson(new Subject());
 			}
 		});
 		
@@ -45,7 +51,6 @@ public class TestView extends JFrame {
 			System.out.println("User clicked button with text '" + ((JButton)(e.getSource())).getText() + "'.");			
 		}
 	}
-	
 	
 	public static void main(String[] args) {
 		new TestView().setVisible(true);

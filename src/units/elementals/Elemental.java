@@ -2,6 +2,7 @@ package units.elementals;
 
 import java.util.ArrayList;
 
+import units.EnvObject;
 import units.Unit;
 import controller.ControlLink;
 import controller.command.AttackCommand;
@@ -10,17 +11,11 @@ import controller.command.Destroy;
 import controller.command.MoveSelf;
 import controller.command.Summon;
 
-public abstract class Elemental extends Unit{
+public abstract class Elemental extends EnvObject{
 	private int joules;
-
+	
 	protected Elemental() {
 		super();
-	}
-	
-	@Override
-	public ControlLink getControlLink() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override
@@ -35,7 +30,6 @@ public abstract class Elemental extends Unit{
 	}
 
 	public double getJoules() {
-		// TODO Auto-generated method stub
 		return joules;
 	}
 
