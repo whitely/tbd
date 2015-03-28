@@ -7,6 +7,7 @@ public class Subject {
 	private int grace;
 	private int intelligence;
 	private int strength;
+	private int traitPoints;
 	//private PosnObject posn;
 	private String name;
 	
@@ -46,6 +47,16 @@ public class Subject {
 	}
 	
 	//TODO: posn getter and setter
+	
+	public String getTraitPoints()
+	{
+		return trait_points;
+	}
+	
+	public String setTraitPoints(int val)
+	{
+		traitPoints = val;
+	}
 	
 	public String getName()
 	{
