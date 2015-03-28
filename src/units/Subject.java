@@ -16,6 +16,7 @@ public class Subject implements Controllable{
 	private int intelligence;
 	private int strength;
 	private int traitPoints;
+	private int volume;
 	//private PosnObject posn;
 	private String name;
 	
@@ -109,5 +110,13 @@ public class Subject implements Controllable{
 	@Override
 	public UUID getID() {
 		return id;
+	}
+	
+	public int getVolume(){
+		return volume;
+	}
+	
+	public void setVolume(){
+		this.volume = volume;
 	}
 }
