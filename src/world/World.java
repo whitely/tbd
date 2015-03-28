@@ -14,7 +14,7 @@ public class World extends Observable {
 	private static Stack<Command> commandHistory;
 	private static Stack<Command> singleTurnCommandHistory;
 	private int turnCounter;
-	private ArrayList<ArrayList<RectTerrain>> terrain;
+	private static ArrayList<ArrayList<RectTerrain>> terrain;
 	
 	public World() {
 		terrain = new ArrayList<ArrayList<RectTerrain>>();
@@ -44,7 +44,7 @@ public class World extends Observable {
 		
 	}
 	
-	public ArrayList<ArrayList<RectTerrain>> getTerrain(){
+	public static ArrayList<ArrayList<RectTerrain>> getTerrain(){
 		return terrain;
 	}
 	

@@ -47,7 +47,8 @@ public class drawingPanel extends JPanel implements Observer {
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D)g;
 		g2.drawImage(desertImg,50,50,40,40,null);
-		
+		World.
+		for (int i = 0; i<)
 		g2.draw3DRect(50, 50, 100, 200, false);
 		
 		int x = 50, y = 50;
