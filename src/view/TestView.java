@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -22,7 +23,7 @@ public class TestView extends JFrame {
 	
 	private static int MOVE_TIME_MS = 20;
 	
-	private static drawingPanel p;
+	private static drawingPanel panel1;
 	private JButton b;
 	
 	private World w;
@@ -37,13 +38,13 @@ public class TestView extends JFrame {
 	}
 	
 	private void layoutGUI() {
-		p = new drawingPanel();
-		w.addObserver(p);
+		panel1 = new drawingPanel();
+		w.addObserver(panel1);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("THE FARM");
 		setLayout(null);
-		setSize(X_SCREEN_SIZE, Y_SCREEN_SIZE);
-		setLocation(0, 0);
+		setSize(800,800);
+		setLocation(X_SCREEN_SIZE/2-400, Y_SCREEN_SIZE/2-400);
 		setResizable(false);
 		setExtendedState(Frame.MAXIMIZED_BOTH);
 		
@@ -75,7 +76,6 @@ public class TestView extends JFrame {
 	static ActionListener timerAction = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			// continuous timer code here:
-			p.repaint();
 			//world.update();
 		}
 	};
