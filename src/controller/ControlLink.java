@@ -8,6 +8,6 @@ public class ControlLink {
 	private int controlStrength;
 	
 	public ControlLink(Controllable master, Controllable slave){
-		
+		//TODO
 	}
 }

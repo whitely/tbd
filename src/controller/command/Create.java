@@ -4,13 +4,13 @@ package controller.command;
 public class Create extends Command{
 
 	@Override
-	public void execute() {
+	public void executeCommand(Object[] params) {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 	@Override
-	public void undo() {
+	public void undoCommand(Object[] params) {
 		// TODO Auto-generated method stub
 		
 	}
