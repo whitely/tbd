@@ -5,6 +5,7 @@ import java.awt.Point;
 import controller.Controllable;
 import units.Subject;
 import units.elementals.Elemental;
+import utils.ControllableMap;
 import utils.RNG;
 
 
@@ -18,14 +19,12 @@ public class Summon extends Command{
 	
 	@Override
 	public void executeCommand(Object[] params) {
-		// TODO Auto-generated method stub
-		
+		ControllableMap.put((Controllable)params[1]);
 	}
 
 	@Override
 	public void undoCommand(Object[] params) {
-		// TODO Auto-generated method stub
-		
+		ControllableMap.remove(((Controllable)params[1]).getID().get());
 	}
 
 	@Override
@@ -35,7 +34,7 @@ public class Summon extends Command{
 		Subject subject = (Subject)params[0];
 		Controllable controllable = (Controllable)params[1];
 		Point desiredLocation = (Point)params[2];
-		double distance = Math.sqrt((desiredLocation.x - subject.getLocation().x)^2 + (desiredLocation.x - subject.getLocation().x)^2); 
+		double distance = Math.sqrt((desiredLocation.x - subject.getLocation().x)^2 + (desiredLocation.y - subject.getLocation().y)^2); 
 		double difficultyModifier = Math.pow(distance,2);
 		if (controllable instanceof Subject && RNG.getRandom().nextDouble()*(((Subject)controllable).getVolume())>DIFFICULTY*difficultyModifier){
 			return true;
