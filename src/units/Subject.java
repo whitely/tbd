@@ -1,28 +1,22 @@
 package units;
 
-import java.awt.Point;
 import java.util.ArrayList;
 
-import utils.UUID;
+import affinity.AffinityStrategy;
 import controller.ControlLink;
 import controller.command.Command;
-import affinity.AffinityStrategy;
 
 public class Subject extends Unit {
 	private AffinityStrategy affinityStrat;
-	private Point location;
 	private int grace;
 	private int intelligence;
 	private int strength;
 	private int traitPoints;
 	private int volume;
-	//private PosnObject posn;
 	private String name;
-	
-	public final UUID id;
-	
+		
 	public Subject() {
-		id = new UUID();
+		super();
 	}
 	
 	public AffinityStrategy getAffinityStrat() {
@@ -81,21 +75,11 @@ public class Subject extends Unit {
 		return null;
 	}
 
-	@Override
-	public void setLocation(Point location) {
-		this.location = location;
-	}
-
-	@Override
-	public UUID getID() {
-		return id;
-	}
-	
 	public int getVolume(){
 		return volume;
 	}
 	
-	public void setVolume(){
+	public void setVolume(int volume){
 		this.volume = volume;
 	}
 }
