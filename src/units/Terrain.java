@@ -1,20 +1,9 @@
 package units;
 
-public abstract class Terrain {
+public abstract class Terrain extends EnvObject {
 	protected int damageAmt;
 	protected int speed;
 	protected String graphics;
-	protected Point location;
-	
-	public Point getLocation()
-	{
-		return location;
-	}
-	
-	public void setLocation(Point loc)
-	{
-		location = loc;
-	}
 	
 	public int getDamageAmt()
 	{

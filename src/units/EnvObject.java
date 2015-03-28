@@ -1,6 +1,6 @@
 package units;
 
-public class EnvObject {
+public class EnvObject extends Unit{
 	protected int x;
 	protected int y;
 	protected int r;
