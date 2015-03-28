@@ -11,7 +11,8 @@ public class AttackCommand extends Command{
  * target
  *  
  */
-
+private int damage;
+	
 public boolean isPossible() {
 	Subject subject = (Subject)params[0];
 	Subject target = (Subject)params[1];
@@ -22,7 +23,6 @@ public boolean isPossible() {
 	
 @Override
 protected void executeCommand(Object[] params) {
-	// TODO Auto-generated method stub
 	int damageTotal = 0;
 	Subject subject = (Subject)params[0];
 	Subject target = (Subject)params[1];
@@ -30,12 +30,14 @@ protected void executeCommand(Object[] params) {
 	damageTotal += RNG.getRandom().nextInt(4) + 1;
 	}
 	target.setHealth(target.getHealth() - damageTotal);
+	damage = damageTotal;
 }
 
 @Override
 protected void undoCommand(Object[] params) {
-	// TODO Auto-generated method stub
-	
+	Subject subject = (Subject)params[0];
+	Subject target = (Subject)params[1];
+	target.setHealth(target.getHealth() + damage);
 }
 	
 	

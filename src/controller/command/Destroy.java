@@ -8,25 +8,8 @@ import units.elementals.Elemental;
 import utils.ControllableMap;
 import utils.RNG;
 
-
-public class Summon extends Command{
-	/*
-	 * Subject, Controllable, desiredLocation
-	 * 
-	 */
-	//TODO: mess with this modifier if things are not being summoned due to difficulty
-	private final double DIFFICULTY = 1;
+public class Destroy extends Command{
 	
-	@Override
-	public void executeCommand(Object[] params) {
-		ControllableMap.put((Controllable)params[1]);
-	}
-
-	@Override
-	public void undoCommand(Object[] params) {
-		ControllableMap.remove(((Controllable)params[1]).getID().get());
-	}
-
 	@Override
 	public boolean isPossible() {
 		//Might want to make the difficulty modifier here dependent on summoned object level or something.
@@ -44,6 +27,15 @@ public class Summon extends Command{
 		}
 		return false;
 	}
+	
+	@Override
+	public void executeCommand(Object[] params) {
+		ControllableMap.remove((Controllable)params[1]);
+	}
 
+	@Override
+	public void undoCommand(Object[] params) {
+		ControllableMap.put(((Controllable)params[1]).getID().get());
+	}
 
 }

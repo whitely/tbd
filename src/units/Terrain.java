@@ -1,20 +1,11 @@
-package world;
+package units;
 
-public abstract class Terrain {
-	protected String type;
+
+public abstract class Terrain extends EnvObject {
+
 	protected int damageAmt;
 	protected int speed;
 	protected String graphics;
-	
-	public String getType()
-	{
-		return type;
-	}
-	
-	public void setType(String val)
-	{
-		type = val;
-	}
 	
 	public int getDamageAmt()
 	{
@@ -26,7 +17,7 @@ public abstract class Terrain {
 		damageAmt = val;
 	}
 	
-	public int setSpeed()
+	public int getSpeed()
 	{
 		return speed;
 	}

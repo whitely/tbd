@@ -1,11 +1,13 @@
 package units;
 
-import java.awt.Point;
 import java.util.ArrayList;
 
 import affinity.AffinityStrategy;
 import controller.ControlLink;
+import controller.command.Attack;
 import controller.command.Command;
+import controller.command.Move;
+import controller.command.Summon;
 
 public class Subject extends Unit {
 	private AffinityStrategy affinityStrat;
@@ -71,16 +73,15 @@ public class Subject extends Unit {
 	}
 
 	@Override
-	public ArrayList<Command> getSlaveCommands() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Class> getSlaveCommands() {
+		//TODO: include here all new commands which may be acted on Subject
+		ArrayList<Class> c = new ArrayList<Class>();
+		c.add(Move.class);
+		c.add(Summon.class);
+		c.add(Attack.class);
+		return c;
 	}
 
-	@Override
-	public void setLocation(Point location) {
-		this.location = location;
-	}
-	
 	public int getVolume(){
 		return volume;
 	}
