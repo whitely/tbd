@@ -3,9 +3,9 @@ package units;
 import java.awt.Point;
 import java.util.ArrayList;
 
-import controller.Command;
 import controller.ControlLink;
 import controller.Controllable;
+import controller.command.Command;
 import affinity.AffinityStrategy;
 
 public class Subject implements Controllable{

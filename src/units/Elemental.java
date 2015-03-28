@@ -3,9 +3,9 @@ package units;
 import java.awt.Point;
 import java.util.ArrayList;
 
-import controller.Command;
 import controller.ControlLink;
 import controller.Controllable;
+import controller.command.Command;
 
 public class Elemental implements Controllable{
 	protected Point location;
