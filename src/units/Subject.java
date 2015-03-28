@@ -3,10 +3,9 @@ package units;
 import java.awt.Point;
 import java.util.ArrayList;
 
-import utils.UUID;
+import affinity.AffinityStrategy;
 import controller.ControlLink;
 import controller.command.Command;
-import affinity.AffinityStrategy;
 
 public class Subject extends Unit {
 	private AffinityStrategy affinityStrat;
