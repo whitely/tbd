@@ -11,6 +11,18 @@ public abstract class Command {
 		}
 	}
 	
-	public abstract void execute();
-	public abstract void undo();
+	public void execute(){
+		if (ready){
+			executeCommand(params);
+		}
+	}
+	
+	public void undo(){
+		if (ready){
+			undoCommand(params);
+		}
+	}
+	
+	protected abstract void executeCommand(Object[] params);
+	protected abstract void undoCommand(Object[] params);
 }

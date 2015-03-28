@@ -1,19 +1,17 @@
 package controller.command;
 
-
-public class Create extends Command{
+public class Move extends Command{
 
 	@Override
-	public void executeCommand(Object[] params) {
+	protected void executeCommand(Object[] params) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void undoCommand(Object[] params) {
+	protected void undoCommand(Object[] params) {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 }
