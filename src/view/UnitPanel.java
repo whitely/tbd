@@ -22,16 +22,16 @@ import utils.ControllableMap;
 import world.World;
 
 @SuppressWarnings("serial")
-public class drawingPanel extends JPanel implements Observer {
+public class UnitPanel extends JPanel implements Observer {
 	static Toolkit tk = Toolkit.getDefaultToolkit();
 	private final int X_SCREEN_SIZE = ((int) tk.getScreenSize().getWidth());
 	private final int Y_SCREEN_SIZE = ((int) tk.getScreenSize().getHeight());	
 	private final Point CS = new Point(X_SCREEN_SIZE/2,Y_SCREEN_SIZE); 
 	BufferedImage desertImg, grassImg, lavaImg, miasmaImg, waterImg;
 	
-	public drawingPanel(){
+	public UnitPanel(){
 		try {
-			//TODO: Correct these to match with new tiles present
+			//TODO: Correct these to match with new controllables present
 		    desertImg = ImageIO.read(new File("Tile Graphics/desert.png"));
 		    grassImg = ImageIO.read(new File("Tile Graphics/Grass.png"));
 		    lavaImg = ImageIO.read(new File("Tile Graphics/lava.png"));
@@ -52,7 +52,7 @@ public class drawingPanel extends JPanel implements Observer {
 		Graphics2D g2 = (Graphics2D)g;
 		ArrayList<Terrain> t = World.getTerrain();
 		for (int i = 0; i<t.size(); i++){
-			g2.drawImage(getImageForText(((EnvObject)t.get(i)).getAssetPath()),t.get(i).getLocation().x, t.get(i).getLocation().y,t.get(i).getWidth(),t.get(i).getHeight(),null);
+			g2.drawImage(getImageForText(((EnvObject)t.get(i)).getAssetPath()),t.get(0).getLocation().x, t.get(0).getLocation().y,t.get(0).getWidth(),t.get(0).getHeight(),null);
 		}
 		//g2.draw3DRect(50, 50, 100, 200, false);
 		

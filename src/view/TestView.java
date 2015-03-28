@@ -29,6 +29,7 @@ public class TestView extends JFrame {
 	private static int REPAINT_TIME_MS = 20;
 	
 	private static drawingPanel drawingPanel;
+	private static UnitPanel unitPanel;
 	private static JPanel panelR, panelS;
 	private JButton button1, button2;
 	
@@ -38,6 +39,8 @@ public class TestView extends JFrame {
 		setupModel();
 		layoutGUI();
 		registerListeners();
+		//for testing
+		testModelScript1();
 	}
 	
 	private void setupModel() {
@@ -56,6 +59,11 @@ public class TestView extends JFrame {
 		w.addObserver(drawingPanel);
 		add(drawingPanel);
 		drawingPanel.setLayout(new BorderLayout());
+		
+		unitPanel = new UnitPanel();
+		w.addObserver(unitPanel);
+		add(unitPanel);
+		unitPanel.setLayout(new BorderLayout());
 		
 		panelR = new JPanel();
 		panelR.setLayout(new BorderLayout());
@@ -83,6 +91,11 @@ public class TestView extends JFrame {
 		});
 		
 		drawingPanel.repaint();
+	}
+	
+	public void testModelScript1(){
+		w.addPerson(new Subject(new Point(1,1),5,5));
+		w.addPerson(new Subject(new Point(2,2),5,5));
 	}
 
 	private class ButtonListener implements ActionListener {
