@@ -5,29 +5,29 @@ import java.util.ArrayList;
 import controller.ControlLink;
 
 public class EnvObject extends Unit{
-	protected int r;
-	protected String graphics;
+	protected int regenerationRate;
+	protected boolean projectilePassability;
+	protected double speedMultiplier;
+	protected int damageSubject;
+	protected Unit dropItem;
+	protected String assetPath;
 	
-	
-	
-	public int getr()
-	{
-		return r;
+	public EnvObject() {
+		super();
+		regenerationRate = 0;
+		projectilePassability = true;
+		speedMultiplier = 1;
+		damageSubject = 0;
 	}
 	
-	public void setr(int val)
+	public int getRegenerationRate()
 	{
-		r = val;
+		return regenerationRate;
 	}
 	
-	public String getGraphics()
+	public void setRegenerationRate(int r)
 	{
-		return graphics;
-	}
-	
-	public void setGraphics(String val)
-	{
-		graphics = val;
+		regenerationRate = r;
 	}
 
 	@Override
@@ -45,6 +45,6 @@ public class EnvObject extends Unit{
 	@Override
 	public String getAssetPath() {
 		// TODO Auto-generated method stub
-		return null;
+		return assetPath;
 	}
 }

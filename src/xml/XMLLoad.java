@@ -101,9 +101,9 @@ public class XMLLoad {
 							String content = child.getLastChild().getTextContent().trim();
 							switch(child.getNodeName())
 							{
-							case "r":
-								terrain.setr(Integer.parseInt(content));
-								break;
+							//case "r":
+							//	terrain.setr(Integer.parseInt(content));
+							//	break; //terrain has no setr function
 							case "graphics":
 								terrain.setGraphics(content);
 								break;
@@ -219,7 +219,7 @@ public class XMLLoad {
 						
 						//Get object type values
 						EnvObject type = types.get(node.getNodeName());
-						object.setr(type.getr());
+						//object.setr(type.getr());
 						object.setGraphics(type.getGraphics());
 						
 						NodeList children = node.getChildNodes();

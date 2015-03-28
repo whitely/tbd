@@ -22,6 +22,7 @@ public class Subject extends Unit {
 	private double volume;
 	private double mass;
 	private String name;
+	private String assetPath;
 		
 	public Subject() {
 		super();

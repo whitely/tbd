@@ -14,10 +14,10 @@ public class World extends Observable {
 	private static Stack<Command> commandHistory;
 	private static Stack<Command> singleTurnCommandHistory;
 	private int turnCounter;
-	private ArrayList<RectTerrain> terrain;
+	private ArrayList<ArrayList<RectTerrain>> terrain;
 	
 	public World() {
-		terrain = new ArrayList<RectTerrain>();
+		terrain = new ArrayList<ArrayList<RectTerrain>>();
 		commandHistory = new Stack<Command>();
 		singleTurnCommandHistory = new Stack<Command>();
 		turnCounter = 0;
