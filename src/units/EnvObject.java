@@ -1,4 +1,5 @@
 package units;
+import java.awt.Point;
 import java.util.ArrayList;
 
 import controller.ControlLink;
@@ -76,4 +77,5 @@ public class EnvObject extends Unit{
 	public void setWidth(int width) {
 		this.width = width;
 	}
+
 }
