@@ -48,12 +48,12 @@ public class Subject {
 	
 	//TODO: posn getter and setter
 	
-	public String getTraitPoints()
+	public int getTraitPoints()
 	{
-		return trait_points;
+		return traitPoints;
 	}
 	
-	public String setTraitPoints(int val)
+	public void setTraitPoints(int val)
 	{
 		traitPoints = val;
 	}
