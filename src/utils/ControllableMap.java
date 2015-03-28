@@ -1,5 +1,6 @@
 package utils;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 import controller.Controllable;
@@ -35,6 +36,11 @@ public class ControllableMap {
 	
 	public static Controllable get(UUID uuid) {
 		return get(uuid.get());
+	}
+	
+	public static Collection<Controllable> getVals() {
+		check();
+		return hash.values();
 	}
 
 }
