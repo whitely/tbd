@@ -1,23 +1,13 @@
 package units.elementals;
 
-import java.awt.Point;
 import java.util.ArrayList;
 
-import utils.UUID;
+import units.Unit;
 import controller.ControlLink;
-import controller.Controllable;
 import controller.command.Command;
 
-public class Elemental implements Controllable{
-	protected Point location;
+public class Elemental extends Unit{
 	private int joules;
-	private UUID id;
-	
-	
-	@Override
-	public Point getLocation() {
-		return location;
-	}
 
 	@Override
 	public ControlLink getControlLink() {
@@ -34,17 +24,6 @@ public class Elemental implements Controllable{
 	public double getJoules() {
 		// TODO Auto-generated method stub
 		return joules;
-	}
-
-	@Override
-	public void setLocation(Point location) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public UUID getID() {
-		return id;
 	}
 
 }
