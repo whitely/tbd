@@ -8,6 +8,7 @@ import java.util.Stack;
 
 import units.Locatable;
 import units.RectTerrain;
+import units.Unit;
 import utils.ControllableMap;
 import controller.Controllable;
 import controller.command.Command;
@@ -30,8 +31,15 @@ public class World extends Observable {
 		todo.execute();
 		commandHistory.push(todo);
 		singleTurnCommandHistory.push(todo);
-		// iterate through all Locatables used
-		// TODO
+		
+		for(Object objA : todo.getParameters()){
+			for(Controllable contB : ControllableMap.getVals()) {
+				Locatable a = (Locatable)objA;
+				Locatable b = (Locatable)contB;
+				checkCollision(a,b);
+			}
+		}
+		
 	}
 	
 	public void undoLastCommand() {
@@ -39,11 +47,11 @@ public class World extends Observable {
 		singleTurnCommandHistory.pop().undo();
 	}
 	
-	public void checkCollision(Locatable a, Locatable b) {
+	public static void checkCollision(Locatable a, Locatable b) {
 		// TODO
 	}
 	
-	public void checkInside(Point a, Point b) {
+	public static void checkInside(Point a, Point b) {
 		// TODO
 	}
 	
