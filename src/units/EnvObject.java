@@ -9,6 +9,7 @@ public class EnvObject extends Unit{
 	protected double speedMultiplier;
 	protected int damageSubject;
 	protected Unit dropItem;
+	protected String assetPath;
 	
 	public EnvObject() {
 		super();
@@ -39,6 +40,22 @@ public class EnvObject extends Unit{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
+
+	@Override
+	public String getAssetPath() {
+		// TODO Auto-generated method stub
+		return assetPath;
+	}
+
+	@Override
+	public String getGraphics() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setGraphics(String newGraphics) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -22,6 +22,7 @@ public class Subject extends Unit {
 	private double volume;
 	private double mass;
 	private String name;
+	private String assetPath;
 		
 	public Subject() {
 		super();
@@ -114,5 +115,23 @@ public class Subject extends Unit {
 	public double getMass() {
 		// TODO Auto-generated method stub
 		return mass;
+	}
+
+	@Override
+	public String getGraphics() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setGraphics(String newGraphics) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String getAssetPath() {
+		// TODO Auto-generated method stub
+		return assetPath;
 	}
 }
