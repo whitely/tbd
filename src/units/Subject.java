@@ -108,7 +108,6 @@ public class Subject implements Controllable{
 
 	@Override
 	public UUID getID() {
-		// TODO Auto-generated method stub
-		return null;
+		return id;
 	}
 }
