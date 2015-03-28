@@ -1,5 +1,8 @@
 package units;
 import java.awt.Point;
+import java.util.ArrayList;
+
+import controller.ControlLink;
 
 public class EnvObject extends Unit{
 	protected int r;
@@ -25,5 +28,23 @@ public class EnvObject extends Unit{
 	public void setGraphics(String val)
 	{
 		graphics = val;
+	}
+
+	@Override
+	public ControlLink getControlLink() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<Class> getSlaveCommands() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getAssetPath() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

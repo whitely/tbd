@@ -115,4 +115,10 @@ public class Subject extends Unit {
 		// TODO Auto-generated method stub
 		return mass;
 	}
+
+	@Override
+	public String getAssetPath() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
