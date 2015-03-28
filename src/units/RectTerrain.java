@@ -1,4 +1,4 @@
-package world;
+package units;
 
 public class RectTerrain extends Terrain {
 	protected int width;

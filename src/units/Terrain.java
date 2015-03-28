@@ -1,4 +1,6 @@
-package world;
+package units;
+
+import java.awt.Point;
 
 public abstract class Terrain {
 	protected int damageAmt;

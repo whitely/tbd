@@ -1,4 +1,4 @@
-package world;
+package units;
 
 public class EnvObject {
 	protected int x;
