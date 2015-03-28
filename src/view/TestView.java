@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import units.Subject;
-import utils.ControllableMap;
 import world.World;
 
 @SuppressWarnings("serial")
