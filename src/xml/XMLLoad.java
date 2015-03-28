@@ -13,12 +13,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import units.EnvObject;
-import units.RectTerrain;
+import units.Terrain;
 
 public class XMLLoad {
-	public static HashMap<String, RectTerrain> loadTerrainTypes(String filename) throws Exception
+	public static HashMap<String, Terrain> loadTerrainTypes(String filename) throws Exception
 	{
-		HashMap<String, RectTerrain> types = new HashMap<>();
+		HashMap<String, Terrain> types = new HashMap<>();
 		
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
@@ -29,14 +29,14 @@ public class XMLLoad {
 		for(int i = 0; i < nodeList.getLength(); i++)
 		{
 			Node node = nodeList.item(i);
-			RectTerrain terrain;
+			Terrain terrain;
 			String id;
 			if(node instanceof Element)
 			{
-				if(node.getNodeName().equals("rectTerrain"))
+				if(node.getNodeName().equals("terrain"))
 				{
+					terrain = new Terrain();
 					id = node.getAttributes().getNamedItem("id").getNodeValue();
-					terrain = new RectTerrain();
 					
 					NodeList children = node.getChildNodes();
 					for(int j = 0; j < children.getLength(); j++)
@@ -48,14 +48,23 @@ public class XMLLoad {
 							String content = child.getLastChild().getTextContent().trim();
 							switch(child.getNodeName())
 							{
-							case "damageAmt":
-								terrain.setDamageAmt(Integer.parseInt(content));
+							case "regenerationRate":
+								terrain.setRegenerationRate(Integer.parseInt(content));
 								break;
-							case "speed":
-								terrain.setSpeed(Integer.parseInt(content));
+							case "projectilePassability":
+								terrain.setProjectilePassability(Boolean.parseBoolean(content));
 								break;
-							case "graphics":
-								terrain.setGraphics(content);
+							case "speedMultiplier":
+								terrain.setSpeedMultiplier(Double.parseDouble(content));
+								break;
+							case "damageSubject":
+								terrain.setDamageSubject(Integer.parseInt(content));
+								break;
+							case "assetPath":
+								terrain.setAssetPath(content);
+								break;
+							case "health":
+								terrain.setHealth(Integer.parseInt(content));
 								break;
 							}
 						}
@@ -82,14 +91,14 @@ public class XMLLoad {
 		for(int i = 0; i < nodeList.getLength(); i++)
 		{
 			Node node = nodeList.item(i);
-			RectTerrain terrain;
+			EnvObject object;
 			String id;
 			if(node instanceof Element)
 			{
 				if(node.getNodeName().equals("envObject"))
 				{
 					id = node.getAttributes().getNamedItem("id").getNodeValue();
-					terrain = new RectTerrain();
+					object = new EnvObject();
 					
 					NodeList children = node.getChildNodes();
 					for(int j = 0; j < children.getLength(); j++)
@@ -101,17 +110,35 @@ public class XMLLoad {
 							String content = child.getLastChild().getTextContent().trim();
 							switch(child.getNodeName())
 							{
-							//case "r":
-							//	terrain.setr(Integer.parseInt(content));
-							//	break; //terrain has no setr function
-							case "graphics":
-								terrain.setGraphics(content);
+							case "regenerationRate":
+								object.setRegenerationRate(Integer.parseInt(content));
+								break;
+							case "projectilePassability":
+								object.setProjectilePassability(Boolean.parseBoolean(content));
+								break;
+							case "speedMultiplier":
+								object.setSpeedMultiplier(Double.parseDouble(content));
+								break;
+							case "damageSubject":
+								object.setDamageSubject(Integer.parseInt(content));
+								break;
+							case "assetPath":
+								object.setAssetPath(content);
+								break;
+							case "health":
+								object.setHealth(Integer.parseInt(content));
+								break;
+							case "width":
+								object.setWidth(Integer.parseInt(content));
+								break;
+							case "height":
+								object.setHeight(Integer.parseInt(content));
 								break;
 							}
 						}
 					}
 					
-					types.put(id, terrain);
+					types.put(id, object);
 				}
 			}
 		}
@@ -119,9 +146,9 @@ public class XMLLoad {
 		return types;
 	}
 	
-	public static ArrayList<RectTerrain> loadTerrain(String filename, HashMap<String, RectTerrain> types) throws Exception
+	public static ArrayList<Terrain> loadTerrain(String filename, HashMap<String, Terrain> types) throws Exception
 	{
-		ArrayList<RectTerrain> list = new ArrayList<>();
+		ArrayList<Terrain> list = new ArrayList<>();
 		
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
@@ -137,20 +164,23 @@ public class XMLLoad {
 				NodeList nodeList = category.getChildNodes();
 				for(int j = 0; j < nodeList.getLength(); j++)
 				{
-					RectTerrain terrain;
+					Terrain terrain;
 					Node node = nodeList.item(j);
 					int x = 0;
 					int y = 0;
 					
 					if(node instanceof Element)
 					{
-						terrain = new RectTerrain();
+						terrain = new Terrain();
 						
 						//Get terrain type values
-						RectTerrain type = types.get(node.getNodeName());
-						terrain.setDamageAmt(type.getDamageAmt());
-						terrain.setSpeed(type.getSpeed());
-						terrain.setGraphics(type.getGraphics());
+						Terrain type = types.get(node.getNodeName());
+						terrain.setRegenerationRate(type.getRegenerationRate());
+						terrain.setProjectilePassability(type.getProjectilePassability());
+						terrain.setSpeedMultiplier(type.getSpeedMultiplier());
+						terrain.setDamageSubject(type.getDamageSubject());
+						terrain.setAssetPath(type.getAssetPath());
+						terrain.setHealth(type.getHealth());
 						
 						NodeList children = node.getChildNodes();
 						for(int k = 0; k < children.getLength(); k++)
@@ -168,11 +198,29 @@ public class XMLLoad {
 								case "y":
 									y = Integer.parseInt(content);
 									break;
-								case "w":
+								case "width":
 									terrain.setWidth(Integer.parseInt(content));
 									break;
-								case "h":
+								case "height":
 									terrain.setHeight(Integer.parseInt(content));
+									break;
+								case "regenerationRate":
+									terrain.setRegenerationRate(Integer.parseInt(content));
+									break;
+								case "projectilePassability":
+									terrain.setProjectilePassability(Boolean.parseBoolean(content));
+									break;
+								case "speedMultiplier":
+									terrain.setSpeedMultiplier(Double.parseDouble(content));
+									break;
+								case "damageSubject":
+									terrain.setDamageSubject(Integer.parseInt(content));
+									break;
+								case "assetPath":
+									terrain.setAssetPath(content);
+									break;
+								case "health":
+									terrain.setHealth(Integer.parseInt(content));
 									break;
 								}
 							}
@@ -190,7 +238,7 @@ public class XMLLoad {
 		return list;
 	}
 	
-	public static ArrayList<EnvObject> loadObjects(String filename, HashMap<String, RectTerrain> types) throws Exception
+	public static ArrayList<EnvObject> loadObjects(String filename, HashMap<String, EnvObject> types) throws Exception
 	{
 		ArrayList<EnvObject> list = new ArrayList<>();
 		
@@ -215,12 +263,16 @@ public class XMLLoad {
 					
 					if(node instanceof Element)
 					{
-						object = new RectTerrain();
+						object = new EnvObject();
 						
 						//Get object type values
 						EnvObject type = types.get(node.getNodeName());
-						//object.setr(type.getr());
-						object.setGraphics(type.getGraphics());
+						object.setRegenerationRate(type.getRegenerationRate());
+						object.setProjectilePassability(type.getProjectilePassability());
+						object.setSpeedMultiplier(type.getSpeedMultiplier());
+						object.setDamageSubject(type.getDamageSubject());
+						object.setAssetPath(type.getAssetPath());
+						object.setHealth(type.getHealth());
 						
 						NodeList children = node.getChildNodes();
 						for(int k = 0; k < children.getLength(); k++)
@@ -237,6 +289,30 @@ public class XMLLoad {
 									break;
 								case "y":
 									y = Integer.parseInt(content);
+									break;
+								case "width":
+									object.setWidth(Integer.parseInt(content));
+									break;
+								case "height":
+									object.setHeight(Integer.parseInt(content));
+									break;
+								case "regenerationRate":
+									object.setRegenerationRate(Integer.parseInt(content));
+									break;
+								case "projectilePassability":
+									object.setProjectilePassability(Boolean.parseBoolean(content));
+									break;
+								case "speedMultiplier":
+									object.setSpeedMultiplier(Double.parseDouble(content));
+									break;
+								case "damageSubject":
+									object.setDamageSubject(Integer.parseInt(content));
+									break;
+								case "assetPath":
+									object.setAssetPath(content);
+									break;
+								case "health":
+									object.setHealth(Integer.parseInt(content));
 									break;
 								}
 							}

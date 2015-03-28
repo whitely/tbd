@@ -15,6 +15,10 @@ public abstract class Command implements Serializable {
 		
 	}
 	
+	public Object[] getParameters(){
+		return params;
+	}
+	
 	public void execute(){
 		if (ready){
 			executeCommand(params);
