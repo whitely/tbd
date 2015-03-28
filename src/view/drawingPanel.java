@@ -16,7 +16,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import controller.Controllable;
-import units.RectTerrain;
 import units.Terrain;
 import utils.ControllableMap;
 import world.World;
