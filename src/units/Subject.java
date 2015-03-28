@@ -16,11 +16,9 @@ public class Subject extends Unit {
 	private int traitPoints;
 	private int volume;
 	private String name;
-	
-	public final UUID id;
-	
+		
 	public Subject() {
-		id = new UUID();
+		super();
 	}
 	
 	public AffinityStrategy getAffinityStrat() {
@@ -82,11 +80,6 @@ public class Subject extends Unit {
 	@Override
 	public void setLocation(Point location) {
 		this.location = location;
-	}
-
-	@Override
-	public UUID getID() {
-		return id;
 	}
 	
 	public int getVolume(){
