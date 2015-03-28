@@ -11,8 +11,8 @@ public class EnvObject extends Unit{
 	protected int damageSubject;
 	protected Unit dropItem;
 	protected String assetPath;
-	private int height;
-	private int width;
+	protected int height;
+	protected int width;
 	
 	public EnvObject() {
 		super();
