@@ -5,10 +5,10 @@ import java.util.HashMap;
 import controller.Controllable;
 import units.Subject;
 
-public class SubjectMap {
+public class ControllableMap {
 	private static HashMap<String, Subject> hash;
 	
-	public SubjectMap()
+	public void SubjectMap()
 	{
 		hash = new HashMap<>();
 	}
