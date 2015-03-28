@@ -1,4 +1,4 @@
-package units;
+package units.elementals;
 
 import java.awt.Point;
 import java.util.ArrayList;
