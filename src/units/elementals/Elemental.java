@@ -10,6 +10,7 @@ import controller.command.Command;
 
 public class Elemental implements Controllable{
 	protected Point location;
+	private int joules;
 	private UUID id;
 	
 	
@@ -28,6 +29,11 @@ public class Elemental implements Controllable{
 	public ArrayList<Command> getSlaveCommands() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public double getJoules() {
+		// TODO Auto-generated method stub
+		return joules;
 	}
 
 	@Override
