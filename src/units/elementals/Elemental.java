@@ -12,7 +12,7 @@ import controller.command.Summon;
 
 public abstract class Elemental extends Unit{
 	private int joules;
-
+	
 	protected Elemental() {
 		super();
 	}

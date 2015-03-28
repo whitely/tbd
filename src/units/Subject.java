@@ -15,8 +15,8 @@ public class Subject extends Unit {
 	private int intelligence;
 	private int strength;
 	private int traitPoints;
-	private int volume;
-	private int mass;
+	private double volume;
+	private double mass;
 	private String name;
 		
 	public Subject() {
@@ -89,5 +89,10 @@ public class Subject extends Unit {
 	
 	public void setVolume(int volume){
 		this.volume = volume;
+	}
+
+	public double getMass() {
+		// TODO Auto-generated method stub
+		return mass;
 	}
 }
