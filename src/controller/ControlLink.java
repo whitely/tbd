@@ -15,10 +15,12 @@ public class ControlLink {
 		this.slave = slave;
 	}
 	
-	public ArrayList<Command> getCommands(){
+	public ArrayList<Class> getCommands(){
 		return slave.getSlaveCommands();
 	}
 	
-	
+	public void doCreateCommand(Controllable master, Controllable slave, Point desiredLocation){
+		
+	}
 	
 }
