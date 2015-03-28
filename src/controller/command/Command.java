@@ -6,9 +6,10 @@ public abstract class Command {
 	
 	public void setParameters(Object[] params){
 		this.params = params;
-		if (params.length > 0){
+		if (params.length > 0 && isPossible()){
 			ready = true;
 		}
+		
 	}
 	
 	public void execute(){

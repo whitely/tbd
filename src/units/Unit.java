@@ -3,6 +3,7 @@ package units;
 import java.awt.Point;
 
 import utils.UUID;
+import view.Drawable;
 import controller.Controllable;
 
 public abstract class Unit implements Locatable, Controllable, Drawable {

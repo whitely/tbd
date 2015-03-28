@@ -26,7 +26,7 @@ protected void executeCommand(Object[] params) {
 	int damageTotal = 0;
 	Subject subject = (Subject)params[0];
 	Subject target = (Subject)params[1];
-	for (int i; i < subject.getStrength()/10; i++){
+	for (int i=0; i < subject.getStrength()/10; i++){
 	damageTotal += RNG.getRandom().nextInt(4) + 1;
 	}
 	target.setHealth(target.getHealth() - damageTotal);

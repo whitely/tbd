@@ -1,9 +1,12 @@
 package units;
 
+import java.awt.Point;
 import java.util.ArrayList;
 
+import world.World;
 import affinity.AffinityStrategy;
 import controller.ControlLink;
+import controller.Controllable;
 import controller.command.AttackCommand;
 import controller.command.Command;
 import controller.command.MoveSelf;
@@ -11,16 +14,34 @@ import controller.command.Summon;
 
 public class Subject extends Unit {
 	private AffinityStrategy affinityStrat;
+	private ControlLink currentControlLink;
 	private int grace;
 	private int intelligence;
 	private int strength;
 	private int traitPoints;
-	private int volume;
-	private int mass;
+	private double volume;
+	private double mass;
 	private String name;
 		
 	public Subject() {
 		super();
+	}
+	
+	public void createControlLink(Controllable target){
+		currentControlLink = new ControlLink(this,target);
+	}
+	
+	public ArrayList<Class> getCurrentControlCommands(){
+		return currentControlLink.getCommands();
+	}
+	
+	public void doSummon(Controllable slave, Point desiredLocation){
+		if (currentControlLink != null){
+			Command c = currentControlLink.createSummonCommand(this, slave, desiredLocation);
+			World.doCommand(c);
+		} else {
+			System.out.println("Warning - Attempted summon command given without present control link.");
+		}
 	}
 	
 	public AffinityStrategy getAffinityStrat() {
@@ -69,8 +90,7 @@ public class Subject extends Unit {
 
 	@Override
 	public ControlLink getControlLink() {
-		// TODO Auto-generated method stub
-		return null;
+		return currentControlLink;
 	}
 
 	@Override
@@ -83,11 +103,16 @@ public class Subject extends Unit {
 		return c;
 	}
 
-	public int getVolume(){
+	public double getVolume(){
 		return volume;
 	}
 	
 	public void setVolume(int volume){
 		this.volume = volume;
+	}
+
+	public double getMass() {
+		// TODO Auto-generated method stub
+		return mass;
 	}
 }
