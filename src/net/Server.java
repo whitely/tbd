@@ -1,4 +1,4 @@
-package controller;
+package net;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -8,17 +8,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import model.Command;
-import model.DisconnectCommand;
-import model.UpdateClientCommand;
+import controller.command.Command;
 
 /**
- * This class is the server side of NRC. The server communicates with clients, 
+ * This class is the server side. The server communicates with clients, 
  * sends and receives commands, and holds the chat log
  * 
- * @author Gabriel Kishi
+ * @author Gabriel Kishi and Ben Whitely
  */
-public class Server {
+public class Server implements Handler {
 	private ServerSocket socket; // the server socket
 	
 	private List<String> messages;	// the chat log
@@ -38,8 +36,11 @@ public class Server {
 			try{
 				while(true){
 					// read a command from the client, execute on the server
-					Command<NRCServer> command = (Command<NRCServer>)input.readObject();
-					command.execute(NRCServer.this);
+					Command command = (Command)input.readObject();
+					System.out.println("Got command " + command);
+					if (command instanceof Sendable)
+						((Sendable) command).setHandler(Server.this);
+					command.execute();
 					
 					// terminate if client is disconnecting
 					if (command instanceof DisconnectCommand){
@@ -90,7 +91,7 @@ public class Server {
 		try{
 			// start a new server on port 9001
 			socket = new ServerSocket(9001);
-			System.out.println("NRCServer started on port 9001");
+			System.out.println("Server started on port 9001");
 			
 			// spawn a client accepter thread
 			new Thread(new ClientAccepter()).start();
@@ -115,7 +116,8 @@ public class Server {
 	 */
 	public void updateClients() {
 		// make an UpdateClientCommmand, write to all connected users
-		UpdateClientCommand update = new UpdateClientCommand(messages);
+		UpdateClientCommand update = new UpdateClientCommand();
+		update.setParameters(new Object[]{messages, "everyone", "who knows"});
 		try{
 			for (ObjectOutputStream out : outputs.values())
 				out.writeObject(update);
@@ -143,5 +145,11 @@ public class Server {
 		} catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void addMessage(String msg, String sender, String recipient) {
+		System.err.println("Server received message from " + sender + " sent to " + recipient + ". Message: " + msg);
+		messages.add(msg);
 	}
 }
