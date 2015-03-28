@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -15,6 +16,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import controller.Controllable;
+import units.RectTerrain;
+import units.Terrain;
 import utils.ControllableMap;
 import world.World;
 
@@ -46,9 +49,17 @@ public class drawingPanel extends JPanel implements Observer {
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D)g;
-		g2.drawImage(desertImg,50,50,40,40,null);
-		World.
-		for (int i = 0; i<)
+		ArrayList<ArrayList<RectTerrain>> terrain = World.getTerrain();
+		int currentX = 0;
+		for (int i = 0; i<terrain.size(); i++){
+			int currentY = 0;
+			for (int j = 0; j<terrain.get(0).size(); j++){
+				RectTerrain t = terrain.get(i).get(j);
+				BufferedImage img = getImageForText(t.getGraphics());
+				g2.drawImage(getImageForText(t.getGraphics()),currentX, currentY,t.getWidth(),t.getHeight(),null);
+				currentY += t.getHeight();
+			}
+		}
 		g2.draw3DRect(50, 50, 100, 200, false);
 		
 		int x = 50, y = 50;
@@ -56,6 +67,21 @@ public class drawingPanel extends JPanel implements Observer {
 		for (Controllable c : ControllableMap.getVals()) {
 			g2.drawString(c.toString(), x, y += 50);
 		}
+	}
+
+	private BufferedImage getImageForText(String graphicString) {
+		if (graphicString.equals("desert")){
+			return desertImg;
+		} else if (graphicString.equals("grass")){
+			return grassImg;
+		} else if (graphicString.equals("lava")){
+			return lavaImg;
+		} else if (graphicString.equals("miasma")){
+			return miasmaImg;
+		} else if (graphicString.equals("water")){
+			return waterImg;
+		}
+		else return grassImg;
 	}
 	
 	
