@@ -26,8 +26,8 @@ public class Subject extends Unit {
 	private int height;
 	private int width;
 	
-	public Subject(Point location) {
-		super(location);
+	public Subject(Point location, int width, int height) {
+		super(location, width, height);
 	}
 	
 	public int getHeight() {
