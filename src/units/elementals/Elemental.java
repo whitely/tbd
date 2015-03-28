@@ -28,7 +28,8 @@ public abstract class Elemental extends Unit{
 		ArrayList<Class> c = new ArrayList<Class>();
 		c.add(Move.class);
 		c.add(Summon.class);
-		c.add(Attack.class);
+		c.add(AttackCommand.class);
+		c.add(Destroy.class);
 		return c;
 	}
 
