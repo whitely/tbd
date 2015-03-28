@@ -1,6 +1,9 @@
 package controller.command;
 
-public abstract class Command {
+import java.io.Serializable;
+
+public abstract class Command implements Serializable {
+	private static final long serialVersionUID = 1967575202274367770L;
 	protected Object[] params;
 	private boolean ready;
 	
