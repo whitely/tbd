@@ -3,17 +3,14 @@ package world;
 
 import java.awt.Point;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Stack;
 
+import units.Locatable;
 import units.RectTerrain;
 import utils.ControllableMap;
 import controller.Controllable;
 import controller.command.Command;
-import units.Locatable;
-import units.Unit;
 
 public class World extends Observable {
 	
