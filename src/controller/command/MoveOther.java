@@ -13,7 +13,7 @@ public class MoveOther extends Command{
 	 * Subject, Controllable, desiredLocation
 	 */
 	//TODO: determine good difficulty constant
-	private final double DIFFICULTY = 1;
+	private final double DIFFICULTY = 0;
 
 	private Point oldLocation;
 	

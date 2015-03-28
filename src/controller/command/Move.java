@@ -11,6 +11,8 @@ public class Move extends Command{
 	 * Subject, desiredLocation
 	 */
 	private Point oldLocation;
+	private final double DIFFICULTY = 0;
+
 	
 	@Override
 	protected void executeCommand(Object[] params) {
@@ -27,7 +29,7 @@ public class Move extends Command{
 	public boolean isPossible() {
 		//this formula was not approved by Random
 		Subject s = (Subject)params[0];
-		if (RNG.getRandom().nextDouble()*s.getGrace()>.3){
+		if (RNG.getRandom().nextDouble()*s.getGrace()>.3*DIFFICULTY){
 			return true;
 		}
 		return false;

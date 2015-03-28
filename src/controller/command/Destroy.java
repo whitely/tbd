@@ -16,7 +16,7 @@ public class Destroy extends Command{
 	 */
 	
 	//TODO: find good difficulty factor to allow decent chance of destroy
-	private final double DIFFICULTY = 1;
+	private final double DIFFICULTY = 0;
 	
 	@Override
 	public boolean isPossible() {
