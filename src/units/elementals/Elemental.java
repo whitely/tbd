@@ -6,9 +6,13 @@ import units.Unit;
 import controller.ControlLink;
 import controller.command.Command;
 
-public class Elemental extends Unit{
+public abstract class Elemental extends Unit{
 	private int joules;
 
+	protected Elemental() {
+		super();
+	}
+	
 	@Override
 	public ControlLink getControlLink() {
 		// TODO Auto-generated method stub
