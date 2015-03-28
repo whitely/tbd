@@ -1,6 +1,7 @@
 <?php
-	echo shell_exec("git pull");
-
+	echo "Starting pull...\n";
+	$output = shell_exec("sudo /root/update");
+	echo $output;
 
 
 
