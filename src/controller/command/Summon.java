@@ -15,7 +15,7 @@ public class Summon extends Command{
 	 * 
 	 */
 	//TODO: mess with this modifier if things are not being summoned due to difficulty
-	private final double DIFFICULTY = 0;
+	private final double DIFFICULTY = 1;
 	
 	@Override
 	public void executeCommand(Object[] params) {

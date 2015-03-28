@@ -10,8 +10,6 @@ public class MoveSelf extends Command{
 	 * Parameters:
 	 * Subject, desiredLocation
 	 */
-	private final double DIFFICULTY = 0;
-	
 	private Point oldLocation;
 	
 	@Override
@@ -28,7 +26,7 @@ public class MoveSelf extends Command{
 	@Override
 	public boolean isPossible() {
 		Subject s = (Subject)params[0];
-		if (RNG.getRandom().nextDouble()*s.getGrace()>.3*DIFFICULTY){
+		if (RNG.getRandom().nextDouble()*s.getGrace()>.3){
 			return true;
 		}
 		return false;
