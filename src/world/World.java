@@ -7,6 +7,7 @@ import java.util.Observable;
 import java.util.Stack;
 
 import units.Locatable;
+import units.Unit;
 import units.Terrain;
 import utils.ControllableMap;
 import controller.Controllable;
@@ -21,8 +22,6 @@ public class World extends Observable {
 	
 	public World() {
 		terrain = new ArrayList<Terrain>();
-		//begin code for testing drawing panel
-		terrain.add(new Terrain(new Point(2,2),5));
 		commandHistory = new Stack<Command>();
 		singleTurnCommandHistory = new Stack<Command>();
 		turnCounter = 0;
@@ -32,21 +31,11 @@ public class World extends Observable {
 		todo.execute();
 		commandHistory.push(todo);
 		singleTurnCommandHistory.push(todo);
-		// iterate through all Locatables used
-		// TODO
 	}
 	
 	public void undoLastCommand() {
 		commandHistory.pop().undo();
 		singleTurnCommandHistory.pop().undo();
-	}
-	
-	public void checkCollision(Locatable a, Locatable b) {
-		// TODO
-	}
-	
-	public void checkInside(Point a, Point b) {
-		// TODO
 	}
 	
 	public void goToNextTurn(){

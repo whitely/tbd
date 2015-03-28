@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import controller.command.Command;
 import controller.command.Destroy;
+import controller.command.MoveSelf;
 import controller.command.Summon;
 import units.Subject;
 
@@ -42,8 +43,8 @@ public class ControlLink {
 		return c;
 	}
 	
-	public Command createMoveCommand(Controllable master, Point desiredLocation){
-		Command c = new Destroy();
+	public Command createMoveSelfCommand(Controllable master, Point desiredLocation){
+		Command c = new MoveSelf();
 		Object[] obj = new Object[2];
 		obj[0]= master; 
 		obj[1] = desiredLocation;
