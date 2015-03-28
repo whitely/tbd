@@ -26,6 +26,10 @@ public class Subject extends Unit {
 	private int height;
 	private int width;
 	
+	public Subject(Point location, int width, int height) {
+		super(location, width, height);
+	}
+	
 	public int getHeight() {
 		return height;
 	}
@@ -40,10 +44,6 @@ public class Subject extends Unit {
 
 	public void setWidth(int width) {
 		this.width = width;
-	}
-		
-	public Subject() {
-		super();
 	}
 	
 	public void createControlLink(Controllable target){
@@ -139,17 +139,5 @@ public class Subject extends Unit {
 	public String getAssetPath() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public String getGraphics() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setGraphics(String newGraphics) {
-		// TODO Auto-generated method stub
-		
 	}
 }

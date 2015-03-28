@@ -7,7 +7,8 @@ import java.util.Observable;
 import java.util.Stack;
 
 import units.Locatable;
-import units.RectTerrain;
+import units.Unit;
+import units.Terrain;
 import utils.ControllableMap;
 import controller.Controllable;
 import controller.command.Command;
@@ -17,10 +18,10 @@ public class World extends Observable {
 	private static Stack<Command> commandHistory;
 	private static Stack<Command> singleTurnCommandHistory;
 	private int turnCounter;
-	private static ArrayList<ArrayList<RectTerrain>> terrain;
+	private static ArrayList<Terrain> terrain;
 	
 	public World() {
-		terrain = new ArrayList<ArrayList<RectTerrain>>();
+		terrain = new ArrayList<Terrain>();
 		commandHistory = new Stack<Command>();
 		singleTurnCommandHistory = new Stack<Command>();
 		turnCounter = 0;
@@ -30,21 +31,11 @@ public class World extends Observable {
 		todo.execute();
 		commandHistory.push(todo);
 		singleTurnCommandHistory.push(todo);
-		// iterate through all Locatables used
-		// TODO
 	}
 	
 	public void undoLastCommand() {
 		commandHistory.pop().undo();
 		singleTurnCommandHistory.pop().undo();
-	}
-	
-	public void checkCollision(Locatable a, Locatable b) {
-		// TODO
-	}
-	
-	public void checkInside(Point a, Point b) {
-		// TODO
 	}
 	
 	public void goToNextTurn(){
@@ -53,7 +44,7 @@ public class World extends Observable {
 		
 	}
 	
-	public static ArrayList<ArrayList<RectTerrain>> getTerrain(){
+	public static ArrayList<Terrain> getTerrain(){
 		return terrain;
 	}
 	
