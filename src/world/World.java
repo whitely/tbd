@@ -34,6 +34,10 @@ public class World extends Observable {
 		singleTurnCommandHistory.pop().undo();
 	}
 	
+	public void checkCollisions() {
+		
+	}
+	
 	public void goToNextTurn(){
 		turnCounter++;
 		singleTurnCommandHistory.clear();
