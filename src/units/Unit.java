@@ -47,10 +47,22 @@ public abstract class Unit implements Locatable, Controllable, Drawable {
 	public int getHeight() {
 		return height;
 	}
+	
+	@Override
+	public void setHeight(int value)
+	{
+		height = value;
+	}
 
 	@Override
 	public int getWidth() {
 		return width;
+	}
+	
+	@Override
+	public void setWidth(int value)
+	{
+		width = value;
 	}
 	
 }
