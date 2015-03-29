@@ -10,7 +10,7 @@ import units.EnvObject;
 import units.Subject;
 import units.Terrain;
 import utils.ControllableMap;
-import utils.TerrainLoader;
+import utils.MapLoader;
 import controller.command.Command;
 
 public class World extends Observable {
@@ -26,9 +26,9 @@ public class World extends Observable {
 	
 	public World() throws IOException {
 		String mapFile = "maps/desert_arena.xml";
-		terrain = TerrainLoader.getTerrain(OBJECT_FILE, mapFile);
-		envObjects = TerrainLoader.getEnvironmentObjects(OBJECT_FILE, mapFile);
-		subjects = TerrainLoader.getSubjects(OBJECT_FILE, mapFile);
+		terrain = MapLoader.getTerrain(OBJECT_FILE, mapFile);
+		envObjects = MapLoader.getEnvironmentObjects(OBJECT_FILE, mapFile);
+		subjects = MapLoader.getSubjects(OBJECT_FILE, mapFile);
 		commandHistory = new Stack<Command>();
 		singleTurnCommandHistory = new Stack<Command>();
 		turnCounter = 0;
