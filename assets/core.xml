@@ -2,15 +2,15 @@
 <units>
 	<terrain id="desert">
 		<health>100</health>
-		<regenerationRate>0</regenerationRate>
+		<regenerationRate>4</regenerationRate>
 		<speedMultiplier>0.9</speedMultiplier>
-		<damageSubject>2</damageSubject>
+		<damageSubject>0</damageSubject>
 		<assetPath>assets/tile/desert.png</assetPath>
 	</terrain>
 	<terrain id="desert2">
 		<health>10000</health>
 		<regenerationRate>50</regenerationRate>
-		<speedMultiplier>1</speedMultiplier>
+		<speedMultiplier>0.9</speedMultiplier>
 		<damageSubject>0</damageSubject>
 		<assetPath>assets/tile/desert2.png</assetPath>
 	</terrain>
@@ -18,12 +18,12 @@
 		<health>175</health>
 		<regenerationRate>0</regenerationRate>
 		<speedMultiplier>1</speedMultiplier>
-		<damageSubject>2</damageSubject>
+		<damageSubject>0</damageSubject>
 		<assetPath>assets/tile/stone.png</assetPath>
 	</terrain>
 	<terrain id="grass">
 		<health>175</health>
-		<regenerationRate>10</regenerationRate>
+		<regenerationRate>2</regenerationRate>
 		<speedMultiplier>1</speedMultiplier>
 		<damageSubject>0</damageSubject>
 		<assetPath>assets/tile/grass.png</assetPath>
