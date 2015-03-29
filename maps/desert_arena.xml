@@ -9,12 +9,12 @@
 		</desert>
 	</terrain>
 	<objects>
-		<large>
+		<boulder>
 			<x>400</x>
 			<y>400</y>
 			<w>80</w>
 			<w>80</w>
-		</large>
+		</boulder>
 		<boulder>
 			<x>380</x>
 			<y>100</y>
