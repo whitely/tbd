@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
@@ -8,7 +7,6 @@ import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Observable;
@@ -17,12 +15,9 @@ import java.util.Observer;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import controller.Controllable;
-import units.EnvObject;
-import units.Terrain;
 import units.Unit;
 import utils.ControllableMap;
-import world.World;
+import controller.Controllable;
 
 @SuppressWarnings("serial")
 public class UnitPanel extends JPanel implements Observer {
