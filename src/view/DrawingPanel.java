@@ -23,6 +23,7 @@ public class DrawingPanel extends ViewPanel {
 	BufferedImage desertImg, grassImg, lavaImg, miasmaImg, waterImg, boulderImg;
 	
 	public DrawingPanel(){
+		super();
 		try {
 			//TODO: Correct these to match with new unit tiles present?
 		    desertImg = ImageIO.read(new File("Tile Graphics/desert.png"));
