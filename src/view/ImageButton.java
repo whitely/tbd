@@ -162,10 +162,11 @@ public class ImageButton extends JButton {
             if (fIconRect == null || !fIconRect.equals(iconRect)) {
                 fIconRect = new Rectangle(iconRect);    
             }
-            g.drawString("a1", 1019, 366); //affinity
-            g.drawString("g1", 1019, 257); //grace
-            g.drawString("s1", 925, 420); //strength
-            g.drawString("i1", 1125, 420); //intelligence
+            g.drawString("10", 1019, 366); //affinity
+            g.drawString("10", 1019, 257); //grace
+            g.drawString("10", 925, 420); //strength
+            g.drawString("10", 1125, 420); //intelligence
+            g.drawString("10", 925, 220); //wp
         }
     }
 }
