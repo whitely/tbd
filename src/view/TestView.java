@@ -111,16 +111,18 @@ public class TestView extends JFrame {
 		
 		HashMap<String, Terrain> terrainObjects;
 		ArrayList<Terrain> terrains = new ArrayList<Terrain>();
+		ArrayList<EnvObject> objects = new ArrayList<EnvObject>();
 		try {
 			terrainObjects = XMLLoad.loadTerrainTypes(objectFile);
 			HashMap<String, EnvObject> envObjects = XMLLoad.loadObjectTypes(objectFile);
 			terrains = XMLLoad.loadTerrain(mapFile, terrainObjects);
-			ArrayList<EnvObject> objects = XMLLoad.loadObjects(mapFile, envObjects);
+			objects = XMLLoad.loadObjects(mapFile, envObjects);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		System.out.println(terrains.size());
 		w.setTerrain(terrains);
+		w.setEnvObjects(objects);
 	}
 
 	private class ButtonListener implements ActionListener {
