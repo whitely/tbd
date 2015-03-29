@@ -5,23 +5,20 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 
-import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.KeyStroke;
 
+import units.Locatable;
 import units.Subject;
+import utils.CollisionChecker;
 import world.World;
 
 @SuppressWarnings("serial")
-public class TestView extends JFrame {
+public class TestView extends JFrame implements GUIObserver {
 	static Toolkit tk = Toolkit.getDefaultToolkit();
 	private final int X_SCREEN_SIZE = ((int) tk.getScreenSize().getWidth());
 	private final int Y_SCREEN_SIZE = ((int) tk.getScreenSize().getHeight());
@@ -43,30 +40,6 @@ public class TestView extends JFrame {
 		setupModel(w);
 		layoutGUI();
 		//registerListeners();
-		addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				checkAction();
-				repaint();
-			}
-		});
-	}
-	
-	private void checkAction(){
-		String mode = cPanel.getMode();
-		Subject selected = ((UnitPanel)unitPanel).getSelected();
-		Point clickPoint;
-		if(selected != null){
-			clickPoint = ((UnitPanel)unitPanel).getClickPoint();
-			if(selected.getID()==getMe().getControlLink().getSlave().getID()){
-				if(mode=="move"){
-					
-				}
-				else if(mode=="attack"){
-					
-				}
-			}
-		}
 	}
 	
 	public Subject getMe(){
@@ -101,13 +74,15 @@ public class TestView extends JFrame {
 		add(chat);
 		setComponentZOrder(chat, 1);
 		
-		cPanel = new CharacterPanel(this, w);
+		cPanel = new CharacterPanel(this);
+		cPanel.registerObserver(this);
 		cPanel.setSize(1200, 900);
 		cPanel.setLocation(30, -50); // Because the image is 1196 pixels wide for whatever goddamn reason.
 		add(cPanel);
 		setComponentZOrder(cPanel, 2);
 		
 		unitPanel = new UnitPanel();
+		((UnitPanel)unitPanel).registerObserver(this);
 		centerPanel.add(unitPanel);
 		centerPanel.setComponentZOrder(unitPanel, 0);
 		w.addObserver(unitPanel);
@@ -128,10 +103,6 @@ public class TestView extends JFrame {
 	
 	public ChatPanel getChatPanel() {
 		return chat;
-	}
-	
-	public Subject getSelected() {
-		return ((UnitPanel)unitPanel).getSelected();
 	}
 	
 	
@@ -231,6 +202,47 @@ public class TestView extends JFrame {
 	public static void main(String[] args) throws IOException {
 		new TestView(new World()).setVisible(true);
 //		repaintTimer.start();
+	}
+
+	private Point p1 = null, p2 = null;
+	private String mode = null;
+	
+	@Override
+	public void update(Object source, Object arg) {
+		if (arg instanceof String && "repaint".equals(arg)) {
+			repaint();
+			return;
+		}
+		
+		if (source instanceof CharacterPanel) {
+			System.out.println("Notification from CharacterPanel with arg " + arg);
+			if (mode == null && p1 != null) {
+				mode = (String)arg;
+			}
+		} else if (source instanceof UnitPanel) {
+			System.out.println("Notification from UnitPanel with arg " + arg);
+			//Locatable l = 
+			Point p = ((UnitPanel)unitPanel).getClickPoint();
+			
+			if (p1 == null || mode == null)
+				p1 = p;
+			else if (p2 == null)
+				p2 = p;
+		}
+		
+		if (p1 != null && p2 != null && mode != null) {
+			if (mode.equals("move")) {
+				Subject s = (Subject)CollisionChecker.getContaining(p1);
+				s.getStrategy().move(s, p2);
+				
+			}
+			
+			p1 = null;
+			p2 = null;
+			mode = null;
+		}
+		
+		
 	}
 	
 	

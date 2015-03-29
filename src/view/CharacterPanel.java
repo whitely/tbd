@@ -5,14 +5,12 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import world.World;
 
 public class CharacterPanel extends JPanel {
 	private final int[] MOVE = new int[]{38,19,19};
@@ -29,17 +27,24 @@ public class CharacterPanel extends JPanel {
 	//private final int[]  = new int[]{};
 	
 	private ImageButton sidebar;
-	protected TestView father;
-	private World world;
+	private ArrayList<GUIObserver> observers;
 
-	public CharacterPanel(TestView parent, World world) {
+	public CharacterPanel(GUIObserver parent) {
 		super();
-		father = parent;
-		this.world = world;
+		observers = new ArrayList<GUIObserver>();
 		setLayout(new BorderLayout());
 		layoutGUI();
-		father.repaint();
 	}
+	
+	public void registerObserver(GUIObserver guio) {
+		observers.add(guio);
+	}
+	
+	private void notify(Object arg) {
+		for (GUIObserver o : observers)
+			o.update(this, arg);
+	}
+	
 	
 	private void layoutGUI(){
 		Icon icon = new ImageIcon("assets/sidebar/sidebar.png");
@@ -103,7 +108,8 @@ public class CharacterPanel extends JPanel {
 			System.out.println("User clicked next turn button.");
 			mode = "next turn";
 		}
-		father.repaint();
+		
+		notify(mode);
 	}
 	
 	private boolean arrayEqual(int[] a, int[] b){
@@ -113,8 +119,7 @@ public class CharacterPanel extends JPanel {
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("User clicked button with text '" + ((JButton)(e.getSource())).getText() + "'.");
-			repaint();
-			father.repaint();
+			CharacterPanel.this.notify("repaint");
 		}
 	}
 	
