@@ -4,7 +4,10 @@ import java.awt.Point;
 
 import utils.UUID;
 import view.Drawable;
+import world.World;
 import controller.Controllable;
+import controller.IdleStrategy;
+import controller.PlayStrategy;
 
 public abstract class Unit implements Locatable, Controllable, Drawable {
 	protected Point location;

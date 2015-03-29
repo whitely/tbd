@@ -44,6 +44,7 @@
 		<death_knight>
 			<x>200</x>
 			<y>200</y>
+			<strategy>aggresive</strategy>
 		</death_knight>
 	</subjects>
 	<subjects>
