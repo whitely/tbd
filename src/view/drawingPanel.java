@@ -50,10 +50,17 @@ public class drawingPanel extends JPanel implements Observer {
 	@Override
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D)g;
-		ArrayList<Terrain> t = World.getTerrain();
-		for (int i = 0; i<t.size(); i++){
-			g2.drawImage(getImageForText(((EnvObject)t.get(i)).getAssetPath()),t.get(i).getLocation().x, t.get(i).getLocation().y,40,40,null);
+		ArrayList<Terrain> terrain = World.getTerrain();
+		for (Terrain t: terrain){
+			for (int i = 0; i<t.getWidth()/40; i++){
+				for (int j = 0; j<t.getHeight()/40; j++){
+					g2.drawImage(grassImg, i*40,j*40,40,40, null);
+				}
+			}
 		}
+//		for (int i = 0; i<t.size(); i++){
+//			g2.drawImage(getImageForText(((EnvObject)t.get(i)).getAssetPath()),t.get(i).getLocation().x, t.get(i).getLocation().y,t.get(i).getWidth(),t.get(i).getHeight(),null);
+//		}
 		//g2.draw3DRect(50, 50, 100, 200, false);
 		
 //		int x = 50, y = 50;

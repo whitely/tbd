@@ -89,12 +89,11 @@ public class TestView extends JFrame {
 				w.addPerson(new Subject(new Point(1,1),5,5));
 			}
 		});
-		button2 = new JButton("Add a Subject2");
+		button2 = new JButton("Move Subject North");
 		panelS.add(button2, BorderLayout.WEST);
 		button2.addActionListener(new ButtonListener());
 		button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				w.addPerson(new Subject(new Point(1,1),5,5));
 			}
 		});
 		
