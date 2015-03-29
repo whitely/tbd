@@ -64,7 +64,7 @@ public class TestView extends JFrame {
 		setResizable(false);
 				
 		unitPanel = new UnitPanel();
-		unitPanel.setOpaque(false);
+		unitPanel.setOpaque(true);
 		w.addObserver(unitPanel);
 		add(unitPanel);
 		unitPanel.setLayout(new BorderLayout());
