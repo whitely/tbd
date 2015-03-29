@@ -1,8 +1,6 @@
 package view;
 
 import java.awt.Graphics2D;
-import java.awt.Point;
-import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -15,12 +13,8 @@ import units.Terrain;
 import world.World;
 
 @SuppressWarnings("serial")
-public class DrawingPanel extends ViewPanel {
-	static Toolkit tk = Toolkit.getDefaultToolkit();
-	private final int X_SCREEN_SIZE = ((int) tk.getScreenSize().getWidth());
-	private final int Y_SCREEN_SIZE = ((int) tk.getScreenSize().getHeight());	
-	private final Point CS = new Point(X_SCREEN_SIZE/2,Y_SCREEN_SIZE); 
-	BufferedImage desertImg, grassImg, lavaImg, miasmaImg, waterImg, boulderImg;
+public class DrawingPanel extends ViewPanel { 
+	private BufferedImage desertImg, grassImg, lavaImg, miasmaImg, waterImg, boulderImg;
 	
 	public DrawingPanel(){
 		super();
@@ -32,13 +26,12 @@ public class DrawingPanel extends ViewPanel {
 		    miasmaImg = ImageIO.read(new File("Tile Graphics/Miasma.png"));
 		    waterImg = ImageIO.read(new File("Tile Graphics/water.png"));
 		    boulderImg = ImageIO.read(new File("Tile Graphics/boulderonsand.png"));
-		} catch (IOException e) {
-		}
+		} catch (IOException e) {}
 	}
 	
 	@Override
 	protected void draw(Graphics2D g2) {
-		System.out.println("Drawing: RIGHT HERE I WAS CALLED LOOK AT ME");
+		System.out.println("Drawing: called");
 		ArrayList<EnvObject> objects = World.getEnvObjects();
 		for (EnvObject obj: objects){
 			BufferedImage img = null;
@@ -60,17 +53,18 @@ public class DrawingPanel extends ViewPanel {
 
 	private BufferedImage getImageForText(String graphicString) {
 		//TODO: add all new unit types here with keyword?
-		if (graphicString.equals("Tile Graphics/desert.png")){
-			return desertImg;
-		} else if (graphicString.equals("Tile Graphics/Grass.png")){
+		if (graphicString == null)
 			return grassImg;
-		} else if (graphicString.equals("Tile Graphics/boulderonsand.png")){
+		if (graphicString.equals("Tile Graphics/desert.png"))
+			return desertImg;
+		if (graphicString.equals("Tile Graphics/Grass.png"))
+			return grassImg;
+		if (graphicString.equals("Tile Graphics/boulderonsand.png"))
 			return boulderImg;
-		} else if (graphicString.equals("miasma")){
+		if (graphicString.equals("miasma"))
 			return miasmaImg;
-		} else if (graphicString.equals("water")){
+		if (graphicString.equals("water"))
 			return waterImg;
-		}
-		else return grassImg;
+		return grassImg;
 	}
 }

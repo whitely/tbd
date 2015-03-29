@@ -20,6 +20,9 @@ public class ImageButton extends JButton {
 
     // a buffered image representing the mask for this button.
     private final BufferedImage fMask;
+    private int lastColor=0;
+    
+    
 
     public ImageButton(Icon icon, Icon mask) {
         super(icon);
@@ -78,6 +81,10 @@ public class ImageButton extends JButton {
             throw new IllegalArgumentException("The mask must be the same size as the icon.");
         }
     }
+    
+    public int getLastColor(){
+    	return lastColor;
+    }
 
     // CustomButtonUI implementation so that we can maintain the icon rectangle.
 
@@ -89,10 +96,15 @@ public class ImageButton extends JButton {
             // if the given point is within the bounds of the icon, then realtavize the given x,y
             // coordinates and sample the alpha value at that pixel. if the pixel at the given point
             // is completley transparent, then indicate that this button does not contain the point.
-            return fIconRect != null && fIconRect.contains(x,y)
+            //setLastColor(fMask.getRGB(x - fIconRect.x, y - fIconRect.y));
+        	return fIconRect != null && fIconRect.contains(x,y)
                     && fMask.getRaster().getSample(x - fIconRect.x,y - fIconRect.y,ALPHA_BAND) > 0;
         }
-
+        
+        private void setLastColor(int color){
+        	lastColor = color;
+        }
+        
         @Override
         public boolean contains(JComponent c, int x, int y) {
             return maskContains(x,y);

@@ -13,7 +13,11 @@ import javax.swing.JPanel;
 import units.Subject;
 
 public class CharacterPanel extends JPanel {
-	private JButton sidebar;
+	//private final int RED = ;
+	//private final int BLUE = ;
+	//private final int
+	
+	private ImageButton sidebar;
 
 	public CharacterPanel() {
 		super();
@@ -33,10 +37,17 @@ public class CharacterPanel extends JPanel {
 		sidebar.addActionListener(new ButtonListener());
 		sidebar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("You pressed a button!");
+				f(e);
 			}
 		});
 		
+	}
+	
+	private void f(ActionEvent e) {
+		//int color = sidebar.getLastColor();
+		int color = 0;
+		System.out.println(e);
+		System.out.println("You pressed a "+color+" button!");
 	}
 	
 	private class ButtonListener implements ActionListener {

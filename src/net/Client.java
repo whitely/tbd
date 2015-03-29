@@ -20,7 +20,7 @@ import controller.command.Command;
  */
 public class Client implements Handler {
 	public static String PORT = "9001";
-	public static String HOST = "localhost";
+	public static String HOST = "www.whitely.me";
 	
 	private String clientName; // user name of the client
 		
@@ -121,5 +121,6 @@ public class Client implements Handler {
 	@Override
 	public void addMessage(String msg, String sender, String recipient) {
 		System.err.println("Client received message from " + sender + " sent to " + recipient + ". Message: " + msg);
+		System.out.println("'" + msg + "'");
 	}
 }
