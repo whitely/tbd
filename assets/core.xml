@@ -3,23 +3,60 @@
 	<terrain id="desert">
 		<health>100</health>
 		<regenerationRate>0</regenerationRate>
-		<speedMultiplier>1</speedMultiplier>
+		<speedMultiplier>0.9</speedMultiplier>
 		<damageSubject>2</damageSubject>
-		<assetPath>assets/desert.png</assetPath>
+		<assetPath>assets/tile/desert.png</assetPath>
+	</terrain>
+	<terrain id="desert2">
+		<health>10000</health>
+		<regenerationRate>50</regenerationRate>
+		<speedMultiplier>1</speedMultiplier>
+		<damageSubject>0</damageSubject>
+		<assetPath>assets/tile/desert2.png</assetPath>
 	</terrain>
 	<terrain id="stone">
 		<health>175</health>
 		<regenerationRate>0</regenerationRate>
 		<speedMultiplier>1</speedMultiplier>
 		<damageSubject>2</damageSubject>
-		<assetPath>assets/stone.png</assetPath>
+		<assetPath>assets/tile/stone.png</assetPath>
+	</terrain>
+	<terrain id="grass">
+		<health>175</health>
+		<regenerationRate>10</regenerationRate>
+		<speedMultiplier>1</speedMultiplier>
+		<damageSubject>0</damageSubject>
+		<assetPath>assets/tile/grass.png</assetPath>
+	</terrain>
+	<terrain id="miasma">
+		<health>200</health>
+		<regenerationRate>30</regenerationRate>
+		<speedMultiplier>0.3</speedMultiplier>
+		<damageSubject>10</damageSubject>
+		<assetPath>assets/tile/miasma.png</assetPath>
+	</terrain>
+	<terrain id="water">
+		<health>300</health>
+		<regenerationRate>30</regenerationRate>
+		<speedMultiplier>0.2</speedMultiplier>
+		<damageSubject>5</damageSubject>
+		<assetPath>assets/tile/water.png</assetPath>
 	</terrain>
 	<envObject id="boulder">
 		<health>75</health>
 		<regenerationRate>0</regenerationRate>
-		<speedMultiplier>1</speedMultiplier>
+		<speedMultiplier>0</speedMultiplier>
 		<damageSubject>0</damageSubject>
-		<assetPath>assets/largeboulderonsand.png</assetPath>
+		<assetPath>assets/tile/boulder.png</assetPath>
+		<w>40</w>
+		<h>40</h>
+	</envObject>
+	<envObject id="tree">
+		<health>40</health>
+		<regenerationRate>1</regenerationRate>
+		<speedMultiplier>0</speedMultiplier>
+		<damageSubject>0</damageSubject>
+		<assetPath>assets/tile/tree.png</assetPath>
 		<w>40</w>
 		<h>40</h>
 	</envObject>
