@@ -32,7 +32,7 @@ public class UnitPanel extends ViewPanel {
 
 	@Override
 	protected void draw(Graphics2D g2) {
-		System.out.println("Unit: called");
+		System.out.println("Drawing units...");
 		Collection<Controllable> c = ControllableMap.getVals();
 		Iterator iter = c.iterator();
 		while(iter.hasNext()){
