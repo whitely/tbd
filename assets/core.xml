@@ -77,7 +77,7 @@
 	<subject id="wolf">
 		<grace>18</grace>
 		<intelligence>8</intelligence>
-		<strength>14</intelligence>
+		<strength>14</strength>
 		<traitPoints>0</traitPoints>
 		<assetPath>assets/character/enemies/wolf.png</assetPath>
 		<volume>40</volume>
