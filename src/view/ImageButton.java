@@ -23,6 +23,10 @@ public class ImageButton extends JButton {
     private final BufferedImage fMask;
     public int[] lastColor;
     public Point loc = getLocation();
+    protected int affinity;
+    protected int grace;
+    protected int intelligence;
+    protected int strength;
     
     
 
@@ -90,6 +94,38 @@ public class ImageButton extends JButton {
     
     private void setLastColor(int[] color){
     	lastColor = color;
+    }
+    
+    public int getAffinity() {
+		return affinity;
+	}
+
+	public void setAffinity(int affinity) {
+		this.affinity = affinity;
+	}
+
+	public int getIntelligence() {
+		return intelligence;
+	}
+
+	public void setIntelligence(int intelligence) {
+		this.intelligence = intelligence;
+	}
+
+	public int getStrength() {
+		return strength;
+	}
+
+	public void setStrength(int strength) {
+		this.strength = strength;
+	}
+
+	public int getGrace() {
+		return grace;
+	}
+
+	public void setGrace(int grace){
+    	this.grace = grace;
     }
 
     // CustomButtonUI implementation so that we can maintain the icon rectangle.
