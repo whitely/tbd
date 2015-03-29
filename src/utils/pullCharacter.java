@@ -11,53 +11,53 @@ public class pullCharacter {
 	public static BufferedImage getRedHero(){
 		BufferedImage humanRedHeroImg = null;
 		try{
-		humanRedHeroImg = ImageIO.read(new File("assets/character/players/humanredhero.png"));
+			humanRedHeroImg = ImageIO.read(new File("assets/character/players/humanredhero.png"));
 		} catch (IOException e) {}
-	
+
 		return humanRedHeroImg;	
 	}
 
 	public static BufferedImage getKnight(){
 		BufferedImage humanKnightImg = null;
 		try{
-		humanKnightImg = ImageIO.read(new File("assets/character/players/humanknight.png"));
+			humanKnightImg = ImageIO.read(new File("assets/character/players/humanknight.png"));
 		} catch (IOException e) {}
 
 		return humanKnightImg;
 	}
-	
+
 	public static BufferedImage getSilverHero(){
 		BufferedImage humanSilverHeroImg = null;
 		try{
-		humanSilverHeroImg = ImageIO.read(new File("assets/character/players/humansilverhero.png"));
+			humanSilverHeroImg = ImageIO.read(new File("assets/character/players/humansilverhero.png"));
 		} catch (IOException e) {}
 
 		return humanSilverHeroImg;
 	}
 
 	public static BufferedImage getGoldenHero(){
-			BufferedImage humanGoldenHeroImg = null;
-			try{
+		BufferedImage humanGoldenHeroImg = null;
+		try{
 			humanGoldenHeroImg = ImageIO.read(new File("assets/character/players/humangoldenhero.png"));
-			} catch (IOException e) {}
+		} catch (IOException e) {}
 
-			return humanGoldenHeroImg;
+		return humanGoldenHeroImg;
 	}
 
 	public static BufferedImage getGeneric(){
-			BufferedImage humanGenericImg = null;
-			try{
+		BufferedImage humanGenericImg = null;
+		try{
 			humanGenericImg = ImageIO.read(new File("assets/character/players/humangeneric.png"));
-			} catch (IOException e) {}
+		} catch (IOException e) {}
 
-			return humanGenericImg;
+		return humanGenericImg;
 	}
 
 
 	public static BufferedImage getFireFox(){
 		BufferedImage humanFireFoxImg = null;
 		try{
-		humanFireFoxImg = ImageIO.read(new File("character art/players/humanfirefox.png"));
+			humanFireFoxImg = ImageIO.read(new File("assets/character/players/humanfirefox.png"));
 		} catch (IOException e) {}
 
 		return humanFireFoxImg;
