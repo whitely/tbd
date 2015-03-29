@@ -23,27 +23,14 @@ public class Subject extends Unit {
 	private double mass;
 	private String name;
 	private String assetPath;
-	private int height;
-	private int width;
 	
 	public Subject(Point location, int width, int height) {
 		super(location, width, height);
 	}
 	
-	public int getHeight() {
-		return height;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
-	public int getWidth() {
-		return width;
-	}
-
-	public void setWidth(int width) {
-		this.width = width;
+	public Subject()
+	{
+		super(new Point(0,0), 0, 0);
 	}
 	
 	public void createControlLink(Controllable target){
@@ -126,18 +113,27 @@ public class Subject extends Unit {
 		return volume;
 	}
 	
-	public void setVolume(int volume){
+	public void setVolume(double volume){
 		this.volume = volume;
 	}
 
 	public double getMass() {
-		// TODO Auto-generated method stub
 		return mass;
+	}
+	
+	public void setMass(double value)
+	{
+		mass = value;
 	}
 
 	@Override
 	public String getAssetPath() {
-		// TODO Auto-generated method stub
-		return null;
+		return assetPath;
+	}
+	
+	@Override
+	public void setAssetPath(String location)
+	{
+		assetPath = location;
 	}
 }
