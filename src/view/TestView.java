@@ -12,7 +12,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import units.Locatable;
 import units.Subject;
 import utils.CollisionChecker;
 import world.World;

@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class CharacterPanel extends JPanel {
 	private final int[] MOVE = new int[]{38,19,19};
 	private final int[] ATTACK = new int[]{255,255,0};
