@@ -1,17 +1,15 @@
 package view;
 
 import java.awt.BorderLayout;
-import java.awt.Point;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
-import units.Subject;
 
 public class CharacterPanel extends JPanel {
 	private final int[] RED = new int[]{46,0,250};
@@ -62,8 +60,17 @@ public class CharacterPanel extends JPanel {
 	
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("User clicked button with text '" + ((JButton)(e.getSource())).getText() + "'.");			
+			System.out.println("User clicked button with text '" + ((JButton)(e.getSource())).getText() + "'.");
+			repaint();
 		}
+	}
+	
+	@Override
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Graphics2D g2 = (Graphics2D)g;
+		
+		g2.drawString("Level", 80, 200);
 	}
 	
 }
