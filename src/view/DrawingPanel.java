@@ -32,22 +32,21 @@ public class DrawingPanel extends ViewPanel {
 	@Override
 	protected void draw(Graphics2D g2) {
 		System.out.println("Drawing: called");
-		ArrayList<EnvObject> objects = World.getEnvObjects();
-		for (EnvObject obj: objects){
-			BufferedImage img = null;
-			//System.out.println("Tile Graphics/" + obj.getAssetPath().substring(7));
-			img = getImageForText("Tile Graphics/" + obj.getAssetPath().substring(7));
-			g2.drawImage(boulderImg, obj.getLocation().x, obj.getLocation().y, 40, 40, null);
-		}
+		
 		ArrayList<Terrain> terrain = World.getTerrain();
-		for (Terrain t: terrain){
-			for (int i = 0; i<t.getWidth()/40; i++){
+		for (Terrain t: terrain)
+			for (int i = 0; i<t.getWidth()/40; i++)
 				for (int j = 0; j<t.getHeight()/40; j++){
 					BufferedImage img = null;
 					img = getImageForText("Tile Graphics/" + t.getAssetPath().substring(7));
 					g2.drawImage(img, i*40,j*40,40,40, null);
 				}
-			}
+		
+		ArrayList<EnvObject> objects = World.getEnvObjects();
+		for (EnvObject obj: objects){
+			BufferedImage img = null;
+			img = getImageForText("Tile Graphics/" + obj.getAssetPath().substring(7));
+			g2.drawImage(boulderImg, obj.getLocation().x, obj.getLocation().y, 40, 40, null);
 		}
 	}
 

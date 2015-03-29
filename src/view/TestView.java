@@ -6,6 +6,7 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -41,7 +42,7 @@ public class TestView extends JFrame {
 	//TODO: Use the real subject instead of this fake one
 	private Subject subject = new Subject(new Point(1,1), 5, 5);
 	
-	public TestView() {
+	public TestView() throws IOException {
 		super();
 		setupModel();
 		layoutGUI();
@@ -51,7 +52,7 @@ public class TestView extends JFrame {
 		testModelScript1();
 	}
 	
-	private void setupModel() {
+	private void setupModel() throws IOException {
 		w = new World();
 	}
 	
@@ -118,7 +119,7 @@ public class TestView extends JFrame {
 			e.printStackTrace();
 		}
 		System.out.println(terrains.size());
-		w.setTerrain(terrains);
+		//w.setTerrain(terrains);
 		w.setEnvObjects(objects);
 	}
 
@@ -219,7 +220,7 @@ public class TestView extends JFrame {
 //	// change timer value to determine repaint speed
 //	static Timer repaintTimer = new Timer(REPAINT_TIME_MS, timerAction);
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		new TestView().setVisible(true);
 //		repaintTimer.start();
 	}
