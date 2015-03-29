@@ -29,6 +29,7 @@ public class TestView extends JFrame {
 	private static int REPAINT_TIME_MS = 20;
 	
 	private static drawingPanel drawingPanel;
+	private static UnitPanel unitPanel;
 	private static JPanel panelR, panelS;
 	private JButton button1, button2;
 	
@@ -38,6 +39,8 @@ public class TestView extends JFrame {
 		setupModel();
 		layoutGUI();
 		registerListeners();
+		//for testing
+		testModelScript1();
 	}
 	
 	private void setupModel() {
@@ -52,10 +55,18 @@ public class TestView extends JFrame {
 		setLocation(X_SCREEN_SIZE/2-400, Y_SCREEN_SIZE/2-400);
 		setResizable(false);
 				
+		unitPanel = new UnitPanel();
+		unitPanel.setOpaque(false);
+		w.addObserver(unitPanel);
+		add(unitPanel);
+		unitPanel.setLayout(new BorderLayout());
+		
 		drawingPanel = new drawingPanel();
+		drawingPanel.setOpaque(false);
 		w.addObserver(drawingPanel);
 		add(drawingPanel);
 		drawingPanel.setLayout(new BorderLayout());
+	
 		
 		panelR = new JPanel();
 		panelR.setLayout(new BorderLayout());
@@ -83,6 +94,12 @@ public class TestView extends JFrame {
 		});
 		
 		drawingPanel.repaint();
+		unitPanel.repaint();
+	}
+	
+	public void testModelScript1(){
+		w.addPerson(new Subject(new Point(1,1),5,5));
+		w.addPerson(new Subject(new Point(2,2),5,5));
 	}
 
 	private class ButtonListener implements ActionListener {
@@ -162,6 +179,7 @@ public class TestView extends JFrame {
 	static ActionListener timerAction = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			// continuous timer code here:
+			unitPanel.repaint();
 			drawingPanel.repaint();
 			//world.update();
 		}
