@@ -1,26 +1,21 @@
 package view;
 
-import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
-import javax.swing.JPanel;
 
-import units.Unit;
-import utils.ControllableMap;
-import controller.Controllable;
+import units.EnvObject;
+import units.Terrain;
+import world.World;
 
 @SuppressWarnings("serial")
-public class UnitPanel extends JPanel implements Observer {
+public class UnitPanel extends ViewPanel {
 	static Toolkit tk = Toolkit.getDefaultToolkit();
 	private final int X_SCREEN_SIZE = ((int) tk.getScreenSize().getWidth());
 	private final int Y_SCREEN_SIZE = ((int) tk.getScreenSize().getHeight());
@@ -40,19 +35,37 @@ public class UnitPanel extends JPanel implements Observer {
 		} catch (IOException e) {
 		}
 	}
-
+	
 	@Override
-	public void update(Observable o, Object arg) {
-		System.out.println("drawingPanel received update from " + o);
-		//invalidate();
-		repaint();
-		
+	protected void draw(Graphics2D g2) {
+		System.out.println("Unit: RIGHT HERE I WAS CALLED LOOK AT ME");
+		ArrayList<EnvObject> objects = World.getEnvObjects();
+		for (EnvObject obj: objects){
+			BufferedImage img = null;
+			//System.out.println("Tile Graphics/" + obj.getAssetPath().substring(7));
+			img = getImageForText("Tile Graphics/" + obj.getAssetPath().substring(7));
+			try {
+			BufferedImage boulderImg = ImageIO.read(new File("Tile Graphics/boulderonsand.png"));
+			g2.drawImage(boulderImg, obj.getLocation().x, obj.getLocation().y, 40, 40, null);
+			} catch (Exception ex) {
+				
+			}
+		}
+		ArrayList<Terrain> terrain = World.getTerrain();
+		for (Terrain t: terrain){
+			for (int i = 0; i<t.getWidth()/40; i++){
+				for (int j = 0; j<t.getHeight()/40; j++){
+					BufferedImage img = null;
+					img = getImageForText("Tile Graphics/" + t.getAssetPath().substring(7));
+					g2.drawImage(img, i*40,j*40,40,40, null);
+				}
+			}
+		}
 	}
 
-	@Override
-	public void paintComponent(Graphics g) {
+	/*@Override
+	protected void draw(Graphics2D g2) {
 		System.out.println("Using paintComponent");
-		Graphics2D g2 = (Graphics2D)g;
 		Collection<Controllable> c = ControllableMap.getVals();
 		Iterator iter = c.iterator();
 		System.out.println("painting");
@@ -63,14 +76,7 @@ public class UnitPanel extends JPanel implements Observer {
 			//g2.drawString("!!!!", unit.getWidth(), unit.getHeight());
 			System.out.println("PRINTING ! mark at " + unit.getLocation().x*40 +"," + unit.getLocation().y*40);
 		}
-		//g2.draw3DRect(50, 50, 100, 200, false);
-		
-//		int x = 50, y = 50;
-		
-//		for (Controllable c : ControllableMap.getVals()) {
-//			g2.drawString(c.toString(), x, y += 50);
-//		}
-	}
+	}*/
 
 	private BufferedImage getImageForText(String graphicString) {
 		// TODO: add all new tile types here with keyword

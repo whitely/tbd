@@ -2,8 +2,6 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Panel;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -12,12 +10,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.AbstractAction;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.KeyStroke;
-import javax.swing.Timer;
 
 import units.EnvObject;
 import units.Subject;
@@ -33,9 +31,9 @@ public class TestView extends JFrame {
 	
 	private static int REPAINT_TIME_MS = 20;
 	
-	private static drawingPanel drawingPanel;
-	private static UnitPanel unitPanel;
-	private static JPanel panelR, panelS;
+	private ViewPanel drawingPanel, unitPanel;
+	private JPanel centre;
+	private JPanel panelR, panelS;
 	private JButton button1, button2;
 	
 	private World w;
@@ -44,6 +42,8 @@ public class TestView extends JFrame {
 	private Subject subject = new Subject(new Point(1,1), 5, 5);
 	
 	public TestView() {
+		super();
+		
 		setupModel();
 		layoutGUI();
 		registerListeners();
@@ -59,22 +59,31 @@ public class TestView extends JFrame {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("THE FARM");
-		setSize(700,700);
+		setSize(1000,900);
 		setLocation(X_SCREEN_SIZE/2-400, Y_SCREEN_SIZE/2-400);
 		setResizable(false);
-				
-		unitPanel = new UnitPanel();
-		unitPanel.setOpaque(true);
-		w.addObserver(unitPanel);
-		add(unitPanel);
-		unitPanel.setLayout(new BorderLayout());
 		
-		drawingPanel = new drawingPanel();
-		drawingPanel.setOpaque(false);
+		unitPanel = new UnitPanel();
+		unitPanel.setBorder(BorderFactory.createLineBorder(Color.ORANGE));
+		unitPanel.setBackground(Color.RED);
+		w.addObserver(unitPanel);
+		
+		drawingPanel = new DrawingPanel();
+		drawingPanel.setBorder(BorderFactory.createLineBorder(Color.CYAN));
+		drawingPanel.setBackground(Color.BLUE);
+		drawingPanel.setOpaque(true);
 		w.addObserver(drawingPanel);
-		add(drawingPanel);
-		drawingPanel.setLayout(new BorderLayout());
-	
+		
+		centre = new JPanel();
+		centre.setLayout(null);
+		centre.add(unitPanel);
+		centre.add(drawingPanel);
+		centre.setComponentZOrder(drawingPanel, 0);
+		centre.setComponentZOrder(unitPanel, 1);
+		centre.setBorder(BorderFactory.createLineBorder(Color.black));
+		add(centre, BorderLayout.CENTER);
+		centre.validate();
+		this.validate();
 		
 		panelR = new CharacterPanel();
 		add(panelR, BorderLayout.EAST);
@@ -83,24 +92,28 @@ public class TestView extends JFrame {
 		panelS.setLayout(new BorderLayout());
 		add(panelS, BorderLayout.SOUTH);
 		
-		button1 = new JButton("Add a Subject");
-		panelR.add(button1, BorderLayout.NORTH);
-		button1.addActionListener(new ButtonListener());
-		button1.addActionListener(new ActionListener() {
+//		button1 = new JButton("Add a Subject");
+//		panelR.add(button1, BorderLayout.NORTH);
+//		button1.addActionListener(new ButtonListener());
+//		button1.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				Subject subject = new Subject(new Point(1,1),5,5);
+//				subject.setAssetPath("character art/platearmor.png");
+//				w.addPerson(subject);
+//			}
+//		});
+		button2 = new JButton("Move Subject North");
+		panelS.add(button2, BorderLayout.WEST);
+		button2.addActionListener(new ButtonListener());
+		button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Subject subject = new Subject(new Point(1,1),5,5);
 				subject.setAssetPath("character art/platearmor.png");
 				w.addPerson(subject);
 			}
 		});
-		button2 = new JButton("Move Subject North");
-		panelS.add(button2, BorderLayout.WEST);
-		button2.addActionListener(new ButtonListener());
-		button2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		
+		centre.repaint();
 		drawingPanel.repaint();
 		unitPanel.repaint();
 	}
