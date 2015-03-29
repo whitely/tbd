@@ -1,20 +1,23 @@
 package world;
 
 
-import java.awt.Point;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Observable;
 import java.util.Stack;
 
 import units.EnvObject;
-import units.Locatable;
-import units.Unit;
 import units.Terrain;
 import utils.ControllableMap;
+import utils.TerrainLoader;
+import xml.XMLLoad;
 import controller.Controllable;
 import controller.command.Command;
 
 public class World extends Observable {
+	
+	public static final String OBJECT_FILE = "objects/core.xml";
 	
 	private static Stack<Command> commandHistory;
 	private static Stack<Command> singleTurnCommandHistory;
@@ -22,8 +25,11 @@ public class World extends Observable {
 	private static ArrayList<Terrain> terrain;
 	private static ArrayList<EnvObject> envObjects;
 	
-	public World() {
-		terrain = new ArrayList<Terrain>();
+	public World() throws IOException {
+		String mapFile = "maps/desertarenaxmltbd.xml";
+		terrain = TerrainLoader.getTerrain(OBJECT_FILE, mapFile);
+		envObjects = TerrainLoader.getEnvironmentObjects(OBJECT_FILE, mapFile);
+		
 		commandHistory = new Stack<Command>();
 		singleTurnCommandHistory = new Stack<Command>();
 		turnCounter = 0;
@@ -48,10 +54,6 @@ public class World extends Observable {
 	
 	public static ArrayList<Terrain> getTerrain(){
 		return terrain;
-	}
-	
-	public void setTerrain(ArrayList<Terrain> terrain){
-		this.terrain = terrain;
 	}
 	
 	public void addPerson(Controllable c) {
