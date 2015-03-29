@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Stack;
 
+import units.EnvObject;
 import units.Locatable;
 import units.Unit;
 import units.Terrain;
@@ -19,6 +20,7 @@ public class World extends Observable {
 	private static Stack<Command> singleTurnCommandHistory;
 	private int turnCounter;
 	private static ArrayList<Terrain> terrain;
+	private static ArrayList<EnvObject> envObjects;
 	
 	public World() {
 		terrain = new ArrayList<Terrain>();
@@ -57,6 +59,14 @@ public class World extends Observable {
 		
 		setChanged();
 		notifyObservers();
+	}
+
+	public void setEnvObjects(ArrayList<EnvObject> objects) {
+		envObjects = objects;
+	}
+
+	public static ArrayList<EnvObject> getEnvObjects() {
+		return envObjects;
 	}
 	
 }
