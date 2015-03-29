@@ -12,15 +12,15 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class CharacterPanel extends JPanel {
-	private final int[] MOVE = new int[]{46,0,250};
-	private final int[] ATTACK = new int[]{254,2,26};
-	private final int[] RANGED = new int[]{254,2,26};
-	private final int[] NEXUS = new int[]{254,2,26};
-	private final int[] RIFT = new int[]{254,2,26};
-	private final int[] GRACE = new int[]{254,2,26};
-	private final int[] STRENGTH = new int[]{254,2,26};
-	private final int[] INTELLIGENCE = new int[]{254,2,26};
-	private final int[] NEXT_TURN = new int[]{254,2,26};
+	private final int[] MOVE = new int[]{38,19,19};
+	private final int[] ATTACK = new int[]{255,255,0};
+	private final int[] RANGED = new int[]{0,0,76};
+	private final int[] NEXUS = new int[]{255,0,255};
+	private final int[] RIFT = new int[]{165,41,0};
+	private final int[] GRACE = new int[]{10,114,133};
+	private final int[] STRENGTH = new int[]{11,158,171};
+	private final int[] INTELLIGENCE = new int[]{83,234,232};
+	private final int[] NEXT_TURN = new int[]{0,0,0};
 	//private final int[]  = new int[]{};
 	
 	private ImageButton sidebar;
