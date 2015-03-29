@@ -202,7 +202,10 @@ public class ImageButton extends JButton {
             g.drawString("10", 1019, 257); //grace
             g.drawString("10", 925, 420); //strength
             g.drawString("10", 1125, 420); //intelligence
-            g.drawString("10", 925, 220); //wp
+            g.drawString("10", 920, 227); //wp - warping points
+            g.drawString("10", 920, 317); //tp - trait points
+            g.drawString("10", 920, 267); //sp - summon points
+            g.drawString("10", 920, 357); //health
         }
     }
 }
