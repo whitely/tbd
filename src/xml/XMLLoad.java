@@ -13,6 +13,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import controller.AgressiveStrategy;
+import controller.GuardStrategy;
 import affinity.AffinityStrategy;
 import affinity.NullStrategy;
 import affinity.NumericStrategy;
@@ -216,6 +218,12 @@ public class XMLLoad {
 							case "health":
 								subject.setHealth(Integer.parseInt(content));
 								break;
+							case "strategy":
+								if(content=="agressive"){
+									subject.setStrategy(new AgressiveStrategy());
+								} else if(content=="guard") {
+									subject.setStrategy(new GuardStrategy());
+								} break;
 							}
 						}
 					}
@@ -454,6 +462,7 @@ public class XMLLoad {
 						subject.setHeight(type.getHeight());
 						subject.setWidth(type.getWidth());
 						subject.setHealth(type.getHealth());
+						subject.setStrategy(type.getStrategy());
 						
 						NodeList children = node.getChildNodes();
 						for(int k = 0; k < children.getLength(); k++)
@@ -504,6 +513,12 @@ public class XMLLoad {
 								case "y":
 									y = Integer.parseInt(content);
 									break;
+								case "strategy":
+									if(content=="agressive"){
+										subject.setStrategy(new AgressiveStrategy());
+									} else if(content=="guard") {
+										subject.setStrategy(new GuardStrategy());
+									} break;
 								case "affinity":
 									if(Integer.parseInt(content)<20 &&Integer.parseInt(content)>=0){
 										subject.setAffinityStrat(new NumericStrategy(Integer.parseInt(content)));

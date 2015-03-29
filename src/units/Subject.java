@@ -7,6 +7,8 @@ import world.World;
 import affinity.AffinityStrategy;
 import controller.ControlLink;
 import controller.Controllable;
+import controller.IdleStrategy;
+import controller.PlayStrategy;
 import controller.command.AttackCommand;
 import controller.command.Command;
 import controller.command.MoveSelf;
@@ -23,14 +25,21 @@ public class Subject extends Unit {
 	private double mass;
 	private String name;
 	private String assetPath;
+	protected PlayStrategy strat = new IdleStrategy();
 	
 	public Subject(Point location, int width, int height) {
 		super(location, width, height);
+		strat = new IdleStrategy();
 	}
 	
 	public Subject()
 	{
 		super(new Point(0,0), 0, 0);
+		strat = new IdleStrategy();
+	}
+	
+	public void update(World w){
+		strat.doTurn(w, this);
 	}
 	
 	public void createControlLink(Controllable target){
@@ -92,6 +101,14 @@ public class Subject extends Unit {
 	
 	public void setName(String val) {
 		name = val;
+	}
+	
+	public void setStrategy(PlayStrategy newStrat){
+		strat = newStrat;
+	}
+	
+	public PlayStrategy getStrategy(){
+		return strat;
 	}
 
 	@Override
