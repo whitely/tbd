@@ -20,7 +20,6 @@ public class CharacterPanel extends JPanel {
 	private final int[] GRACE = new int[]{254,2,26};
 	private final int[] STRENGTH = new int[]{254,2,26};
 	private final int[] INTELLIGENCE = new int[]{254,2,26};
-	private final int[] MELEE = new int[]{254,2,26};
 	private final int[] NEXT_TURN = new int[]{254,2,26};
 	//private final int[]  = new int[]{};
 	
@@ -55,10 +54,31 @@ public class CharacterPanel extends JPanel {
 		int[] color = sidebar.getLastColor();
 		System.out.println("CLICK! "+color[0]+" "+color[1]+" "+color[2]);
 		if(arrayEqual(color, MOVE)){
-			System.out.println("User clicked button with color red.");
+			System.out.println("User clicked move button.");
 		}
 		else if(arrayEqual(color, ATTACK)){
-			System.out.println("User clicked button with color blue.");
+			System.out.println("User clicked attack button.");
+		}
+		else if(arrayEqual(color, RANGED)){
+			System.out.println("User clicked ranged button.");
+		}
+		else if(arrayEqual(color, NEXUS)){
+			System.out.println("User clicked nexus button.");
+		}
+		else if(arrayEqual(color, RIFT)){
+			System.out.println("User clicked rift button.");
+		}
+		else if(arrayEqual(color, GRACE)){
+			System.out.println("User clicked grace button.");
+		}
+		else if(arrayEqual(color, STRENGTH)){
+			System.out.println("User clicked strength button.");
+		}
+		else if(arrayEqual(color, INTELLIGENCE)){
+			System.out.println("User clicked intelligence button.");
+		}
+		else if(arrayEqual(color, NEXT_TURN)){
+			System.out.println("User clicked next turn button.");
 		}
 	}
 	
