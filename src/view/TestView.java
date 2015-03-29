@@ -154,6 +154,8 @@ public class TestView extends JFrame {
 		});
 	}
 	
+	//TODO make comply with moveSelf
+	
 	public void leftPress(){
 		Point point = new Point();
 		point.x = subject.getLocation().x - 20;
