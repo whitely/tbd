@@ -11,7 +11,6 @@ import units.Subject;
 import units.Terrain;
 import utils.ControllableMap;
 import utils.TerrainLoader;
-import controller.Controllable;
 import controller.command.Command;
 
 public class World extends Observable {
@@ -41,7 +40,6 @@ public class World extends Observable {
 	}
 	
 	public void undoLastCommand() {
-		commandHistory.pop().undo();
 		singleTurnCommandHistory.pop().undo();
 	}
 	
