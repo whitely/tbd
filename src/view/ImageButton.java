@@ -198,6 +198,14 @@ public class ImageButton extends JButton {
             if (fIconRect == null || !fIconRect.equals(iconRect)) {
                 fIconRect = new Rectangle(iconRect);    
             }
+            g.drawString(affinity+"", 1019, 366); //affinity
+            g.drawString(grace+"", 1019, 257); //grace
+            g.drawString(strength+"", 925, 420); //strength
+            g.drawString(intelligence+"", 1125, 420); //intelligence
+            g.drawString(wp+"", 910, 227); //wp - warping points
+            g.drawString(traitPoints+"", 920, 317); //tp - trait points
+            g.drawString(sp+"", 920, 267); //sp - summon points
+            g.drawString(health+"", 920, 357); //health
         }
     }
 }
