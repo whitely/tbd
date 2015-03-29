@@ -100,8 +100,8 @@
 		<width>40</width>
 		<health>273</health>
 		<strategy>aggressive</strategy>
-		</subject>
-	<subject id="skeleton"
+	</subject>
+	<subject id="skeleton">
 		<grace>5</grace>
 		<intelligence>7</intelligence>
 		<strength>9</strength>
