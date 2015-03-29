@@ -23,7 +23,7 @@ import world.World;
 public class UnitPanel extends ViewPanel {
 
 	private Point clickPoint;
-	private Locatable selected;
+	public Subject selected;
 	
 	public UnitPanel() {
 		super();
@@ -72,5 +72,13 @@ public class UnitPanel extends ViewPanel {
 		g2.draw(rect);
 		g2.setColor(c);
 		g2.setStroke(s);
+	}
+	
+	public Subject getSelected(){
+		return selected;
+	}
+	
+	public Point getClickPoint(){
+		return clickPoint;
 	}
 }

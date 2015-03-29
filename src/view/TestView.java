@@ -5,6 +5,8 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 import javax.swing.AbstractAction;
@@ -33,14 +35,23 @@ public class TestView extends JFrame {
 	private World w;
 	
 	//TODO: Use the real subject instead of this fake one
-	private Subject subject = new Subject(new Point(1,1), 5, 5);
+	//private Subject subject = new Subject(new Point(1,1), 5, 5);
 	
 	public TestView() throws IOException {
 		super();
 		setupModel();
 		layoutGUI();
 		//registerListeners();
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				repaint();
+			}
+		});
 	}
+	
+	//private void 
 	
 	private void setupModel() throws IOException {
 		w = new World();
@@ -63,7 +74,7 @@ public class TestView extends JFrame {
 		add(centerPanel);
 		setComponentZOrder(centerPanel, 0);
 		
-		cPanel = new CharacterPanel();
+		cPanel = new CharacterPanel(this);
 		cPanel.setSize(1200, 900);
 		cPanel.setLocation(30, -50); // Because the image is 1196 pixels wide for whatever goddamn reason.
 		add(cPanel);
@@ -88,6 +99,9 @@ public class TestView extends JFrame {
 		}
 	}
 	
+	
+	
+	/*
 	private void registerListeners() {
 		
 		KeyStroke left = KeyStroke.getKeyStroke("LEFT");
@@ -167,7 +181,7 @@ public class TestView extends JFrame {
 		point.x = subject.getLocation().x;
 		point.y = subject.getLocation().y + 20;
 		subject.setLocation(point);
-	}
+	}*/
 	
 //	static ActionListener timerAction = new ActionListener() {
 //		public void actionPerformed(ActionEvent e) {
