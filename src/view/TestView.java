@@ -88,9 +88,7 @@ public class TestView extends JFrame {
 		button2.addActionListener(new ButtonListener());
 		button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Subject subject = new Subject(new Point(1,1),5,5);
-				subject.setAssetPath("character art/platearmor.png");
-				w.addPerson(subject);
+				System.err.println("Implement an action listener PLZ");
 			}
 		});
 	}
