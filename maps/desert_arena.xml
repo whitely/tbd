@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<map id="stoneArena">
+<map id="desertArena">
 	<terrain>
-		<stone>
+		<desert>
 			<x>0</x>
 			<y>0</y>
 			<w>800</w>
 			<h>800</h>
-		</stone>
+		</desert>
 	</terrain>
 	<objects>
-		<largeboulderonstone>
+		<largeboulderonsand>
 			<x>400</x>
 			<y>400</y>
-		</largeboulderonstone>
-		<boulderonstone>
+		</largeboulderonsand>
+		<boulderonsand>
 			<x>380</x>
 			<y>100</y>
-		</boulderonstone>
-		<boulderonstone>
+		</boulderonsand>
+		<boulderonsand>
 			<x>420</x>
 			<y>700</y>
-		</boulderonstone>
-		<boulderonstone>
+		</boulderonsand>
+		<boulderonsand>
 			<x>260</x>
 			<y>220</y>
-		</boulderonstone>
-		<boulderonstone>
+		</boulderonsand>
+		<boulderonsand>
 			<x>540</x>
 			<y>580</y>
-		</boulderonstone>
-		<boulderonstone>
+		</boulderonsand>
+		<boulderonsand>
 			<x>140</x>
 			<y>340</y>
-		</boulderonstone>
-		<boulderonstone>
+		</boulderonsand>
+		<boulderonsand>
 			<x>660</x>
 			<y>460</y>
-		</boulderonstone>
+		</boulderonsand>
 	</objects>
 </map>
