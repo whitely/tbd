@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -47,12 +48,16 @@ public class CharacterPanel extends JPanel {
 	private void f(ActionEvent e) {
 		int[] color = sidebar.getLastColor();
 		System.out.println("CLICK! "+color[0]+" "+color[1]+" "+color[2]);
-		if(color[0] == RED[0]&&color[1] == RED[1]&&color[2] == RED[2]){
+		if(arrayEqual(color, RED)){
 			System.out.println("User clicked button with color red.");
 		}
-		else if(color[0] == BLUE[0]&&color[1] == BLUE[1]&&color[2] == BLUE[2]){
+		else if(arrayEqual(color, BLUE)){
 			System.out.println("User clicked button with color blue.");
 		}
+	}
+	
+	private boolean arrayEqual(int[] a, int[] b){
+		return a[0]==b[0]&&a[1]==b[1]&&a[2]==b[2];
 	}
 	
 	private class ButtonListener implements ActionListener {
