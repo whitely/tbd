@@ -10,7 +10,12 @@ public class CollisionChecker {
 	public static boolean checkCollision(Locatable a, Locatable b){
 		Rectangle rectA = new Rectangle(a.getLocation().x,a.getLocation().y,a.getWidth(),a.getHeight());
 		Rectangle rectB = new Rectangle(b.getLocation().x,b.getLocation().y,b.getWidth(),b.getHeight());
-		return rectA.intersects(rectB);
+		return rectA.intersects(rectB) || rectA.contains(rectB) || rectB.contains(rectA);
+	}
+	
+	public static boolean checkCollision(Rectangle a, Locatable b){
+		Rectangle rectB = new Rectangle(b.getLocation().x,b.getLocation().y,b.getWidth(),b.getHeight());
+		return a.intersects(rectB) || a.contains(rectB) || rectB.contains(a);
 	}
 	
 	public static boolean checkCollisions(Object[] listA, Collection<Controllable> listB){
