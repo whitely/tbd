@@ -7,8 +7,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
@@ -18,11 +16,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import units.EnvObject;
 import units.Subject;
-import units.Terrain;
 import world.World;
-import xml.XMLLoad;
 
 @SuppressWarnings("serial")
 public class TestView extends JFrame {
@@ -47,9 +42,6 @@ public class TestView extends JFrame {
 		setupModel();
 		layoutGUI();
 		registerListeners();
-		
-		//for testing
-		testModelScript1();
 	}
 	
 	private void setupModel() throws IOException {
@@ -59,14 +51,16 @@ public class TestView extends JFrame {
 	private void layoutGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("THE FARM");
-		setSize(1000,900);
-		setLocation(X_SCREEN_SIZE/2-400, Y_SCREEN_SIZE/2-400);
+		setSize(1200,900);
+		setLocation(X_SCREEN_SIZE/2-700, Y_SCREEN_SIZE/2-500);
 		setResizable(false);
+		setLayout(null);
 		
 		centerPanel = new JPanel();
 		centerPanel.setLayout(null);
+		centerPanel.setSize(800, 800);
 		centerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		add(centerPanel, BorderLayout.CENTER);
+		add(centerPanel);
 		
 		unitPanel = new UnitPanel();
 		centerPanel.add(unitPanel);
@@ -79,46 +73,24 @@ public class TestView extends JFrame {
 		w.addObserver(drawingPanel);
 				
 		panelR = new CharacterPanel();
-		add(panelR, BorderLayout.EAST);
+		panelR.setSize(400, 900);
+		panelR.setLocation(800, 0);
+		add(panelR);
 
 		panelS = new JPanel();
 		panelS.setLayout(new BorderLayout());
-		add(panelS, BorderLayout.SOUTH);
+		panelS.setLocation(0, 800);
+		panelS.setSize(800, 100);
+		add(panelS);
 		
 		button2 = new JButton("Move Subject North");
 		panelS.add(button2, BorderLayout.WEST);
 		button2.addActionListener(new ButtonListener());
 		button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Subject subject = new Subject(new Point(1,1),5,5);
-				subject.setAssetPath("character art/platearmor.png");
-				w.addPerson(subject);
+				System.err.println("Implement an action listener PLZ");
 			}
 		});
-	}
-	
-	public void testModelScript1(){
-		Subject subjA = new Subject(new Point(1,1),5,5);
-		subjA.setAssetPath("character art/platearmor.png");
-		w.addPerson(subjA);
-		w.addPerson(new Subject(new Point(2,2),5,5));
-		final String objectFile = "objects/core.xml";
-		final String mapFile = "maps/desertarenaxmltbd.xml";
-		
-		HashMap<String, Terrain> terrainObjects;
-		ArrayList<Terrain> terrains = new ArrayList<Terrain>();
-		ArrayList<EnvObject> objects = new ArrayList<EnvObject>();
-		try {
-			terrainObjects = XMLLoad.loadTerrainTypes(objectFile);
-			HashMap<String, EnvObject> envObjects = XMLLoad.loadObjectTypes(objectFile);
-			terrains = XMLLoad.loadTerrain(mapFile, terrainObjects);
-			objects = XMLLoad.loadObjects(mapFile, envObjects);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		System.out.println(terrains.size());
-		//w.setTerrain(terrains);
-		w.setEnvObjects(objects);
 	}
 
 	private class ButtonListener implements ActionListener {

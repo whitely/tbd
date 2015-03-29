@@ -1,41 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<map id="desertArena">
+<map id="Desert Arena">
 	<terrain>
-		<desert>
+		<desert2>
 			<x>0</x>
 			<y>0</y>
 			<w>800</w>
 			<h>800</h>
-		</desert>
+		</desert2>
 	</terrain>
 	<objects>
-		<largeboulderonsand>
+		<boulder>
 			<x>400</x>
 			<y>400</y>
-		</largeboulderonsand>
-		<boulderonsand>
+			<w>80</w>
+			<h>80</h>
+		</boulder>
+		<boulder>
 			<x>380</x>
 			<y>100</y>
-		</boulderonsand>
-		<boulderonsand>
+		</boulder>
+		<boulder>
 			<x>420</x>
 			<y>700</y>
-		</boulderonsand>
-		<boulderonsand>
+		</boulder>
+		<boulder>
 			<x>260</x>
 			<y>220</y>
-		</boulderonsand>
-		<boulderonsand>
+		</boulder>
+		<boulder>
 			<x>540</x>
 			<y>580</y>
-		</boulderonsand>
-		<boulderonsand>
+		</boulder>
+		<boulder>
 			<x>140</x>
 			<y>340</y>
-		</boulderonsand>
-		<boulderonsand>
+		</boulder>
+		<boulder>
 			<x>660</x>
 			<y>460</y>
-		</boulderonsand>
+		</boulder>
 	</objects>
+	<subjects>
+		<knight>
+			<x>200</x>
+			<y>200</y>
+		</knight>
+	</subjects>
 </map>

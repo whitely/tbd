@@ -7,6 +7,7 @@ import java.util.Observable;
 import java.util.Stack;
 
 import units.EnvObject;
+import units.Subject;
 import units.Terrain;
 import utils.ControllableMap;
 import utils.TerrainLoader;
@@ -15,19 +16,20 @@ import controller.command.Command;
 
 public class World extends Observable {
 	
-	public static final String OBJECT_FILE = "objects/core.xml";
+	public static final String OBJECT_FILE = "assets/core.xml";
 	
 	private static Stack<Command> commandHistory;
 	private static Stack<Command> singleTurnCommandHistory;
 	private int turnCounter;
 	private static ArrayList<Terrain> terrain;
 	private static ArrayList<EnvObject> envObjects;
+	private static ArrayList<Subject> subjects;
 	
 	public World() throws IOException {
-		String mapFile = "maps/desertarenaxmltbd.xml";
+		String mapFile = "maps/desert_arena.xml";
 		terrain = TerrainLoader.getTerrain(OBJECT_FILE, mapFile);
 		envObjects = TerrainLoader.getEnvironmentObjects(OBJECT_FILE, mapFile);
-		
+		subjects = TerrainLoader.getSubjects(OBJECT_FILE, mapFile);
 		commandHistory = new Stack<Command>();
 		singleTurnCommandHistory = new Stack<Command>();
 		turnCounter = 0;
@@ -46,8 +48,7 @@ public class World extends Observable {
 	
 	public void goToNextTurn(){
 		turnCounter++;
-		singleTurnCommandHistory.clear();
-		
+		singleTurnCommandHistory.clear();	
 	}
 	
 	public static ArrayList<Terrain> getTerrain(){
@@ -67,6 +68,10 @@ public class World extends Observable {
 
 	public static ArrayList<EnvObject> getEnvObjects() {
 		return envObjects;
+	}
+	
+	public static ArrayList<Subject> getSubjects() {
+		return subjects;
 	}
 	
 }
