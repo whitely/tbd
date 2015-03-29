@@ -2,8 +2,6 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Frame;
-import java.awt.Panel;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -12,12 +10,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.AbstractAction;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.swing.KeyStroke;
-import javax.swing.Timer;
 
 import units.EnvObject;
 import units.Subject;
@@ -33,9 +31,9 @@ public class TestView extends JFrame {
 	
 	private static int REPAINT_TIME_MS = 20;
 	
-	private static drawingPanel drawingPanel;
-	private static UnitPanel unitPanel;
-	private static JPanel panelR, panelS;
+	private ViewPanel drawingPanel, unitPanel;
+	private JPanel centre;
+	private JPanel panelR, panelS;
 	private JButton button1, button2;
 	
 	private World w;
@@ -62,19 +60,29 @@ public class TestView extends JFrame {
 		setSize(700,700);
 		setLocation(X_SCREEN_SIZE/2-400, Y_SCREEN_SIZE/2-400);
 		setResizable(false);
-				
+		
 		unitPanel = new UnitPanel();
 		unitPanel.setOpaque(true);
+		unitPanel.setBackground(Color.RED);
 		w.addObserver(unitPanel);
 		add(unitPanel);
 		unitPanel.setLayout(new BorderLayout());
 		
-		drawingPanel = new drawingPanel();
-		drawingPanel.setOpaque(false);
+		drawingPanel = new DrawingPanel();
+		drawingPanel.setOpaque(true);
+		drawingPanel.setBackground(Color.BLUE);
 		w.addObserver(drawingPanel);
 		add(drawingPanel);
 		drawingPanel.setLayout(new BorderLayout());
-	
+		
+		centre = new JPanel();
+		centre.setLayout(new BorderLayout());
+		centre.add(unitPanel, BorderLayout.NORTH);
+		centre.add(drawingPanel, BorderLayout.SOUTH);
+		centre.setBorder(BorderFactory.createLineBorder(Color.black));
+		add(centre, BorderLayout.CENTER);
+		centre.validate();
+		this.validate();
 		
 		panelR = new CharacterPanel();
 		add(panelR, BorderLayout.EAST);
@@ -101,6 +109,7 @@ public class TestView extends JFrame {
 			}
 		});
 		
+		centre.repaint();
 		drawingPanel.repaint();
 		unitPanel.repaint();
 	}
