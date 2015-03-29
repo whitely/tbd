@@ -7,6 +7,7 @@ import java.util.Observable;
 import java.util.Stack;
 
 import units.EnvObject;
+import units.Subject;
 import units.Terrain;
 import utils.ControllableMap;
 import utils.TerrainLoader;
@@ -22,12 +23,13 @@ public class World extends Observable {
 	private int turnCounter;
 	private static ArrayList<Terrain> terrain;
 	private static ArrayList<EnvObject> envObjects;
+	private static ArrayList<Subject> subjects;
 	
 	public World() throws IOException {
 		String mapFile = "maps/desert_arena.xml";
 		terrain = TerrainLoader.getTerrain(OBJECT_FILE, mapFile);
 		envObjects = TerrainLoader.getEnvironmentObjects(OBJECT_FILE, mapFile);
-		
+		subjects = TerrainLoader.getSubjects(OBJECT_FILE, mapFile);
 		commandHistory = new Stack<Command>();
 		singleTurnCommandHistory = new Stack<Command>();
 		turnCounter = 0;
@@ -66,6 +68,10 @@ public class World extends Observable {
 
 	public static ArrayList<EnvObject> getEnvObjects() {
 		return envObjects;
+	}
+	
+	public static ArrayList<Subject> getSubjects() {
+		return subjects;
 	}
 	
 }
