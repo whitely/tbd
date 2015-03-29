@@ -15,7 +15,7 @@ import controller.command.Command;
 
 public class World extends Observable {
 	
-	public static final String OBJECT_FILE = "objects/core.xml";
+	public static final String OBJECT_FILE = "assets/core.xml";
 	
 	private static Stack<Command> commandHistory;
 	private static Stack<Command> singleTurnCommandHistory;
@@ -46,8 +46,7 @@ public class World extends Observable {
 	
 	public void goToNextTurn(){
 		turnCounter++;
-		singleTurnCommandHistory.clear();
-		
+		singleTurnCommandHistory.clear();	
 	}
 	
 	public static ArrayList<Terrain> getTerrain(){
