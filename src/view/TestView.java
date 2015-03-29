@@ -55,7 +55,23 @@ public class TestView extends JFrame {
 	private void checkAction(){
 		String mode = cPanel.getMode();
 		Subject selected = ((UnitPanel)unitPanel).getSelected();
-		
+		Point clickPoint;
+		if(selected != null){
+			clickPoint = ((UnitPanel)unitPanel).getClickPoint();
+			if(selected.getID()==getMe().getControlLink().getSlave().getID()){
+				if(mode=="move"){
+					
+				}
+				else if(mode=="attack"){
+					
+				}
+			}
+		}
+	}
+	
+	public Subject getMe(){
+		//TODO
+		return new Subject();
 	}
 	
 	private void setupModel(World w) throws IOException {

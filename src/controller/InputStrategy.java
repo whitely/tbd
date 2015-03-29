@@ -2,6 +2,7 @@ package controller;
 
 import java.awt.Point;
 
+import controller.command.MoveOther;
 import units.Subject;
 import world.World;
 
@@ -26,5 +27,12 @@ public class InputStrategy extends PlayStrategy {
 		if(turnPoints>=5){
 			super.summon(subject, target, location);
 		}
+	}
+	
+	public void commandTarget(Subject subject, Subject target, Point location) {
+		MoveOther mo = new MoveOther();
+		mo.setParameters(new Object[]{subject,target,location});
+		mo.execute();
+		turnPoints -= 2;
 	}
 }
