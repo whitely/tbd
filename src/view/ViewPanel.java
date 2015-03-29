@@ -16,7 +16,7 @@ public abstract class ViewPanel extends JPanel implements Observer {
 	
 	protected ViewPanel() {
 		super();
-		setOpaque(true);
+		setOpaque(false);
 		setSize(800, 800);
 	}
 	

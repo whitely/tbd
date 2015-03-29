@@ -59,33 +59,37 @@ public class TestView extends JFrame {
 	private void layoutGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("THE FARM");
-		setSize(1000,900);
-		setLocation(X_SCREEN_SIZE/2-400, Y_SCREEN_SIZE/2-400);
+		setSize(1200,900);
+		setLocation(X_SCREEN_SIZE/2-700, Y_SCREEN_SIZE/2-500);
 		setResizable(false);
+		setLayout(null);
 		
 		centerPanel = new JPanel();
 		centerPanel.setLayout(null);
+		centerPanel.setSize(800, 800);
 		centerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		add(centerPanel, BorderLayout.CENTER);
+		add(centerPanel);
 		
 		unitPanel = new UnitPanel();
-		unitPanel.setBackground(Color.RED);
 		centerPanel.add(unitPanel);
 		centerPanel.setComponentZOrder(unitPanel, 0);
 		w.addObserver(unitPanel);
 		
 		drawingPanel = new DrawingPanel();
-		drawingPanel.setBackground(Color.BLUE);
 		centerPanel.add(drawingPanel);
 		centerPanel.setComponentZOrder(drawingPanel, 1);
 		w.addObserver(drawingPanel);
 				
 		panelR = new CharacterPanel();
-		add(panelR, BorderLayout.EAST);
+		panelR.setSize(400, 900);
+		panelR.setLocation(800, 0);
+		add(panelR);
 
 		panelS = new JPanel();
 		panelS.setLayout(new BorderLayout());
-		add(panelS, BorderLayout.SOUTH);
+		panelS.setLocation(0, 800);
+		panelS.setSize(800, 100);
+		add(panelS);
 		
 		button2 = new JButton("Move Subject North");
 		panelS.add(button2, BorderLayout.WEST);

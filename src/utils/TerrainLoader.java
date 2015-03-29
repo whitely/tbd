@@ -47,6 +47,7 @@ public class TerrainLoader {
 			ioEx.printStackTrace();
 		} catch (Exception ex) {
 			System.err.println("It looks like the file exists and is readable, but something serious went wrong.");
+			ex.printStackTrace();
 			throw new IOException("Ensure the XML file is in a valid format.");
 		}
 	}
