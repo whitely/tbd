@@ -6,7 +6,7 @@ import utils.RNG;
 public class AttackCommand extends Command{
 	
 /*
- * Attack Parameter: Subject 0, Subject 1, damage
+ * Attack Parameter: Subject 0, Subject 1
  * hit or not (roll) 
  * target
  *  
@@ -27,7 +27,7 @@ protected void executeCommand(Object[] params) {
 	Subject subject = (Subject)params[0];
 	Subject target = (Subject)params[1];
 	for (int i=0; i < subject.getStrength()/10; i++){
-	damageTotal += RNG.getRandom().nextInt(4) + 1;
+		damageTotal += RNG.getRandom().nextInt(4) + 1;
 	}
 	target.setHealth(target.getHealth() - damageTotal);
 	damage = damageTotal;

@@ -3,12 +3,13 @@ package controller;
 import java.awt.Point;
 
 import units.Subject;
+import world.World;
 import controller.command.*;
 
 public abstract class PlayStrategy {
 	protected int turnPoints;
 	
-	public void doTurn(){
+	public void doTurn(World w, Subject owner){
 		turnPoints=10;
 	}
 	
@@ -19,9 +20,9 @@ public abstract class PlayStrategy {
 		turnPoints--;
 	}
 	
-	protected void attack(Subject subject, Subject target, int damage){
+	protected void attack(Subject subject, Subject target){
 		AttackCommand ac = new AttackCommand();
-		ac.setParameters(new Object[]{subject, target, damage});
+		ac.setParameters(new Object[]{subject, target});
 		ac.execute();
 		turnPoints -= 5;
 	}
