@@ -5,14 +5,15 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-@SuppressWarnings("serial")
+import world.World;
+
 public class CharacterPanel extends JPanel {
 	private final int[] MOVE = new int[]{38,19,19};
 	private final int[] ATTACK = new int[]{255,255,0};
@@ -28,24 +29,17 @@ public class CharacterPanel extends JPanel {
 	//private final int[]  = new int[]{};
 	
 	private ImageButton sidebar;
-	private ArrayList<GUIObserver> observers;
+	protected TestView father;
+	private World world;
 
-	public CharacterPanel(GUIObserver parent) {
+	public CharacterPanel(TestView parent, World world) {
 		super();
-		observers = new ArrayList<GUIObserver>();
+		father = parent;
+		this.world = world;
 		setLayout(new BorderLayout());
 		layoutGUI();
+		father.repaint();
 	}
-	
-	public void registerObserver(GUIObserver guio) {
-		observers.add(guio);
-	}
-	
-	private void notify(Object arg) {
-		for (GUIObserver o : observers)
-			o.update(this, arg);
-	}
-	
 	
 	private void layoutGUI(){
 		Icon icon = new ImageIcon("assets/sidebar/sidebar.png");
@@ -102,6 +96,38 @@ public class CharacterPanel extends JPanel {
 		sidebar.setStrength(strength);
 	}
 
+	public int getWp() {
+		return sidebar.getWp();
+	}
+
+	public void setWp(int wp) {
+		sidebar.setWp(wp);
+	}
+
+	public int getHealth() {
+		return sidebar.getHealth();
+	}
+
+	public void setHealth(int health) {
+		sidebar.setHealth(health);
+	}
+
+	public int getSp() {
+		return sidebar.getSp();
+	}
+
+	public void setSp(int sp) {
+		sidebar.setSp(sp);
+	}
+
+	public int getTraitPoints() {
+		return sidebar.getTraitPoints();
+	}
+
+	public void setTraitPoints(int traitPoints) {
+		sidebar.setTraitPoints(traitPoints);
+	}
+	
 	private void f(ActionEvent e) {
 		int[] color = sidebar.getLastColor();
 		System.out.println("CLICK! "+color[0]+" "+color[1]+" "+color[2]);
@@ -141,8 +167,7 @@ public class CharacterPanel extends JPanel {
 			System.out.println("User clicked next turn button.");
 			mode = "next turn";
 		}
-		
-		notify(mode);
+		father.repaint();
 	}
 	
 	private boolean arrayEqual(int[] a, int[] b){
@@ -152,7 +177,8 @@ public class CharacterPanel extends JPanel {
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("User clicked button with text '" + ((JButton)(e.getSource())).getText() + "'.");
-			CharacterPanel.this.notify("repaint");
+			repaint();
+			father.repaint();
 		}
 	}
 	
