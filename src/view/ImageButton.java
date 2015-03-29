@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Graphics;
 import java.awt.Insets;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
@@ -20,7 +21,8 @@ public class ImageButton extends JButton {
 
     // a buffered image representing the mask for this button.
     private final BufferedImage fMask;
-    private int lastColor=0;
+    public int[] lastColor;
+    public Point loc = getLocation();
     
     
 
@@ -82,8 +84,12 @@ public class ImageButton extends JButton {
         }
     }
     
-    public int getLastColor(){
+    public int[] getLastColor(){
     	return lastColor;
+    }
+    
+    private void setLastColor(int[] color){
+    	lastColor = color;
     }
 
     // CustomButtonUI implementation so that we can maintain the icon rectangle.
@@ -96,13 +102,15 @@ public class ImageButton extends JButton {
             // if the given point is within the bounds of the icon, then realtavize the given x,y
             // coordinates and sample the alpha value at that pixel. if the pixel at the given point
             // is completley transparent, then indicate that this button does not contain the point.
-            //setLastColor(fMask.getRGB(x - fIconRect.x, y - fIconRect.y));
+        	int[] color = new int[]{0,0,0};
+        	if(fIconRect != null && fIconRect.contains(x,y)){
+        		color[0] = fMask.getRaster().getSample(x - fIconRect.x,y - fIconRect.y,0);
+        		color[1] = fMask.getRaster().getSample(x - fIconRect.x,y - fIconRect.y,1);
+        		color[2] = fMask.getRaster().getSample(x - fIconRect.x,y - fIconRect.y,2);
+        	}
+        	ImageButton.this.setLastColor(color);
         	return fIconRect != null && fIconRect.contains(x,y)
                     && fMask.getRaster().getSample(x - fIconRect.x,y - fIconRect.y,ALPHA_BAND) > 0;
-        }
-        
-        private void setLastColor(int color){
-        	lastColor = color;
         }
         
         @Override
