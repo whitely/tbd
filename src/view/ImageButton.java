@@ -23,14 +23,14 @@ public class ImageButton extends JButton {
     private final BufferedImage fMask;
     public int[] lastColor;
     public Point loc = getLocation();
-    protected int affinity;
-    protected int grace;
-    protected int intelligence;
-    protected int strength;
-    protected int wp;
-    protected int health;
-    protected int sp;
-    protected int traitPoints;
+    protected int affinity = 10;
+    protected int grace = 20;
+    protected int intelligence = 20;
+    protected int strength = 10;
+    protected int wp = 16000000;
+    protected int health = 35;
+    protected int sp = 1000;
+    protected int traitPoints = 15;
     
     
 
@@ -198,14 +198,6 @@ public class ImageButton extends JButton {
             if (fIconRect == null || !fIconRect.equals(iconRect)) {
                 fIconRect = new Rectangle(iconRect);    
             }
-            g.drawString("10", 1019, 366); //affinity
-            g.drawString("10", 1019, 257); //grace
-            g.drawString("10", 925, 420); //strength
-            g.drawString("10", 1125, 420); //intelligence
-            g.drawString("10", 920, 227); //wp - warping points
-            g.drawString("10", 920, 317); //tp - trait points
-            g.drawString("10", 920, 267); //sp - summon points
-            g.drawString("10", 920, 357); //health
         }
     }
 }
