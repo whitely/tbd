@@ -72,5 +72,46 @@
 		<height>40</height>
 		<width>40</width>
 		<health>100</health>
+		<strategy>aggressive</strategy>
+	</subject>
+	<subject id="wolf">
+		<grace>18</grace>
+		<intelligence>8</intelligence>
+		<strength>14</intelligence>
+		<traitPoints>0</traitPoints>
+		<assetPath>assets/character/enemies/wolf.png</assetPath>
+		<volume>40</volume>
+		<mass>25</mass>
+		<name>"Wolf"</name>
+		<height>40</height>
+		<width>40</width>
+		<health>30</health>
+	</subject>
+	<subject id="ogre">
+		<grace>8</grace>
+		<intelligence>5</intelligence>
+		<strength>35</intelligence>
+		<traitPoints>0</traitPoints>
+		<assetPath>assets/character/enemies/ogreeditone.png</assetPath>
+		<volume>160</volume>
+		<mass>100</mass>
+		<name>"Ogre"</name>
+		<height>40</height>
+		<width>40</width>
+		<health>273</health>
+		<strategy>aggressive</strategy>
+		</subject>
+	<subject id="skeleton"
+		<grace>5</grace>
+		<intelligence>7</intelligence>
+		<strength>9</strength>
+		<traitPoints>0</traitPoints>
+		<assetPath>assets/character/enemies/skeletoneditone.png</assetPath>
+		<volume>25</volume>
+		<mass>20</mass>
+		<name>"Skeleton"</name>
+		<height>40</height>
+		<width>40</width>
+		<health>30</health>
 	</subject>
 </units>
