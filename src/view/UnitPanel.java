@@ -23,7 +23,7 @@ import world.World;
 public class UnitPanel extends ViewPanel {
 
 	private Point clickPoint;
-	public Subject selected;
+	private Subject selected;
 	
 	public UnitPanel() {
 		super();
@@ -39,7 +39,7 @@ public class UnitPanel extends ViewPanel {
 	
 	@Override
 	protected void draw(Graphics2D g2) {
-		System.out.println("Drawing units...");
+		System.out.println("Drawing units...Selected is " + selected);
 		
 		ArrayList<Subject> subjects = World.getSubjects();
 		

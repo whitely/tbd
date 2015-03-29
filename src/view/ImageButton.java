@@ -126,6 +126,7 @@ public class ImageButton extends JButton {
             if (fIconRect == null || !fIconRect.equals(iconRect)) {
                 fIconRect = new Rectangle(iconRect);    
             }
+            g.drawString("10", 1019, 367);
         }
     }
 }
