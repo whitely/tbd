@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class CharacterPanel extends JPanel {
@@ -21,14 +22,18 @@ public class CharacterPanel extends JPanel {
 	private final int[] STRENGTH = new int[]{11,158,171};
 	private final int[] INTELLIGENCE = new int[]{83,234,232};
 	private final int[] NEXT_TURN = new int[]{0,0,0};
+	private boolean first = true;
 	//private final int[]  = new int[]{};
 	
 	private ImageButton sidebar;
+	protected JFrame father;
 
-	public CharacterPanel() {
+	public CharacterPanel(JFrame parent) {
 		super();
+		father = parent;
 		setLayout(new BorderLayout());
 		layoutGUI();
+		father.repaint();
 	}
 	
 	private void layoutGUI(){
@@ -80,6 +85,7 @@ public class CharacterPanel extends JPanel {
 		else if(arrayEqual(color, NEXT_TURN)){
 			System.out.println("User clicked next turn button.");
 		}
+		father.repaint();
 	}
 	
 	private boolean arrayEqual(int[] a, int[] b){
@@ -90,6 +96,7 @@ public class CharacterPanel extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("User clicked button with text '" + ((JButton)(e.getSource())).getText() + "'.");
 			repaint();
+			father.repaint();
 		}
 	}
 	
@@ -98,7 +105,7 @@ public class CharacterPanel extends JPanel {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
 		
-		g2.drawString("Level", 80, 200);
+		//g2.drawString("Level", 80, 200);
 	}
 	
 }

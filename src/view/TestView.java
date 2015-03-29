@@ -64,7 +64,7 @@ public class TestView extends JFrame {
 		add(centerPanel);
 		setComponentZOrder(centerPanel, 0);
 		
-		cPanel = new CharacterPanel();
+		cPanel = new CharacterPanel(this);
 		cPanel.setSize(1200, 900);
 		cPanel.setLocation(30, -50); // Because the image is 1196 pixels wide for whatever goddamn reason.
 		add(cPanel);
