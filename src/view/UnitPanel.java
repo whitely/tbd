@@ -58,7 +58,7 @@ public class UnitPanel extends ViewPanel {
 			return waterImg;
 		if (graphicString.equals("character art/platearmor.png"))
 			return plate;
-		else return grassImg;
+		return grassImg;
 	}
 
 }

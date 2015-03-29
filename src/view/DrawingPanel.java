@@ -53,17 +53,18 @@ public class DrawingPanel extends ViewPanel {
 
 	private BufferedImage getImageForText(String graphicString) {
 		//TODO: add all new unit types here with keyword?
-		if (graphicString.equals("Tile Graphics/desert.png")){
-			return desertImg;
-		} else if (graphicString.equals("Tile Graphics/Grass.png")){
+		if (graphicString == null)
 			return grassImg;
-		} else if (graphicString.equals("Tile Graphics/boulderonsand.png")){
+		if (graphicString.equals("Tile Graphics/desert.png"))
+			return desertImg;
+		if (graphicString.equals("Tile Graphics/Grass.png"))
+			return grassImg;
+		if (graphicString.equals("Tile Graphics/boulderonsand.png"))
 			return boulderImg;
-		} else if (graphicString.equals("miasma")){
+		if (graphicString.equals("miasma"))
 			return miasmaImg;
-		} else if (graphicString.equals("water")){
+		if (graphicString.equals("water"))
 			return waterImg;
-		}
-		else return grassImg;
+		return grassImg;
 	}
 }
