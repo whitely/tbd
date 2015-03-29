@@ -9,10 +9,15 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public abstract class ViewPanel extends JPanel implements Observer {
-
+	//private Toolkit tk = Toolkit.getDefaultToolkit();
+	//private final int X_SCREEN_SIZE = ((int) tk.getScreenSize().getWidth());
+	//private final int Y_SCREEN_SIZE = ((int) tk.getScreenSize().getHeight());	
+	//private final Point CS = new Point(X_SCREEN_SIZE/2,Y_SCREEN_SIZE);
+	
 	protected ViewPanel() {
 		super();
 		setOpaque(true);
+		setSize(800, 800);
 	}
 	
 	@Override
