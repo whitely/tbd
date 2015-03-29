@@ -20,7 +20,8 @@ public class DisconnectCommand extends Command implements Sendable {
 	protected void executeCommand(Object[] params) {
 		if (params[0] instanceof String)
 			((Server)h).disconnect((String)params[0]);
-		throw new IllegalArgumentException("Didn't pass name as first arg to disconnect! Size: " + params.length + "; params[0]: " + params[0]);
+		else
+			throw new IllegalArgumentException("Didn't pass name as first arg to disconnect! Size: " + params.length + "; params[0]: " + params[0]);
 	}
 
 	@Override
