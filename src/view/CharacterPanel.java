@@ -12,9 +12,17 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class CharacterPanel extends JPanel {
-	private final int[] RED = new int[]{46,0,250};
-	private final int[] BLUE = new int[]{254,2,26};
-	//private final int[] GREEN = new int[]{};
+	private final int[] MOVE = new int[]{46,0,250};
+	private final int[] ATTACK = new int[]{254,2,26};
+	private final int[] RANGED = new int[]{254,2,26};
+	private final int[] NEXUS = new int[]{254,2,26};
+	private final int[] RIFT = new int[]{254,2,26};
+	private final int[] GRACE = new int[]{254,2,26};
+	private final int[] STRENGTH = new int[]{254,2,26};
+	private final int[] INTELLIGENCE = new int[]{254,2,26};
+	private final int[] MELEE = new int[]{254,2,26};
+	private final int[] NEXT_TURN = new int[]{254,2,26};
+	//private final int[]  = new int[]{};
 	
 	private ImageButton sidebar;
 
@@ -46,10 +54,10 @@ public class CharacterPanel extends JPanel {
 	private void f(ActionEvent e) {
 		int[] color = sidebar.getLastColor();
 		System.out.println("CLICK! "+color[0]+" "+color[1]+" "+color[2]);
-		if(arrayEqual(color, RED)){
+		if(arrayEqual(color, MOVE)){
 			System.out.println("User clicked button with color red.");
 		}
-		else if(arrayEqual(color, BLUE)){
+		else if(arrayEqual(color, ATTACK)){
 			System.out.println("User clicked button with color blue.");
 		}
 	}
