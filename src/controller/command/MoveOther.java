@@ -39,9 +39,10 @@ public class MoveOther extends Command{
 		Subject subject = (Subject)params[0];
 		Controllable controllable = (Controllable)params[1];
 		Point desiredLocation = (Point)params[2];
-		int moveWidth = desiredLocation.x - subject.getLocation().x;
-		int moveHeight = desiredLocation.y - subject.getLocation().y;
-		Rectangle a = new Rectangle(subject.getLocation().x,subject.getLocation().y,moveWidth,moveHeight); 
+		Locatable target = (Locatable)controllable;
+		int moveWidth = desiredLocation.x - target.getLocation().x;
+		int moveHeight = desiredLocation.y - target.getLocation().y;
+		Rectangle a = new Rectangle(target.getLocation().x,target.getLocation().y,moveWidth,moveHeight); 
 		double speedModifier = 1; 
 		for(Terrain terrain : World.getTerrain()) {
 			Locatable b = (Locatable)terrain;
@@ -49,12 +50,12 @@ public class MoveOther extends Command{
 				speedModifier = speedModifier*terrain.getSpeedMultiplier();
 			}
 		}
-		double distance = Math.sqrt((moveWidth)^2 + (moveHeight)^2);
+		double distanceMoved = Math.sqrt((moveWidth)^2 + (moveHeight)^2)*1/(speedModifier);
 		//TODO: verify this formula with Random
-		if (controllable instanceof Subject && RNG.getRandom().nextDouble()*subject.getIntelligence()*subject.getStrength()>=.3*distance*((Subject)controllable).getMass()*DIFFICULTY){
+		if (controllable instanceof Subject && RNG.getRandom().nextDouble()*subject.getIntelligence()*subject.getStrength()>=.3*distanceMoved*((Subject)controllable).getMass()*DIFFICULTY){
 			return true;
 		}
-		if (controllable instanceof Elemental && RNG.getRandom().nextDouble()*subject.getIntelligence()>=.3*distance*((Elemental)controllable).getJoules()*DIFFICULTY){
+		if (controllable instanceof Elemental && RNG.getRandom().nextDouble()*subject.getIntelligence()>=.3*distanceMoved*((Elemental)controllable).getJoules()*DIFFICULTY){
 			return true;
 		}
 		return false;
