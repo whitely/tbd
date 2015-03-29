@@ -55,8 +55,9 @@ public class World extends Observable {
 		return terrain;
 	}
 	
-	public void addPerson(Controllable c) {
+	public void addPerson(Subject c) {
 		ControllableMap.put(c);
+		subjects.add(c);
 		
 		setChanged();
 		notifyObservers();
