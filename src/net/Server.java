@@ -85,7 +85,7 @@ public class Server implements Handler {
 	}
 	
 	public Server(){
-		this.messages = new ArrayList<String>(); // create the chat log
+		//this.messages = new ArrayList<String>(); // create the chat log
 		this.outputs = new HashMap<String, ObjectOutputStream>(); // setup the map
 		
 		try{
@@ -107,6 +107,8 @@ public class Server implements Handler {
 	 * @param message	message to add
 	 */
 	public void addMessage(String message){
+		//messages.add(message);
+		messages = new ArrayList<String>();
 		messages.add(message);
 		updateClients();
 	}
@@ -150,6 +152,6 @@ public class Server implements Handler {
 	@Override
 	public void addMessage(String msg, String sender, String recipient) {
 		System.err.println("Server received message from " + sender + " sent to " + recipient + ". Message: " + msg);
-		messages.add(msg);
+		addMessage(msg);
 	}
 }

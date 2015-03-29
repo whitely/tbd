@@ -55,15 +55,18 @@ public class TestView extends JFrame {
 		setLocation(X_SCREEN_SIZE/2-400, Y_SCREEN_SIZE/2-400);
 		setResizable(false);
 				
-		drawingPanel = new drawingPanel();
-		w.addObserver(drawingPanel);
-		add(drawingPanel);
-		drawingPanel.setLayout(new BorderLayout());
-		
 		unitPanel = new UnitPanel();
+		unitPanel.setOpaque(false);
 		w.addObserver(unitPanel);
 		add(unitPanel);
 		unitPanel.setLayout(new BorderLayout());
+		
+		drawingPanel = new drawingPanel();
+		drawingPanel.setOpaque(false);
+		w.addObserver(drawingPanel);
+		add(drawingPanel);
+		drawingPanel.setLayout(new BorderLayout());
+	
 		
 		panelR = new JPanel();
 		panelR.setLayout(new BorderLayout());
@@ -91,6 +94,7 @@ public class TestView extends JFrame {
 		});
 		
 		drawingPanel.repaint();
+		unitPanel.repaint();
 	}
 	
 	public void testModelScript1(){
@@ -175,6 +179,7 @@ public class TestView extends JFrame {
 	static ActionListener timerAction = new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			// continuous timer code here:
+			unitPanel.repaint();
 			drawingPanel.repaint();
 			//world.update();
 		}
