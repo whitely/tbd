@@ -210,20 +210,20 @@ public class TestView extends JFrame {
 		subject.setLocation(point);
 	}
 	
-	static ActionListener timerAction = new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			// continuous timer code here:
-			unitPanel.repaint();
-			drawingPanel.repaint();
-			//world.update();
-		}
-	};
-	// change timer value to determine repaint speed
-	static Timer repaintTimer = new Timer(REPAINT_TIME_MS, timerAction);
+//	static ActionListener timerAction = new ActionListener() {
+//		public void actionPerformed(ActionEvent e) {
+//			// continuous timer code here:
+//			unitPanel.repaint();
+//			drawingPanel.repaint();
+//			//world.update();
+//		}
+//	};
+//	// change timer value to determine repaint speed
+//	static Timer repaintTimer = new Timer(REPAINT_TIME_MS, timerAction);
 	
 	public static void main(String[] args) {
 		new TestView().setVisible(true);
-		repaintTimer.start();
+//		repaintTimer.start();
 	}
 	
 	
