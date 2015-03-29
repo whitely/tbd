@@ -10,6 +10,11 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public abstract class ViewPanel extends JPanel implements Observer {
 
+	protected ViewPanel() {
+		super();
+		setOpaque(true);
+	}
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		repaint();
