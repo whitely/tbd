@@ -119,7 +119,7 @@ public class Server implements Handler {
 	public void updateClients() {
 		// make an UpdateClientCommmand, write to all connected users
 		UpdateClientCommand update = new UpdateClientCommand();
-		update.setParameters(new Object[]{messages, "everyone", "who knows"});
+		update.setParameters(new Object[]{messages, "server", "all"});
 		try{
 			for (ObjectOutputStream out : outputs.values())
 				out.writeObject(update);

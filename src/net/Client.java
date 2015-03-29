@@ -10,6 +10,9 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+import view.ChatPanel;
+import view.TestView;
+import world.World;
 import controller.command.Command;
 
 /**
@@ -23,6 +26,7 @@ public class Client implements Handler {
 	public static String HOST = "www.whitely.me";
 	
 	private String clientName; // user name of the client
+	private ChatPanel chatPanel;
 		
 	private Socket server; // connection to server
 	private ObjectOutputStream out; // output stream
@@ -57,11 +61,11 @@ public class Client implements Handler {
 		}
 	}
 	
-	public Client(){
+	public Client(String username){
 		// ask the user for a host, port, and user name
 		String host = Client.HOST;
 		String port = Client.PORT;
-		clientName = JOptionPane.showInputDialog("User name:");
+		clientName = username;
 		
 		if (host == null || port == null || clientName == null)
 			return;
@@ -91,7 +95,7 @@ public class Client implements Handler {
 		}
 	}
 	
-	private void processInputLine(String s) {
+	public void sendChat(String s) {
 		if (s.equals(":q")) {
 			DisconnectCommand dc = new DisconnectCommand();
 			dc.setParameters(new Object[]{this.clientName});
@@ -109,8 +113,7 @@ public class Client implements Handler {
 
 	@Override
 	public void addMessage(String msg, String sender, String recipient) {
-		System.err.println("Client received message from " + sender + " sent to " + recipient + ". Message: " + msg);
-		System.out.println("'" + msg + "'");
+		chatPanel.append(msg, sender);
 	}
 	
 	/*public static void main(String[] args){
@@ -119,7 +122,7 @@ public class Client implements Handler {
 		
 		while(true) {
 			String s = scan.nextLine();
-			c.processInputLine(s);
+			c.sendChat(s);
 			
 			if (s.equals(":q")) {
 				scan.close();
@@ -127,4 +130,20 @@ public class Client implements Handler {
 			}
 		}	
 	}*/
+	
+	public static void main(String[] args) throws IOException {
+		World world = new World();
+		String clientName = JOptionPane.showInputDialog("User name:");
+		Client c = new Client(clientName);
+		
+		TestView tv = new TestView(world);
+		ChatPanel chat = tv.getChatPanel();
+		chat.registerClient(clientName, c);
+		tv.setVisible(true);
+		
+		c.chatPanel = chat;
+		
+	}
+	
+	
 }
