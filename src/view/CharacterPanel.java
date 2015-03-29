@@ -25,9 +25,9 @@ public class CharacterPanel extends JPanel {
 	}
 	
 	private void layoutGUI(){
-		Icon icon = new ImageIcon("sidebar/sidebar.png");
-        Icon pressedIcon = new ImageIcon("sidebar/sidebar.png");
-        Icon mask = new ImageIcon("sidebar/mask.png");
+		Icon icon = new ImageIcon("assets/sidebar/sidebar.png");
+        Icon pressedIcon = new ImageIcon("assets/sidebar/sidebar.png");
+        Icon mask = new ImageIcon("assets/sidebar/mask.png");
         
         sidebar = new ImageButton(icon, mask);
         sidebar.getLastColor();
