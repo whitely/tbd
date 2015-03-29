@@ -11,7 +11,7 @@ public class pullCharacter {
 	public static BufferedImage getRedHero(){
 		BufferedImage humanRedHeroImg = null;
 		try{
-		humanRedHeroImg = ImageIO.read(new File("character art/players/humanredhero.png"));
+		humanRedHeroImg = ImageIO.read(new File("assets/character/players/humanredhero.png"));
 		} catch (IOException e) {}
 	
 		return humanRedHeroImg;	
@@ -20,7 +20,7 @@ public class pullCharacter {
 	public static BufferedImage getKnight(){
 		BufferedImage humanKnightImg = null;
 		try{
-		humanKnightImg = ImageIO.read(new File("character art/players/humanknight.png"));
+		humanKnightImg = ImageIO.read(new File("assets/character/players/humanknight.png"));
 		} catch (IOException e) {}
 
 		return humanKnightImg;
@@ -29,7 +29,7 @@ public class pullCharacter {
 	public static BufferedImage getSilverHero(){
 		BufferedImage humanSilverHeroImg = null;
 		try{
-		humanSilverHeroImg = ImageIO.read(new File("character art/players/humansilverhero.png"));
+		humanSilverHeroImg = ImageIO.read(new File("assets/character/players/humansilverhero.png"));
 		} catch (IOException e) {}
 
 		return humanSilverHeroImg;
@@ -38,7 +38,7 @@ public class pullCharacter {
 	public static BufferedImage getGoldenHero(){
 			BufferedImage humanGoldenHeroImg = null;
 			try{
-			humanGoldenHeroImg = ImageIO.read(new File("character art/players/humangoldenhero.png"));
+			humanGoldenHeroImg = ImageIO.read(new File("assets/character/players/humangoldenhero.png"));
 			} catch (IOException e) {}
 
 			return humanGoldenHeroImg;
@@ -47,7 +47,7 @@ public class pullCharacter {
 	public static BufferedImage getGeneric(){
 			BufferedImage humanGenericImg = null;
 			try{
-			humanGenericImg = ImageIO.read(new File("character art/players/humangeneric.png"));
+			humanGenericImg = ImageIO.read(new File("assets/character/players/humangeneric.png"));
 			} catch (IOException e) {}
 
 			return humanGenericImg;
