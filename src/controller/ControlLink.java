@@ -19,6 +19,10 @@ public class ControlLink {
 		this.slave = slave;
 	}
 	
+	public Subject getSlave(){
+		return (Subject)slave;
+	}
+	
 	public ArrayList<Class> getCommands(){
 		return slave.getSlaveCommands();
 	}

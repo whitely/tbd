@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
 import units.EnvObject;
-import units.Subject;
 import units.Terrain;
 import world.World;
 
@@ -21,7 +20,6 @@ public class DrawingPanel extends ViewPanel {
 
 		ArrayList<Terrain> terrain = World.getTerrain();
 		ArrayList<EnvObject> objects = World.getEnvObjects();
-		ArrayList<Subject> subjects = World.getSubjects();
 
 		for (Terrain t : terrain) {
 			try {
@@ -33,12 +31,6 @@ public class DrawingPanel extends ViewPanel {
 			try {
 				BufferedImage img = ImageIO.read(new File(e.getAssetPath()));
 				g2.drawImage(img, e.getLocation().x, e.getLocation().y, e.getWidth(), e.getHeight(), null);
-			} catch (IOException ioEx) { ioEx.printStackTrace(); continue; }
-		}
-		for (Subject s : subjects) {
-			try {
-				BufferedImage img = ImageIO.read(new File(s.getAssetPath()));
-				g2.drawImage(img, s.getLocation().x, s.getLocation().y, s.getWidth(), s.getHeight(), null);
 			} catch (IOException ioEx) { ioEx.printStackTrace(); continue; }
 		}
 	}

@@ -10,6 +10,9 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
+import view.ChatPanel;
+import view.TestView;
+import world.World;
 import controller.command.Command;
 
 /**
@@ -23,6 +26,7 @@ public class Client implements Handler {
 	public static String HOST = "www.whitely.me";
 	
 	private String clientName; // user name of the client
+	private ChatPanel chatPanel;
 		
 	private Socket server; // connection to server
 	private ObjectOutputStream out; // output stream
@@ -57,11 +61,11 @@ public class Client implements Handler {
 		}
 	}
 	
-	public Client(){
+	public Client(String username){
 		// ask the user for a host, port, and user name
 		String host = Client.HOST;
 		String port = Client.PORT;
-		clientName = JOptionPane.showInputDialog("User name:");
+		clientName = username;
 		
 		if (host == null || port == null || clientName == null)
 			return;
@@ -91,36 +95,57 @@ public class Client implements Handler {
 		}
 	}
 	
-	public static void main(String[] args){
-		Client c = new Client();
-		Scanner scan = new Scanner(System.in);
-		
-		while(true) {
-			String s = scan.nextLine();
-			if (s.equals(":q")) {
-				DisconnectCommand dc = new DisconnectCommand();
-				dc.setParameters(new Object[]{c.clientName});
-				c.sendCommand(dc);
-				break;
-			} else {
-				AddMessageCommand ac = new AddMessageCommand();
-				ac.setParameters(new Object[]{s, c.clientName, "everyone"});
-				c.sendCommand(ac);
-			}
-		}
-		
-		try {
-			c.out.close();
-			c.in.close();
-			scan.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+	public void sendChat(String s) {
+		if (s.equals(":q")) {
+			DisconnectCommand dc = new DisconnectCommand();
+			dc.setParameters(new Object[]{this.clientName});
+			this.sendCommand(dc);
+			try {
+				out.close();
+				in.close();
+			} catch (IOException e) { e.printStackTrace(); }
+		} else {
+			AddMessageCommand ac = new AddMessageCommand();
+			ac.setParameters(new Object[]{s + "\n", this.clientName, "everyone"});
+			this.sendCommand(ac);
 		}
 	}
 
 	@Override
 	public void addMessage(String msg, String sender, String recipient) {
-		System.err.println("Client received message from " + sender + " sent to " + recipient + ". Message: " + msg);
-		System.out.println("'" + msg + "'");
+		if (chatPanel == null) {
+			System.err.println("Null chat box");
+		} else { chatPanel.append(msg, sender); }
 	}
+	
+	/*public static void main(String[] args){
+		Client c = new Client();
+		Scanner scan = new Scanner(System.in);
+		
+		while(true) {
+			String s = scan.nextLine();
+			c.sendChat(s);
+			
+			if (s.equals(":q")) {
+				scan.close();
+				break;
+			}
+		}	
+	}*/
+	
+	public static void main(String[] args) throws IOException {
+		World world = new World();
+		String clientName = JOptionPane.showInputDialog("User name:");
+		Client c = new Client(clientName);
+		
+		TestView tv = new TestView(world);
+		ChatPanel chat = tv.getChatPanel();
+		chat.registerClient(clientName, c);
+		tv.setVisible(true);
+		
+		c.chatPanel = chat;
+		
+	}
+	
+	
 }

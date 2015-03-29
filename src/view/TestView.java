@@ -1,11 +1,12 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 import javax.swing.AbstractAction;
@@ -29,23 +30,52 @@ public class TestView extends JFrame {
 	
 	private JPanel centerPanel;
 	private ViewPanel drawingPanel, unitPanel;
-	private JPanel panelR, panelS;
-	private JButton button2;
+	private CharacterPanel cPanel;
+	private ChatPanel chat;
 	
 	private World w;
 	
 	//TODO: Use the real subject instead of this fake one
-	private Subject subject = new Subject(new Point(1,1), 5, 5);
+	//private Subject subject = new Subject(new Point(1,1), 5, 5);
 	
-	public TestView() throws IOException {
+	public TestView(World w) throws IOException {
 		super();
-		setupModel();
+		setupModel(w);
 		layoutGUI();
-		registerListeners();
+		//registerListeners();
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				checkAction();
+				repaint();
+			}
+		});
 	}
 	
-	private void setupModel() throws IOException {
-		w = new World();
+	private void checkAction(){
+		String mode = cPanel.getMode();
+		Subject selected = ((UnitPanel)unitPanel).getSelected();
+		Point clickPoint;
+		if(selected != null){
+			clickPoint = ((UnitPanel)unitPanel).getClickPoint();
+			if(selected.getID()==getMe().getControlLink().getSlave().getID()){
+				if(mode=="move"){
+					
+				}
+				else if(mode=="attack"){
+					
+				}
+			}
+		}
+	}
+	
+	public Subject getMe(){
+		//TODO
+		return new Subject();
+	}
+	
+	private void setupModel(World w) throws IOException {
+		this.w = w;
 	}
 	
 	private void layoutGUI() {
@@ -53,14 +83,29 @@ public class TestView extends JFrame {
 		setTitle("THE FARM");
 		setSize(1200,900);
 		setLocation(X_SCREEN_SIZE/2-700, Y_SCREEN_SIZE/2-500);
+		setBackground(Color.BLACK);
 		setResizable(false);
 		setLayout(null);
 		
 		centerPanel = new JPanel();
 		centerPanel.setLayout(null);
 		centerPanel.setSize(800, 800);
+		centerPanel.setLocation(0, 23);
 		centerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		add(centerPanel);
+		setComponentZOrder(centerPanel, 0);
+		
+		chat = new ChatPanel();
+		chat.setSize(390, 340);
+		chat.setLocation(802, 485);
+		add(chat);
+		setComponentZOrder(chat, 1);
+		
+		cPanel = new CharacterPanel(this);
+		cPanel.setSize(1200, 900);
+		cPanel.setLocation(30, -50); // Because the image is 1196 pixels wide for whatever goddamn reason.
+		add(cPanel);
+		setComponentZOrder(cPanel, 2);
 		
 		unitPanel = new UnitPanel();
 		centerPanel.add(unitPanel);
@@ -71,26 +116,8 @@ public class TestView extends JFrame {
 		centerPanel.add(drawingPanel);
 		centerPanel.setComponentZOrder(drawingPanel, 1);
 		w.addObserver(drawingPanel);
-				
-		panelR = new CharacterPanel();
-		panelR.setSize(400, 900);
-		panelR.setLocation(800, 0);
-		add(panelR);
-
-		panelS = new JPanel();
-		panelS.setLayout(new BorderLayout());
-		panelS.setLocation(0, 800);
-		panelS.setSize(800, 100);
-		add(panelS);
 		
-		button2 = new JButton("Move Subject North");
-		panelS.add(button2, BorderLayout.WEST);
-		button2.addActionListener(new ButtonListener());
-		button2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.err.println("Implement an action listener PLZ");
-			}
-		});
+		
 	}
 
 	private class ButtonListener implements ActionListener {
@@ -99,8 +126,14 @@ public class TestView extends JFrame {
 		}
 	}
 	
+	public ChatPanel getChatPanel() {
+		return chat;
+	}
+	
+	
+	/*
 	private void registerListeners() {
-
+		
 		KeyStroke left = KeyStroke.getKeyStroke("LEFT");
 		KeyStroke a = KeyStroke.getKeyStroke("A");
 		getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(left,
@@ -154,6 +187,7 @@ public class TestView extends JFrame {
 		});
 	}
 	
+	
 	public void leftPress(){
 		Point point = new Point();
 		point.x = subject.getLocation().x - 20;
@@ -177,7 +211,7 @@ public class TestView extends JFrame {
 		point.x = subject.getLocation().x;
 		point.y = subject.getLocation().y + 20;
 		subject.setLocation(point);
-	}
+	}*/
 	
 //	static ActionListener timerAction = new ActionListener() {
 //		public void actionPerformed(ActionEvent e) {
@@ -191,7 +225,7 @@ public class TestView extends JFrame {
 //	static Timer repaintTimer = new Timer(REPAINT_TIME_MS, timerAction);
 	
 	public static void main(String[] args) throws IOException {
-		new TestView().setVisible(true);
+		new TestView(new World()).setVisible(true);
 //		repaintTimer.start();
 	}
 	
