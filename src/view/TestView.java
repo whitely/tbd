@@ -96,8 +96,8 @@ public class TestView extends JFrame {
 		setComponentZOrder(centerPanel, 0);
 		
 		chat = new ChatPanel();
-		chat.setSize(400, 300);
-		chat.setLocation(800, 500);
+		chat.setSize(390, 340);
+		chat.setLocation(802, 485);
 		add(chat);
 		setComponentZOrder(chat, 1);
 		

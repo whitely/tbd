@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -12,7 +11,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import net.AddMessageCommand;
 import net.Client;
 
 
@@ -50,14 +48,14 @@ public class ChatPanel extends JPanel{
 		
 		/* Setup the GUI */
 		this.setLayout(new BorderLayout());
-		this.setPreferredSize(new Dimension(400, 600));
+		this.setPreferredSize(new Dimension(390, 340));
 		
 		// create gui components
 		textField = new JTextField();
 		JButton enterButton = new JButton("Send");
 		
 		textField.setPreferredSize(new Dimension(320, 40));
-		enterButton.setPreferredSize(new Dimension(80, 40));
+		enterButton.setPreferredSize(new Dimension(60, 40));
 		
 		// add button and field to a lower panel
 		JPanel bottomPanel = new JPanel();
@@ -87,9 +85,7 @@ public class ChatPanel extends JPanel{
 	 * @param messages	the current chat log
 	 */
 	public void append(String message, String sender) {
-		/*String s = "";
-		textArea.setText(s);
-		*/
+		textField.setText("");
 		textArea.append(sender + ": " + message);
 		textArea.setCaretPosition(textArea.getText().length());
 		repaint();

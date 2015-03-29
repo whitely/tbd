@@ -106,14 +106,16 @@ public class Client implements Handler {
 			} catch (IOException e) { e.printStackTrace(); }
 		} else {
 			AddMessageCommand ac = new AddMessageCommand();
-			ac.setParameters(new Object[]{s, this.clientName, "everyone"});
+			ac.setParameters(new Object[]{s + "\n", this.clientName, "everyone"});
 			this.sendCommand(ac);
 		}
 	}
 
 	@Override
 	public void addMessage(String msg, String sender, String recipient) {
-		chatPanel.append(msg, sender);
+		if (chatPanel == null) {
+			System.err.println("Null chat box");
+		} else { chatPanel.append(msg, sender); }
 	}
 	
 	/*public static void main(String[] args){
