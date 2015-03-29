@@ -121,5 +121,6 @@ public class Client implements Handler {
 	@Override
 	public void addMessage(String msg, String sender, String recipient) {
 		System.err.println("Client received message from " + sender + " sent to " + recipient + ". Message: " + msg);
+		System.out.println("'" + msg + "'");
 	}
 }

@@ -38,6 +38,7 @@ public class UnitPanel extends ViewPanel {
 		while(iter.hasNext()){
 			Unit unit = (Unit)iter.next();
 			g2.drawImage(getImageForText(unit.getAssetPath()),unit.getLocation().x*40, unit.getLocation().y*40, unit.getWidth()*10, unit.getHeight()*10, null);
+			g2.drawString("!!!!!!!!", unit.getLocation().x*40, unit.getLocation().y*40);
 			System.out.println("PRINTING ! mark at " + unit.getLocation().x*40 +"," + unit.getLocation().y*40);
 		}
 	}
