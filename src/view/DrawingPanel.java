@@ -14,10 +14,6 @@ import world.World;
 
 @SuppressWarnings("serial")
 public class DrawingPanel extends ViewPanel { 
-	public DrawingPanel(){
-		super();
-	}
-	
 	@Override
 	protected void draw(Graphics2D g2) {
 		System.out.println("Drawing terrain...");
@@ -33,7 +29,6 @@ public class DrawingPanel extends ViewPanel {
 			for (EnvObject e : objects) {
 				BufferedImage img = ImageIO.read(new File(e.getAssetPath()));
 				g2.drawImage(img, e.getLocation().x, e.getLocation().y, e.getWidth(), e.getHeight(), null);
-				//g2.drawImage(img, x, 				 y, 				width, 		  height, 		 observer)
 			}
 		} catch (IOException ioEx) { ioEx.printStackTrace(); }
 	}
