@@ -24,7 +24,7 @@ public class World extends Observable {
 	private static ArrayList<EnvObject> envObjects;
 	
 	public World() throws IOException {
-		String mapFile = "maps/desertarenaxmltbd.xml";
+		String mapFile = "maps/desert_arena.xml";
 		terrain = TerrainLoader.getTerrain(OBJECT_FILE, mapFile);
 		envObjects = TerrainLoader.getEnvironmentObjects(OBJECT_FILE, mapFile);
 		
