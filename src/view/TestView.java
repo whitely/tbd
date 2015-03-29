@@ -49,7 +49,7 @@ public class TestView extends JFrame {
 		registerListeners();
 		
 		//for testing
-		testModelScript1();
+		//testModelScript1();
 	}
 	
 	private void setupModel() throws IOException {
