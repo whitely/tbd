@@ -20,7 +20,7 @@ public class DrawingPanel extends ViewPanel {
 	
 	@Override
 	protected void draw(Graphics2D g2) {
-		System.out.println("Drawing: called");
+		System.out.println("Drawing terrain...");
 		
 		ArrayList<Terrain> terrain = World.getTerrain();
 		ArrayList<EnvObject> objects = World.getEnvObjects();
