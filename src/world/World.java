@@ -37,7 +37,6 @@ public class World extends Observable {
 	
 	public static void doCommand(Command todo) {
 		todo.execute();
-		commandHistory.push(todo);
 		singleTurnCommandHistory.push(todo);
 	}
 	
@@ -48,7 +47,8 @@ public class World extends Observable {
 	
 	public void goToNextTurn(){
 		turnCounter++;
-		singleTurnCommandHistory.clear();	
+		while (singleTurnCommandHistory.size() > 0)
+			commandHistory.push(singleTurnCommandHistory.get(0));
 	}
 	
 	public static ArrayList<Terrain> getTerrain(){
