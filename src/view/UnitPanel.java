@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -17,24 +18,46 @@ import javax.imageio.ImageIO;
 
 import units.Locatable;
 import units.Subject;
+import utils.CollisionChecker;
 import world.World;
 
 @SuppressWarnings("serial")
 public class UnitPanel extends ViewPanel {
 
 	private Point clickPoint;
-	private Subject selected;
+	private Locatable selected;
+	private ArrayList<GUIObserver> observers;
 	
 	public UnitPanel() {
 		super();
+		
+		observers = new ArrayList<GUIObserver>();
+		
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				clickPoint = new Point(e.getX(), e.getY());
 				selected = null;
+				
+				ArrayList<Subject> subjects = World.getSubjects();
+				ArrayList<Locatable> locs = new ArrayList<>();
+				for (Subject s : subjects)
+					locs.add(s);
+				selected = CollisionChecker.getContaining(locs, clickPoint);
+				
 				repaint();
+				UnitPanel.this.notify("unit");
 			}
 		});
+	}
+	
+	public void registerObserver(GUIObserver guio) {
+		observers.add(guio);
+	}
+	
+	private void notify(Object arg) {
+		for (GUIObserver o : observers)
+			o.update(this, arg);
 	}
 	
 	@Override
@@ -47,21 +70,10 @@ public class UnitPanel extends ViewPanel {
 			try {
 				BufferedImage img = ImageIO.read(new File(s.getAssetPath()));
 				g2.drawImage(img, s.getLocation().x, s.getLocation().y, s.getWidth(), s.getHeight(), null);
-				
-				if (clickPoint != null && contains(s, clickPoint, g2)) {
-					System.out.println("You clicked at (" + clickPoint.x + ", " + clickPoint.y + ") on Subject " + s);
-					selected = s;
-					clickPoint = null;
-				}
+				if (selected != null)
+					highlight(new Rectangle(selected.getLocation(), new Dimension(selected.getWidth(), selected.getHeight())), g2);
 			} catch (IOException ioEx) { ioEx.printStackTrace(); continue; }
 		}
-	}
-	
-	private boolean contains(Locatable l, Point p, Graphics2D g2) {
-		Rectangle rect = new Rectangle(l.getLocation().x, l.getLocation().y, l.getWidth(), l.getHeight());
-		if (rect.contains(p))
-			highlight(rect, g2);
-		return rect.contains(p);
 	}
 	
 	private void highlight(Rectangle rect, Graphics2D g2) {
@@ -74,7 +86,7 @@ public class UnitPanel extends ViewPanel {
 		g2.setStroke(s);
 	}
 	
-	public Subject getSelected(){
+	public Locatable getSelected(){
 		return selected;
 	}
 	
