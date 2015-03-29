@@ -7,8 +7,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
@@ -18,11 +16,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import units.EnvObject;
 import units.Subject;
-import units.Terrain;
 import world.World;
-import xml.XMLLoad;
 
 @SuppressWarnings("serial")
 public class TestView extends JFrame {
@@ -47,9 +42,6 @@ public class TestView extends JFrame {
 		setupModel();
 		layoutGUI();
 		registerListeners();
-		
-		//for testing
-		//testModelScript1();
 	}
 	
 	private void setupModel() throws IOException {
@@ -101,30 +93,6 @@ public class TestView extends JFrame {
 				w.addPerson(subject);
 			}
 		});
-	}
-	
-	public void testModelScript1(){
-		Subject subjA = new Subject(new Point(1,1),5,5);
-		subjA.setAssetPath("character art/platearmor.png");
-		w.addPerson(subjA);
-		w.addPerson(new Subject(new Point(2,2),5,5));
-		final String objectFile = "objects/core.xml";
-		final String mapFile = "maps/desertarenaxmltbd.xml";
-		
-		HashMap<String, Terrain> terrainObjects;
-		ArrayList<Terrain> terrains = new ArrayList<Terrain>();
-		ArrayList<EnvObject> objects = new ArrayList<EnvObject>();
-		try {
-			terrainObjects = XMLLoad.loadTerrainTypes(objectFile);
-			HashMap<String, EnvObject> envObjects = XMLLoad.loadObjectTypes(objectFile);
-			terrains = XMLLoad.loadTerrain(mapFile, terrainObjects);
-			objects = XMLLoad.loadObjects(mapFile, envObjects);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		System.out.println(terrains.size());
-		//w.setTerrain(terrains);
-		w.setEnvObjects(objects);
 	}
 
 	private class ButtonListener implements ActionListener {

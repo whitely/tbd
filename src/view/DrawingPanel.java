@@ -17,19 +17,21 @@ public class DrawingPanel extends ViewPanel {
 	@Override
 	protected void draw(Graphics2D g2) {
 		System.out.println("Drawing terrain...");
-		
+
 		ArrayList<Terrain> terrain = World.getTerrain();
 		ArrayList<EnvObject> objects = World.getEnvObjects();
-		
-		try {
-			for (Terrain t : terrain) {
+
+		for (Terrain t : terrain) {
+			try {
 				BufferedImage img = ImageIO.read(new File(t.getAssetPath()));
 				g2.drawImage(img, t.getLocation().x, t.getLocation().y, t.getWidth(), t.getHeight(), null);
-			}
-			for (EnvObject e : objects) {
+			} catch (IOException ioEx) { ioEx.printStackTrace(); continue; }
+		}
+		for (EnvObject e : objects) {
+			try {
 				BufferedImage img = ImageIO.read(new File(e.getAssetPath()));
 				g2.drawImage(img, e.getLocation().x, e.getLocation().y, e.getWidth(), e.getHeight(), null);
-			}
-		} catch (IOException ioEx) { ioEx.printStackTrace(); }
+			} catch (IOException ioEx) { ioEx.printStackTrace(); continue; }
+		}
 	}
 }
