@@ -88,7 +88,9 @@ public class TestView extends JFrame {
 		button1.addActionListener(new ButtonListener());
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				w.addPerson(new Subject(new Point(1,1),5,5));
+				Subject subject = new Subject(new Point(1,1),5,5);
+				subject.setAssetPath("character art/platearmor.png");
+				w.addPerson(subject);
 			}
 		});
 		button2 = new JButton("Move Subject North");
@@ -104,7 +106,9 @@ public class TestView extends JFrame {
 	}
 	
 	public void testModelScript1(){
-		w.addPerson(new Subject(new Point(1,1),5,5));
+		Subject subjA = new Subject(new Point(1,1),5,5);
+		subjA.setAssetPath("character art/platearmor.png");
+		w.addPerson(subjA);
 		w.addPerson(new Subject(new Point(2,2),5,5));
 		final String objectFile = "objects/core.xml";
 		final String mapFile = "maps/desertarenaxmltbd.xml";

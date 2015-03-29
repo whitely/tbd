@@ -46,7 +46,7 @@ public class MoveSelf extends Command{
 				speedModifier = speedModifier*terrain.getSpeedMultiplier();
 			}
 		}
-		double distance = Math.sqrt((moveWidth)^2 + (moveHeight)^2)*1/(speedModifier);
+		double distance = (Math.sqrt(Math.pow(moveWidth,2) + Math.pow(moveHeight,2)))*1/(speedModifier);
 		//TODO: verify this formula with Random
 		if (RNG.getRandom().nextDouble()*subject.getGrace()>.3*DIFFICULTY*distance){
 			return true;
