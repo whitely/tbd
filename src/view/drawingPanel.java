@@ -54,7 +54,13 @@ public class drawingPanel extends JPanel implements Observer {
 		for (Terrain t: terrain){
 			for (int i = 0; i<t.getWidth()/40; i++){
 				for (int j = 0; j<t.getHeight()/40; j++){
-					g2.drawImage(grassImg, i*40,j*40,40,40, null);
+					BufferedImage img = null;
+					try {
+						System.out.println("Tile Graphics/" + t.getAssetPath().substring(7));
+						img = ImageIO.read(new File("Tile Graphics/" + t.getAssetPath().substring(7)));
+					} catch (IOException e) {
+					}
+					g2.drawImage(img, i*40,j*40,40,40, null);
 				}
 			}
 		}
