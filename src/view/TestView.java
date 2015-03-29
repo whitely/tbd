@@ -69,13 +69,11 @@ public class TestView extends JFrame {
 		add(centerPanel, BorderLayout.CENTER);
 		
 		unitPanel = new UnitPanel();
-		unitPanel.setBackground(Color.RED);
 		centerPanel.add(unitPanel);
 		centerPanel.setComponentZOrder(unitPanel, 0);
 		w.addObserver(unitPanel);
 		
 		drawingPanel = new DrawingPanel();
-		drawingPanel.setBackground(Color.BLUE);
 		centerPanel.add(drawingPanel);
 		centerPanel.setComponentZOrder(drawingPanel, 1);
 		w.addObserver(drawingPanel);

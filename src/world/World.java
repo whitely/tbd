@@ -3,7 +3,6 @@ package world;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Observable;
 import java.util.Stack;
 
@@ -11,7 +10,6 @@ import units.EnvObject;
 import units.Terrain;
 import utils.ControllableMap;
 import utils.TerrainLoader;
-import xml.XMLLoad;
 import controller.Controllable;
 import controller.command.Command;
 

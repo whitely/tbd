@@ -34,20 +34,32 @@ public class DrawingPanel extends ViewPanel {
 		System.out.println("Drawing: called");
 		
 		ArrayList<Terrain> terrain = World.getTerrain();
-		for (Terrain t: terrain)
+		ArrayList<EnvObject> objects = World.getEnvObjects();
+		
+		for (Terrain t : terrain) {
+			BufferedImage img = null;
+			img = getImageForText("Tile Graphics/" + t.getAssetPath().substring(7));
+			g2.drawImage(img, t.getLocation().x, t.getLocation().y, t.getWidth(), t.getHeight(), null);
+		}
+		for (EnvObject e : objects) {
+			BufferedImage img = null;
+			img = getImageForText("Tile Graphics/" + e.getAssetPath().substring(7));
+			g2.drawImage(img, e.getLocation().x, e.getLocation().y, e.getWidth(), e.getHeight(), null);
+			//g2.drawImage(img, x, 				 y, 				width, 		  height, 		 observer)
+		}
+		/*for (Terrain t: terrain) {
 			for (int i = 0; i<t.getWidth()/40; i++)
 				for (int j = 0; j<t.getHeight()/40; j++){
 					BufferedImage img = null;
 					img = getImageForText("Tile Graphics/" + t.getAssetPath().substring(7));
 					g2.drawImage(img, i*40,j*40,40,40, null);
 				}
-		
-		ArrayList<EnvObject> objects = World.getEnvObjects();
+		}
 		for (EnvObject obj: objects){
 			BufferedImage img = null;
 			img = getImageForText("Tile Graphics/" + obj.getAssetPath().substring(7));
 			g2.drawImage(boulderImg, obj.getLocation().x, obj.getLocation().y, 40, 40, null);
-		}
+		}*/
 	}
 
 	private BufferedImage getImageForText(String graphicString) {
