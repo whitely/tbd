@@ -76,8 +76,7 @@ public class TestView extends JFrame {
 		drawingPanel.setLayout(new BorderLayout());
 	
 		
-		panelR = new JPanel();
-		panelR.setLayout(new BorderLayout());
+		panelR = new CharacterPanel();
 		add(panelR, BorderLayout.EAST);
 
 		panelS = new JPanel();
