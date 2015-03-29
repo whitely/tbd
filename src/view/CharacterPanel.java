@@ -12,6 +12,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import world.World;
+
 public class CharacterPanel extends JPanel {
 	private final int[] MOVE = new int[]{38,19,19};
 	private final int[] ATTACK = new int[]{255,255,0};
@@ -27,11 +29,13 @@ public class CharacterPanel extends JPanel {
 	//private final int[]  = new int[]{};
 	
 	private ImageButton sidebar;
-	protected JFrame father;
+	protected TestView father;
+	private World world;
 
-	public CharacterPanel(JFrame parent) {
+	public CharacterPanel(TestView parent, World world) {
 		super();
 		father = parent;
+		this.world = world;
 		setLayout(new BorderLayout());
 		layoutGUI();
 		father.repaint();

@@ -101,7 +101,7 @@ public class TestView extends JFrame {
 		add(chat);
 		setComponentZOrder(chat, 1);
 		
-		cPanel = new CharacterPanel(this);
+		cPanel = new CharacterPanel(this, w);
 		cPanel.setSize(1200, 900);
 		cPanel.setLocation(30, -50); // Because the image is 1196 pixels wide for whatever goddamn reason.
 		add(cPanel);
@@ -128,6 +128,10 @@ public class TestView extends JFrame {
 	
 	public ChatPanel getChatPanel() {
 		return chat;
+	}
+	
+	public Subject getSelected() {
+		return ((UnitPanel)unitPanel).getSelected();
 	}
 	
 	
