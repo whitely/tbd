@@ -8,6 +8,8 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -17,8 +19,11 @@ import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
+import units.EnvObject;
 import units.Subject;
+import units.Terrain;
 import world.World;
+import xml.XMLLoad;
 
 @SuppressWarnings("serial")
 public class TestView extends JFrame {
@@ -100,6 +105,21 @@ public class TestView extends JFrame {
 	public void testModelScript1(){
 		w.addPerson(new Subject(new Point(1,1),5,5));
 		w.addPerson(new Subject(new Point(2,2),5,5));
+		final String objectFile = "objects/core.xml";
+		final String mapFile = "maps/desertarenaxmltbd.xml";
+		
+		HashMap<String, Terrain> terrainObjects;
+		ArrayList<Terrain> terrains = new ArrayList<Terrain>();
+		try {
+			terrainObjects = XMLLoad.loadTerrainTypes(objectFile);
+			HashMap<String, EnvObject> envObjects = XMLLoad.loadObjectTypes(objectFile);
+			terrains = XMLLoad.loadTerrain(mapFile, terrainObjects);
+			ArrayList<EnvObject> objects = XMLLoad.loadObjects(mapFile, envObjects);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(terrains.size());
+		w.setTerrain(terrains);
 	}
 
 	private class ButtonListener implements ActionListener {

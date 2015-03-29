@@ -48,6 +48,10 @@ public class World extends Observable {
 		return terrain;
 	}
 	
+	public void setTerrain(ArrayList<Terrain> terrain){
+		this.terrain = terrain;
+	}
+	
 	public void addPerson(Controllable c) {
 		ControllableMap.put(c);
 		
