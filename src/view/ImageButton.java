@@ -27,6 +27,10 @@ public class ImageButton extends JButton {
     protected int grace;
     protected int intelligence;
     protected int strength;
+    protected int wp;
+    protected int health;
+    protected int sp;
+    protected int traitPoints;
     
     
 
@@ -130,7 +134,39 @@ public class ImageButton extends JButton {
 
     // CustomButtonUI implementation so that we can maintain the icon rectangle.
 
-    private class CustomButtonUI extends BasicButtonUI {
+    public int getWp() {
+		return wp;
+	}
+
+	public void setWp(int wp) {
+		this.wp = wp;
+	}
+
+	public int getHealth() {
+		return health;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
+	public int getSp() {
+		return sp;
+	}
+
+	public void setSp(int sp) {
+		this.sp = sp;
+	}
+
+	public int getTraitPoints() {
+		return traitPoints;
+	}
+
+	public void setTraitPoints(int traitPoints) {
+		this.traitPoints = traitPoints;
+	}
+
+	private class CustomButtonUI extends BasicButtonUI {
 
         private Rectangle fIconRect;
 
