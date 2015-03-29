@@ -7,6 +7,18 @@
 			<w>800</w>
 			<h>800</h>
 		</desert>
+		<desert>
+			<x>40</x>
+			<y>40</y>
+			<w>800</w>
+			<h>800</h>
+		</desert>
+		<desert>
+			<x>80</x>
+			<y>80</y>
+			<w>800</w>
+			<h>800</h>
+		</desert>
 	</terrain>
 	<objects>
 		<largeboulderonsand>
