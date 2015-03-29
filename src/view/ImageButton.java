@@ -23,6 +23,14 @@ public class ImageButton extends JButton {
     private final BufferedImage fMask;
     public int[] lastColor;
     public Point loc = getLocation();
+    protected int affinity;
+    protected int grace;
+    protected int intelligence;
+    protected int strength;
+    protected int wp;
+    protected int health;
+    protected int sp;
+    protected int traitPoints;
     
     
 
@@ -91,10 +99,74 @@ public class ImageButton extends JButton {
     private void setLastColor(int[] color){
     	lastColor = color;
     }
+    
+    public int getAffinity() {
+		return affinity;
+	}
+
+	public void setAffinity(int affinity) {
+		this.affinity = affinity;
+	}
+
+	public int getIntelligence() {
+		return intelligence;
+	}
+
+	public void setIntelligence(int intelligence) {
+		this.intelligence = intelligence;
+	}
+
+	public int getStrength() {
+		return strength;
+	}
+
+	public void setStrength(int strength) {
+		this.strength = strength;
+	}
+
+	public int getGrace() {
+		return grace;
+	}
+
+	public void setGrace(int grace){
+    	this.grace = grace;
+    }
 
     // CustomButtonUI implementation so that we can maintain the icon rectangle.
 
-    private class CustomButtonUI extends BasicButtonUI {
+    public int getWp() {
+		return wp;
+	}
+
+	public void setWp(int wp) {
+		this.wp = wp;
+	}
+
+	public int getHealth() {
+		return health;
+	}
+
+	public void setHealth(int health) {
+		this.health = health;
+	}
+
+	public int getSp() {
+		return sp;
+	}
+
+	public void setSp(int sp) {
+		this.sp = sp;
+	}
+
+	public int getTraitPoints() {
+		return traitPoints;
+	}
+
+	public void setTraitPoints(int traitPoints) {
+		this.traitPoints = traitPoints;
+	}
+
+	private class CustomButtonUI extends BasicButtonUI {
 
         private Rectangle fIconRect;
 
@@ -126,6 +198,14 @@ public class ImageButton extends JButton {
             if (fIconRect == null || !fIconRect.equals(iconRect)) {
                 fIconRect = new Rectangle(iconRect);    
             }
+            g.drawString("10", 1019, 366); //affinity
+            g.drawString("10", 1019, 257); //grace
+            g.drawString("10", 925, 420); //strength
+            g.drawString("10", 1125, 420); //intelligence
+            g.drawString("10", 920, 227); //wp - warping points
+            g.drawString("10", 920, 317); //tp - trait points
+            g.drawString("10", 920, 267); //sp - summon points
+            g.drawString("10", 920, 357); //health
         }
     }
 }

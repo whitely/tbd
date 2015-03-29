@@ -69,6 +69,38 @@ public class CharacterPanel extends JPanel {
 		return mode;
 	}
 	
+	public int getAffinity() {
+		return sidebar.getAffinity();
+	}
+
+	public void setAffinity(int affinity) {
+		sidebar.setAffinity(affinity);
+	}
+
+	public int getGrace() {
+		return sidebar.getGrace();
+	}
+
+	public void setGrace(int grace) {
+		sidebar.setGrace(grace);
+	}
+
+	public int getIntelligence() {
+		return sidebar.getIntelligence();
+	}
+
+	public void setIntelligence(int intelligence) {
+		sidebar.setIntelligence(intelligence);
+	}
+
+	public int getStrength() {
+		return sidebar.getStrength();
+	}
+
+	public void setStrength(int strength) {
+		sidebar.setStrength(strength);
+	}
+
 	private void f(ActionEvent e) {
 		int[] color = sidebar.getLastColor();
 		System.out.println("CLICK! "+color[0]+" "+color[1]+" "+color[2]);

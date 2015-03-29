@@ -2,15 +2,15 @@
 <units>
 	<terrain id="desert">
 		<health>100</health>
-		<regenerationRate>0</regenerationRate>
+		<regenerationRate>4</regenerationRate>
 		<speedMultiplier>0.9</speedMultiplier>
-		<damageSubject>2</damageSubject>
+		<damageSubject>0</damageSubject>
 		<assetPath>assets/tile/desert.png</assetPath>
 	</terrain>
 	<terrain id="desert2">
 		<health>10000</health>
 		<regenerationRate>50</regenerationRate>
-		<speedMultiplier>1</speedMultiplier>
+		<speedMultiplier>0.9</speedMultiplier>
 		<damageSubject>0</damageSubject>
 		<assetPath>assets/tile/desert2.png</assetPath>
 	</terrain>
@@ -18,12 +18,12 @@
 		<health>175</health>
 		<regenerationRate>0</regenerationRate>
 		<speedMultiplier>1</speedMultiplier>
-		<damageSubject>2</damageSubject>
+		<damageSubject>0</damageSubject>
 		<assetPath>assets/tile/stone.png</assetPath>
 	</terrain>
 	<terrain id="grass">
 		<health>175</health>
-		<regenerationRate>10</regenerationRate>
+		<regenerationRate>2</regenerationRate>
 		<speedMultiplier>1</speedMultiplier>
 		<damageSubject>0</damageSubject>
 		<assetPath>assets/tile/grass.png</assetPath>
@@ -72,5 +72,46 @@
 		<height>40</height>
 		<width>40</width>
 		<health>100</health>
+		<strategy>aggressive</strategy>
+	</subject>
+	<subject id="wolf">
+		<grace>18</grace>
+		<intelligence>8</intelligence>
+		<strength>14</strength>
+		<traitPoints>0</traitPoints>
+		<assetPath>assets/character/enemies/wolf.png</assetPath>
+		<volume>40</volume>
+		<mass>25</mass>
+		<name>"Wolf"</name>
+		<height>40</height>
+		<width>40</width>
+		<health>30</health>
+	</subject>
+	<subject id="ogre">
+		<grace>8</grace>
+		<intelligence>5</intelligence>
+		<strength>35</strength>
+		<traitPoints>0</traitPoints>
+		<assetPath>assets/character/enemies/ogreeditone.png</assetPath>
+		<volume>160</volume>
+		<mass>100</mass>
+		<name>"Ogre"</name>
+		<height>40</height>
+		<width>40</width>
+		<health>273</health>
+		<strategy>aggressive</strategy>
+	</subject>
+	<subject id="skeleton">
+		<grace>5</grace>
+		<intelligence>7</intelligence>
+		<strength>9</strength>
+		<traitPoints>0</traitPoints>
+		<assetPath>assets/character/enemies/skeletoneditone.png</assetPath>
+		<volume>25</volume>
+		<mass>20</mass>
+		<name>"Skeleton"</name>
+		<height>40</height>
+		<width>40</width>
+		<health>30</health>
 	</subject>
 </units>
