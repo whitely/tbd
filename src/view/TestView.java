@@ -41,7 +41,7 @@ public class TestView extends JFrame {
 		super();
 		setupModel();
 		layoutGUI();
-		registerListeners();
+		//registerListeners();
 	}
 	
 	private void setupModel() throws IOException {
@@ -100,7 +100,7 @@ public class TestView extends JFrame {
 	}
 	
 	private void registerListeners() {
-
+		
 		KeyStroke left = KeyStroke.getKeyStroke("LEFT");
 		KeyStroke a = KeyStroke.getKeyStroke("A");
 		getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(left,
@@ -154,7 +154,6 @@ public class TestView extends JFrame {
 		});
 	}
 	
-	//TODO make comply with moveSelf
 	
 	public void leftPress(){
 		Point point = new Point();
