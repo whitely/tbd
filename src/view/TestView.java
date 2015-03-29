@@ -40,6 +40,9 @@ public class TestView extends JFrame {
 	
 	private World w;
 	
+	//TODO: Use the real subject instead of this fake one
+	private Subject subject = new Subject(new Point(1,1), 5, 5);
+	
 	public TestView() {
 		setupModel();
 		layoutGUI();
@@ -183,16 +186,28 @@ public class TestView extends JFrame {
 	}
 	
 	public void leftPress(){
-		//TODO
+		Point point = new Point();
+		point.x = subject.getLocation().x - 20;
+		point.y = subject.getLocation().y;
+		subject.setLocation(point);
 	}
 	public void rightPress(){
-		//TODO
+		Point point = new Point();
+		point.x = subject.getLocation().x + 20;
+		point.y = subject.getLocation().y;
+		subject.setLocation(point);
 	}
 	public void upPress(){
-		//TODO
+		Point point = new Point();
+		point.x = subject.getLocation().x;
+		point.y = subject.getLocation().y - 20;
+		subject.setLocation(point);
 	}
 	public void downPress(){
-		//TODO
+		Point point = new Point();
+		point.x = subject.getLocation().x;
+		point.y = subject.getLocation().y + 20;
+		subject.setLocation(point);
 	}
 	
 	static ActionListener timerAction = new ActionListener() {
