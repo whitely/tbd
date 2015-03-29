@@ -1,6 +1,7 @@
 package xml;
 
 import java.awt.Point;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,7 +23,7 @@ public class XMLLoad {
 		
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
-		Document document = builder.parse(ClassLoader.getSystemResourceAsStream(filename));
+		Document document = builder.parse(new FileInputStream(filename));
 		
 		NodeList nodeList = document.getDocumentElement().getChildNodes();
 		
@@ -84,7 +85,7 @@ public class XMLLoad {
 		
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
-		Document document = builder.parse(ClassLoader.getSystemResourceAsStream(filename));
+		Document document = builder.parse(new FileInputStream(filename));
 		
 		NodeList nodeList = document.getDocumentElement().getChildNodes();
 		
@@ -125,10 +126,10 @@ public class XMLLoad {
 							case "assetPath":
 								object.setAssetPath(content);
 								break;
-							case "health":
-								object.setHealth(Integer.parseInt(content));
+							case "h":
+								object.setHeight(Integer.parseInt(content));
 								break;
-							case "width":
+							case "w":
 								object.setWidth(Integer.parseInt(content));
 								break;
 							case "height":
@@ -152,7 +153,7 @@ public class XMLLoad {
 		
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
-		Document document = builder.parse(ClassLoader.getSystemResourceAsStream(filename));
+		Document document = builder.parse(new FileInputStream(filename));
 		
 		NodeList catList = document.getDocumentElement().getChildNodes();
 		
@@ -198,10 +199,10 @@ public class XMLLoad {
 								case "y":
 									y = Integer.parseInt(content);
 									break;
-								case "width":
+								case "w":
 									terrain.setWidth(Integer.parseInt(content));
 									break;
-								case "height":
+								case "h":
 									terrain.setHeight(Integer.parseInt(content));
 									break;
 								case "regenerationRate":
@@ -244,7 +245,7 @@ public class XMLLoad {
 		
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
-		Document document = builder.parse(ClassLoader.getSystemResourceAsStream(filename));
+		Document document = builder.parse(new FileInputStream(filename));
 		
 		NodeList catList = document.getDocumentElement().getChildNodes();
 		
@@ -273,6 +274,8 @@ public class XMLLoad {
 						object.setDamageSubject(type.getDamageSubject());
 						object.setAssetPath(type.getAssetPath());
 						object.setHealth(type.getHealth());
+						object.setWidth(type.getWidth());
+						object.setHeight(type.getHeight());
 						
 						NodeList children = node.getChildNodes();
 						for(int k = 0; k < children.getLength(); k++)
@@ -290,10 +293,10 @@ public class XMLLoad {
 								case "y":
 									y = Integer.parseInt(content);
 									break;
-								case "width":
+								case "w":
 									object.setWidth(Integer.parseInt(content));
 									break;
-								case "height":
+								case "h":
 									object.setHeight(Integer.parseInt(content));
 									break;
 								case "regenerationRate":
