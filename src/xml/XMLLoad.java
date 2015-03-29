@@ -14,6 +14,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import units.EnvObject;
+import units.Subject;
 import units.Terrain;
 
 public class XMLLoad {
@@ -140,6 +141,83 @@ public class XMLLoad {
 					}
 					
 					types.put(id, object);
+				}
+			}
+		}
+		
+		return types;
+	}
+	
+	public static HashMap<String, Subject> loadSubjectTypes(String filename) throws Exception
+	{
+		HashMap<String, Subject> types = new HashMap<>();
+		
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		Document document = builder.parse(new FileInputStream(filename));
+		
+		NodeList nodeList = document.getDocumentElement().getChildNodes();
+		
+		for(int i = 0; i < nodeList.getLength(); i++)
+		{
+			Node node = nodeList.item(i);
+			Subject subject;
+			String id;
+			if(node instanceof Element)
+			{
+				if(node.getNodeName().equals("subject"))
+				{
+					subject = new Subject();
+					id = node.getAttributes().getNamedItem("id").getNodeValue();
+					
+					NodeList children = node.getChildNodes();
+					for(int j = 0; j < children.getLength(); j++)
+					{
+						Node child = children.item(j);
+						
+						if(child instanceof Element)
+						{
+							String content = child.getLastChild().getTextContent().trim();
+							switch(child.getNodeName())
+							{
+							case "grace":
+								subject.setGrace(Integer.parseInt(content));
+								break;
+							case "intelligence":
+								subject.setIntelligence(Integer.parseInt(content));
+								break;
+							case "strength":
+								subject.setStrength(Integer.parseInt(content));
+								break;
+							case "traitPoints":
+								subject.setTraitPoints(Integer.parseInt(content));
+								break;
+							case "assetPath":
+								subject.setAssetPath(content);
+								break;
+							case "volume":
+								subject.setVolume(Double.parseDouble(content));
+								break;
+							case "mass":
+								subject.setMass(Double.parseDouble(content));
+								break;
+							case "name":
+								subject.setName(content);
+								break;
+							case "height":
+								subject.setHeight(Integer.parseInt(content));
+								break;
+							case "width":
+								subject.setWidth(Integer.parseInt(content));
+								break;
+							case "health":
+								subject.setHealth(Integer.parseInt(content));
+								break;
+							}
+						}
+					}
+					
+					types.put(id, subject);
 				}
 			}
 		}
@@ -325,6 +403,112 @@ public class XMLLoad {
 						object.setLocation(point);
 						
 						list.add(object);
+					}
+				}
+			}
+		}
+		
+		return list;
+	}
+	
+	public static ArrayList<Subject> loadSubjects(String filename, HashMap<String, Subject> types) throws Exception
+	{
+		ArrayList<Subject> list = new ArrayList<>();
+		
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder = factory.newDocumentBuilder();
+		Document document = builder.parse(new FileInputStream(filename));
+		
+		NodeList catList = document.getDocumentElement().getChildNodes();
+		
+		for(int i = 0; i < catList.getLength(); i++)
+		{
+			Node category = catList.item(i);
+			if(category instanceof Element && category.getNodeName().equals("subjects"))
+			{
+				NodeList nodeList = category.getChildNodes();
+				for(int j = 0; j < nodeList.getLength(); j++)
+				{
+					Subject subject;
+					Node node = nodeList.item(j);
+					int x = 0;
+					int y = 0;
+					
+					if(node instanceof Element)
+					{
+						subject = new Subject();
+						
+						//Get terrain type values
+						Subject type = types.get(node.getNodeName());
+						subject.setGrace(type.getGrace());
+						subject.setIntelligence(type.getIntelligence());
+						subject.setStrength(type.getStrength());
+						subject.setTraitPoints(type.getTraitPoints());
+						subject.setAssetPath(type.getAssetPath());
+						subject.setVolume(type.getVolume());
+						subject.setMass(type.getMass());
+						subject.setName(type.getName());
+						subject.setHeight(type.getHeight());
+						subject.setWidth(type.getWidth());
+						subject.setHealth(type.getHealth());
+						
+						NodeList children = node.getChildNodes();
+						for(int k = 0; k < children.getLength(); k++)
+						{
+							Node child = children.item(k);
+							
+							if(child instanceof Element)
+							{
+								String content = child.getLastChild().getTextContent().trim();
+								switch(child.getNodeName())
+								{
+								case "grace":
+									subject.setGrace(Integer.parseInt(content));
+									break;
+								case "intelligence":
+									subject.setIntelligence(Integer.parseInt(content));
+									break;
+								case "strength":
+									subject.setStrength(Integer.parseInt(content));
+									break;
+								case "traitPoints":
+									subject.setTraitPoints(Integer.parseInt(content));
+									break;
+								case "assetPath":
+									subject.setAssetPath(content);
+									break;
+								case "volume":
+									subject.setVolume(Double.parseDouble(content));
+									break;
+								case "mass":
+									subject.setMass(Double.parseDouble(content));
+									break;
+								case "name":
+									subject.setName(content);
+									break;
+								case "h":
+									subject.setHeight(Integer.parseInt(content));
+									break;
+								case "w":
+									subject.setWidth(Integer.parseInt(content));
+									break;
+								case "health":
+									subject.setHealth(Integer.parseInt(content));
+									break;
+								case "x":
+									x = Integer.parseInt(content);
+									break;
+								case "y":
+									y = Integer.parseInt(content);
+									break;
+								}
+							}
+						}
+						
+						Point point = new Point(x, y);
+						subject.setLocation(point);
+						
+						list.add(subject);
 					}
 				}
 			}
