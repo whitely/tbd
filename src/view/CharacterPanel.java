@@ -85,15 +85,19 @@ public class CharacterPanel extends JPanel {
 		}
 		else if(arrayEqual(color, GRACE)){
 			System.out.println("User clicked grace button.");
+			mode = "grace";
 		}
 		else if(arrayEqual(color, STRENGTH)){
 			System.out.println("User clicked strength button.");
+			mode = "strength";
 		}
 		else if(arrayEqual(color, INTELLIGENCE)){
 			System.out.println("User clicked intelligence button.");
+			mode = "intelligence";
 		}
 		else if(arrayEqual(color, NEXT_TURN)){
 			System.out.println("User clicked next turn button.");
+			mode = "next turn";
 		}
 		father.repaint();
 	}
