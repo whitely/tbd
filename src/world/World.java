@@ -11,7 +11,6 @@ import units.Subject;
 import units.Terrain;
 import utils.ControllableMap;
 import utils.TerrainLoader;
-import controller.Controllable;
 import controller.command.Command;
 
 public class World extends Observable {
@@ -37,18 +36,17 @@ public class World extends Observable {
 	
 	public static void doCommand(Command todo) {
 		todo.execute();
-		commandHistory.push(todo);
 		singleTurnCommandHistory.push(todo);
 	}
 	
 	public void undoLastCommand() {
-		commandHistory.pop().undo();
 		singleTurnCommandHistory.pop().undo();
 	}
 	
 	public void goToNextTurn(){
 		turnCounter++;
-		singleTurnCommandHistory.clear();	
+		while (singleTurnCommandHistory.size() > 0)
+			commandHistory.push(singleTurnCommandHistory.get(0));
 	}
 	
 	public static ArrayList<Terrain> getTerrain(){

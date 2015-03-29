@@ -9,7 +9,7 @@ import units.Subject;
 import units.Terrain;
 import xml.XMLLoad;
 
-public class TerrainLoader {
+public class MapLoader {
 	
 	private static ArrayList<Terrain> _terrain;
 	private static ArrayList<EnvObject> _objects;
@@ -41,7 +41,7 @@ public class TerrainLoader {
 		if (objectFile == null || mapFile == null)
 			throw new NullPointerException("TerrainLoader was passed a null input for a filename");
 		
-		return objectFile.equals(TerrainLoader._objectFile) && mapFile.equals(TerrainLoader._mapFile);
+		return objectFile.equals(MapLoader._objectFile) && mapFile.equals(MapLoader._mapFile);
 	}
 	
 	private static void generate(String objectFile, String mapFile) throws IOException {
