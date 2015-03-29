@@ -40,4 +40,10 @@
 			<y>460</y>
 		</boulder>
 	</objects>
+	<subjects>
+		<knight>
+			<x>200</x>
+			<y>200</y>
+		</knight>
+	</subjects>
 </map>

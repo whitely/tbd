@@ -60,4 +60,17 @@
 		<w>40</w>
 		<h>40</h>
 	</envObject>
+	<subject id="death_knight">
+		<grace>20</grace>
+		<intelligence>20</intelligence>
+		<strength>20</strength>
+		<traitPoints>0</traitPoints>
+		<assetPath>assets/character/enemies/death_knight.png</assetPath>
+		<volume>100</volume>
+		<mass>70</mass>
+		<name>Death Knight</name>
+		<height>40</height>
+		<width>40</width>
+		<health>100</health>
+	</subject>
 </units>
