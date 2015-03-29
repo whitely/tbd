@@ -29,8 +29,7 @@ public class TestView extends JFrame {
 	
 	private JPanel centerPanel;
 	private ViewPanel drawingPanel, unitPanel;
-	private JPanel panelR, panelS;
-	private JButton button2;
+	private CharacterPanel cPanel;
 	
 	private World w;
 	
@@ -53,14 +52,23 @@ public class TestView extends JFrame {
 		setTitle("THE FARM");
 		setSize(1200,900);
 		setLocation(X_SCREEN_SIZE/2-700, Y_SCREEN_SIZE/2-500);
+		setBackground(Color.BLACK);
 		setResizable(false);
 		setLayout(null);
 		
 		centerPanel = new JPanel();
 		centerPanel.setLayout(null);
 		centerPanel.setSize(800, 800);
+		centerPanel.setLocation(0, 23);
 		centerPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		add(centerPanel);
+		setComponentZOrder(centerPanel, 0);
+		
+		cPanel = new CharacterPanel();
+		cPanel.setSize(1200, 900);
+		cPanel.setLocation(30, -50); // Because the image is 1196 pixels wide for whatever goddamn reason.
+		add(cPanel);
+		setComponentZOrder(cPanel, 1);
 		
 		unitPanel = new UnitPanel();
 		centerPanel.add(unitPanel);
@@ -71,26 +79,8 @@ public class TestView extends JFrame {
 		centerPanel.add(drawingPanel);
 		centerPanel.setComponentZOrder(drawingPanel, 1);
 		w.addObserver(drawingPanel);
-				
-		panelR = new CharacterPanel();
-		panelR.setSize(400, 900);
-		panelR.setLocation(800, 0);
-		add(panelR);
-
-		panelS = new JPanel();
-		panelS.setLayout(new BorderLayout());
-		panelS.setLocation(0, 800);
-		panelS.setSize(800, 100);
-		add(panelS);
 		
-		button2 = new JButton("Move Subject North");
-		panelS.add(button2, BorderLayout.WEST);
-		button2.addActionListener(new ButtonListener());
-		button2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.err.println("Implement an action listener PLZ");
-			}
-		});
+		
 	}
 
 	private class ButtonListener implements ActionListener {
