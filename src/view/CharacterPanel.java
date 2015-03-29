@@ -23,6 +23,7 @@ public class CharacterPanel extends JPanel {
 	private final int[] INTELLIGENCE = new int[]{83,234,232};
 	private final int[] NEXT_TURN = new int[]{0,0,0};
 	private boolean first = true;
+	private String mode = "move";
 	//private final int[]  = new int[]{};
 	
 	private ImageButton sidebar;
@@ -55,23 +56,32 @@ public class CharacterPanel extends JPanel {
 		
 	}
 	
+	public String getMode(){
+		return mode;
+	}
+	
 	private void f(ActionEvent e) {
 		int[] color = sidebar.getLastColor();
 		System.out.println("CLICK! "+color[0]+" "+color[1]+" "+color[2]);
 		if(arrayEqual(color, MOVE)){
 			System.out.println("User clicked move button.");
+			mode = "move";
 		}
 		else if(arrayEqual(color, ATTACK)){
 			System.out.println("User clicked attack button.");
+			mode = "attack";
 		}
 		else if(arrayEqual(color, RANGED)){
 			System.out.println("User clicked ranged button.");
+			mode = "ranged";
 		}
 		else if(arrayEqual(color, NEXUS)){
 			System.out.println("User clicked nexus button.");
+			mode = "nexus";
 		}
 		else if(arrayEqual(color, RIFT)){
 			System.out.println("User clicked rift button.");
+			mode = "rift";
 		}
 		else if(arrayEqual(color, GRACE)){
 			System.out.println("User clicked grace button.");
