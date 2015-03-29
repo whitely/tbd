@@ -46,13 +46,17 @@ public class TestView extends JFrame {
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				checkAction();
 				repaint();
 			}
 		});
 	}
 	
-	//private void 
+	private void checkAction(){
+		String mode = cPanel.getMode();
+		Subject selected = ((UnitPanel)unitPanel).getSelected();
+		
+	}
 	
 	private void setupModel() throws IOException {
 		w = new World();
