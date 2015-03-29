@@ -13,6 +13,9 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import affinity.AffinityStrategy;
+import affinity.NullStrategy;
+import affinity.NumericStrategy;
 import units.EnvObject;
 import units.Subject;
 import units.Terrain;
@@ -413,7 +416,7 @@ public class XMLLoad {
 	
 	public static ArrayList<Subject> loadSubjects(String filename, HashMap<String, Subject> types) throws Exception
 	{
-		ArrayList<Subject> list = new ArrayList<>();
+		ArrayList<Subject> list = new ArrayList<Subject>();
 		
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
@@ -501,6 +504,15 @@ public class XMLLoad {
 								case "y":
 									y = Integer.parseInt(content);
 									break;
+								case "affinity":
+									if(Integer.parseInt(content)<20 &&Integer.parseInt(content)>=0){
+										subject.setAffinityStrat(new NumericStrategy(Integer.parseInt(content)));
+									}
+									else if(content == "random") {
+										subject.setAffinityStrat(new NumericStrategy());
+									} else{
+										subject.setAffinityStrat(new NullStrategy());
+									}
 								}
 							}
 						}

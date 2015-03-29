@@ -125,6 +125,10 @@ public class Subject extends Unit {
 	{
 		mass = value;
 	}
+	
+	public void setAffinityStrat(AffinityStrategy affinityStrat) {
+		this.affinityStrat = affinityStrat;
+	}
 
 	@Override
 	public String getAssetPath() {
