@@ -91,30 +91,19 @@ public class Client implements Handler {
 		}
 	}
 	
-	public static void main(String[] args){
-		Client c = new Client();
-		Scanner scan = new Scanner(System.in);
-		
-		while(true) {
-			String s = scan.nextLine();
-			if (s.equals(":q")) {
-				DisconnectCommand dc = new DisconnectCommand();
-				dc.setParameters(new Object[]{c.clientName});
-				c.sendCommand(dc);
-				break;
-			} else {
-				AddMessageCommand ac = new AddMessageCommand();
-				ac.setParameters(new Object[]{s, c.clientName, "everyone"});
-				c.sendCommand(ac);
-			}
-		}
-		
-		try {
-			c.out.close();
-			c.in.close();
-			scan.close();
-		} catch (IOException e) {
-			e.printStackTrace();
+	private void processInputLine(String s) {
+		if (s.equals(":q")) {
+			DisconnectCommand dc = new DisconnectCommand();
+			dc.setParameters(new Object[]{this.clientName});
+			this.sendCommand(dc);
+			try {
+				out.close();
+				in.close();
+			} catch (IOException e) { e.printStackTrace(); }
+		} else {
+			AddMessageCommand ac = new AddMessageCommand();
+			ac.setParameters(new Object[]{s, this.clientName, "everyone"});
+			this.sendCommand(ac);
 		}
 	}
 
@@ -123,4 +112,19 @@ public class Client implements Handler {
 		System.err.println("Client received message from " + sender + " sent to " + recipient + ". Message: " + msg);
 		System.out.println("'" + msg + "'");
 	}
+	
+	/*public static void main(String[] args){
+		Client c = new Client();
+		Scanner scan = new Scanner(System.in);
+		
+		while(true) {
+			String s = scan.nextLine();
+			c.processInputLine(s);
+			
+			if (s.equals(":q")) {
+				scan.close();
+				break;
+			}
+		}	
+	}*/
 }

@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -32,15 +31,16 @@ public class TestView extends JFrame {
 	private JPanel centerPanel;
 	private ViewPanel drawingPanel, unitPanel;
 	private CharacterPanel cPanel;
+	private ChatPanel chat;
 	
 	private World w;
 	
 	//TODO: Use the real subject instead of this fake one
 	//private Subject subject = new Subject(new Point(1,1), 5, 5);
 	
-	public TestView() throws IOException {
+	public TestView(World w) throws IOException {
 		super();
-		setupModel();
+		setupModel(w);
 		layoutGUI();
 		//registerListeners();
 		addMouseListener(new MouseAdapter() {
@@ -58,8 +58,8 @@ public class TestView extends JFrame {
 		
 	}
 	
-	private void setupModel() throws IOException {
-		w = new World();
+	private void setupModel(World w) throws IOException {
+		this.w = w;
 	}
 	
 	private void layoutGUI() {
@@ -104,6 +104,9 @@ public class TestView extends JFrame {
 		}
 	}
 	
+	public ChatPanel getChatPanel() {
+		return chat;
+	}
 	
 	
 	/*
@@ -200,7 +203,7 @@ public class TestView extends JFrame {
 //	static Timer repaintTimer = new Timer(REPAINT_TIME_MS, timerAction);
 	
 	public static void main(String[] args) throws IOException {
-		new TestView().setVisible(true);
+		new TestView(new World()).setVisible(true);
 //		repaintTimer.start();
 	}
 	
