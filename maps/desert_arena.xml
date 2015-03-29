@@ -46,4 +46,10 @@
 			<y>200</y>
 		</death_knight>
 	</subjects>
+	<subjects>
+		<death_knight>
+			<x>450</x>
+			<y>500</y>
+		</death_knight>
+	</subjects>
 </map>
