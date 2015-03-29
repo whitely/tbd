@@ -41,9 +41,9 @@
 		</boulder>
 	</objects>
 	<subjects>
-		<knight>
+		<death_knight>
 			<x>200</x>
 			<y>200</y>
-		</knight>
+		</death_knight>
 	</subjects>
 </map>

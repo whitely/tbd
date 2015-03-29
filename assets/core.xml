@@ -68,7 +68,7 @@
 		<assetPath>assets/character/enemies/death_knight.png</assetPath>
 		<volume>100</volume>
 		<mass>70</mass>
-		<name>Death Knight</name>
+		<name>"Death Knight"</name>
 		<height>40</height>
 		<width>40</width>
 		<health>100</health>

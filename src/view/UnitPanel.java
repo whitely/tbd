@@ -24,6 +24,6 @@ public class UnitPanel extends ViewPanel {
 				BufferedImage img = ImageIO.read(new File(u.getAssetPath()));
 				g2.drawImage(img,u.getLocation().x, u.getLocation().y, u.getWidth(), u.getHeight(), null);
 			} catch (IOException ioEx) { ioEx.printStackTrace(); continue; }
-		}
+		}	
 	}
 }
