@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <map id="Desert Arena">
 	<terrain>
-		<desert>
+		<desert2>
 			<x>0</x>
 			<y>0</y>
 			<w>800</w>
 			<h>800</h>
-		</desert>
+		</desert2>
 	</terrain>
 	<objects>
 		<boulder>
 			<x>400</x>
 			<y>400</y>
 			<w>80</w>
-			<w>80</w>
+			<h>80</h>
 		</boulder>
 		<boulder>
 			<x>380</x>
