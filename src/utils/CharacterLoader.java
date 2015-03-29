@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class pullCharacter {
+public class CharacterLoader {
 
 	//then this will get you the image at 
 	public static BufferedImage getRedHero(){
