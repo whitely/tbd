@@ -90,7 +90,7 @@
 	<subject id="ogre">
 		<grace>8</grace>
 		<intelligence>5</intelligence>
-		<strength>35</intelligence>
+		<strength>35</strength>
 		<traitPoints>0</traitPoints>
 		<assetPath>assets/character/enemies/ogreeditone.png</assetPath>
 		<volume>160</volume>
