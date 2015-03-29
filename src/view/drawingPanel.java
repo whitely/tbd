@@ -27,7 +27,7 @@ public class drawingPanel extends JPanel implements Observer {
 	private final int X_SCREEN_SIZE = ((int) tk.getScreenSize().getWidth());
 	private final int Y_SCREEN_SIZE = ((int) tk.getScreenSize().getHeight());	
 	private final Point CS = new Point(X_SCREEN_SIZE/2,Y_SCREEN_SIZE); 
-	BufferedImage desertImg, grassImg, lavaImg, miasmaImg, waterImg;
+	BufferedImage desertImg, grassImg, lavaImg, miasmaImg, waterImg, boulderImg;
 	
 	public drawingPanel(){
 		try {
@@ -37,6 +37,7 @@ public class drawingPanel extends JPanel implements Observer {
 		    lavaImg = ImageIO.read(new File("Tile Graphics/lava.png"));
 		    miasmaImg = ImageIO.read(new File("Tile Graphics/Miasma.png"));
 		    waterImg = ImageIO.read(new File("Tile Graphics/water.png"));
+		    boulderImg = ImageIO.read(new File("Tile Graphics/boulderonsand.png"));
 		} catch (IOException e) {
 		}
 	}
@@ -49,12 +50,28 @@ public class drawingPanel extends JPanel implements Observer {
 	
 	@Override
 	public void paintComponent(Graphics g) {
-		System.out.println("paint drawing");
 		Graphics2D g2 = (Graphics2D)g;
-		ArrayList<Terrain> t = World.getTerrain();
-		for (int i = 0; i<t.size(); i++){
-			g2.drawImage(getImageForText(((EnvObject)t.get(i)).getAssetPath()),t.get(i).getLocation().x, t.get(i).getLocation().y,t.get(i).getWidth(),t.get(i).getHeight(),null);
+		ArrayList<EnvObject> objects = World.getEnvObjects();
+		for (EnvObject obj: objects){
+			BufferedImage img = null;
+			System.out.println("Tile Graphics/" + obj.getAssetPath().substring(7));
+			img = getImageForText("Tile Graphics/" + obj.getAssetPath().substring(7));
+			g2.drawImage(boulderImg, obj.getLocation().x, obj.getLocation().y, 40, 40, null);
 		}
+		ArrayList<Terrain> terrain = World.getTerrain();
+		for (Terrain t: terrain){
+			for (int i = 0; i<t.getWidth()/40; i++){
+				for (int j = 0; j<t.getHeight()/40; j++){
+					BufferedImage img = null;
+					img = getImageForText("Tile Graphics/" + t.getAssetPath().substring(7));
+					g2.drawImage(img, i*40,j*40,40,40, null);
+				}
+			}
+		}
+		
+//		for (int i = 0; i<t.size(); i++){
+//			g2.drawImage(getImageForText(((EnvObject)t.get(i)).getAssetPath()),t.get(i).getLocation().x, t.get(i).getLocation().y,t.get(i).getWidth(),t.get(i).getHeight(),null);
+//		}
 		//g2.draw3DRect(50, 50, 100, 200, false);
 		
 //		int x = 50, y = 50;
@@ -66,12 +83,12 @@ public class drawingPanel extends JPanel implements Observer {
 
 	private BufferedImage getImageForText(String graphicString) {
 		//TODO: add all new unit types here with keyword?
-		if (graphicString.equals("desert")){
+		if (graphicString.equals("Tile Graphics/desert.png")){
 			return desertImg;
 		} else if (graphicString.equals("Tile Graphics/Grass.png")){
 			return grassImg;
-		} else if (graphicString.equals("lava")){
-			return lavaImg;
+		} else if (graphicString.equals("Tile Graphics/boulderonsand.png")){
+			return boulderImg;
 		} else if (graphicString.equals("miasma")){
 			return miasmaImg;
 		} else if (graphicString.equals("water")){

@@ -8,6 +8,8 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.AbstractAction;
 import javax.swing.JButton;
@@ -17,8 +19,11 @@ import javax.swing.JFrame;
 import javax.swing.KeyStroke;
 import javax.swing.Timer;
 
+import units.EnvObject;
 import units.Subject;
+import units.Terrain;
 import world.World;
+import xml.XMLLoad;
 
 @SuppressWarnings("serial")
 public class TestView extends JFrame {
@@ -34,6 +39,9 @@ public class TestView extends JFrame {
 	private JButton button1, button2;
 	
 	private World w;
+	
+	//TODO: Use the real subject instead of this fake one
+	private Subject subject = new Subject(new Point(1,1), 5, 5);
 	
 	public TestView() {
 		setupModel();
@@ -84,12 +92,11 @@ public class TestView extends JFrame {
 				w.addPerson(new Subject(new Point(1,1),5,5));
 			}
 		});
-		button2 = new JButton("Add a Subject2");
+		button2 = new JButton("Move Subject North");
 		panelS.add(button2, BorderLayout.WEST);
 		button2.addActionListener(new ButtonListener());
 		button2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				w.addPerson(new Subject(new Point(1,1),5,5));
 			}
 		});
 		
@@ -100,6 +107,23 @@ public class TestView extends JFrame {
 	public void testModelScript1(){
 		w.addPerson(new Subject(new Point(1,1),5,5));
 		w.addPerson(new Subject(new Point(2,2),5,5));
+		final String objectFile = "objects/core.xml";
+		final String mapFile = "maps/desertarenaxmltbd.xml";
+		
+		HashMap<String, Terrain> terrainObjects;
+		ArrayList<Terrain> terrains = new ArrayList<Terrain>();
+		ArrayList<EnvObject> objects = new ArrayList<EnvObject>();
+		try {
+			terrainObjects = XMLLoad.loadTerrainTypes(objectFile);
+			HashMap<String, EnvObject> envObjects = XMLLoad.loadObjectTypes(objectFile);
+			terrains = XMLLoad.loadTerrain(mapFile, terrainObjects);
+			objects = XMLLoad.loadObjects(mapFile, envObjects);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(terrains.size());
+		w.setTerrain(terrains);
+		w.setEnvObjects(objects);
 	}
 
 	private class ButtonListener implements ActionListener {
@@ -164,32 +188,44 @@ public class TestView extends JFrame {
 	}
 	
 	public void leftPress(){
-		//TODO
+		Point point = new Point();
+		point.x = subject.getLocation().x - 20;
+		point.y = subject.getLocation().y;
+		subject.setLocation(point);
 	}
 	public void rightPress(){
-		//TODO
+		Point point = new Point();
+		point.x = subject.getLocation().x + 20;
+		point.y = subject.getLocation().y;
+		subject.setLocation(point);
 	}
 	public void upPress(){
-		//TODO
+		Point point = new Point();
+		point.x = subject.getLocation().x;
+		point.y = subject.getLocation().y - 20;
+		subject.setLocation(point);
 	}
 	public void downPress(){
-		//TODO
+		Point point = new Point();
+		point.x = subject.getLocation().x;
+		point.y = subject.getLocation().y + 20;
+		subject.setLocation(point);
 	}
 	
-	static ActionListener timerAction = new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			// continuous timer code here:
-			unitPanel.repaint();
-			drawingPanel.repaint();
-			//world.update();
-		}
-	};
-	// change timer value to determine repaint speed
-	static Timer repaintTimer = new Timer(REPAINT_TIME_MS, timerAction);
+//	static ActionListener timerAction = new ActionListener() {
+//		public void actionPerformed(ActionEvent e) {
+//			// continuous timer code here:
+//			unitPanel.repaint();
+//			drawingPanel.repaint();
+//			//world.update();
+//		}
+//	};
+//	// change timer value to determine repaint speed
+//	static Timer repaintTimer = new Timer(REPAINT_TIME_MS, timerAction);
 	
 	public static void main(String[] args) {
 		new TestView().setVisible(true);
-		repaintTimer.start();
+//		repaintTimer.start();
 	}
 	
 	
