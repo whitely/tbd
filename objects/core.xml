@@ -7,6 +7,13 @@
 		<damageSubject>2</damageSubject>
 		<assetPath>assets/desert.png</assetPath>
 	</terrain>
+	<terrain id="stone">
+		<health>175</health>
+		<regenerationRate>0</regenerationRate>
+		<speedMultiplier>1</speedMultiplier>
+		<damageSubject>2</damageSubject>
+		<assetPath>assets/desert.png</assetPath>
+	</terrain>
 	<envObject id="largeboulderonsand">
 		<health>75</health>
 		<regenerationRate>1</regenerationRate>
@@ -16,7 +23,25 @@
 		<w>5</w>
 		<h>5</h>
 	</envObject>
+	<envObject id="largeboulderonstone">
+		<health>75</health>
+		<regenerationRate>1</regenerationRate>
+		<speedMultiplier>2</speedMultiplier>
+		<damageSubject>3</damageSubject>
+		<assetPath>assets/largeboulderonsand.png</assetPath>
+		<w>5</w>
+		<h>5</h>
+	</envObject>
 	<envObject id="boulderonsand">
+		<health>50</health>
+		<regenerationRate>2</regenerationRate>
+		<speedMultiplier>3</speedMultiplier>
+		<damageSubject>4</damageSubject>
+		<assetPath>assets/boulderonsand.png</assetPath>
+		<w>7</w>
+		<h>7</h>
+	</envObject>
+	<envObject id="boulderonstone">
 		<health>50</health>
 		<regenerationRate>2</regenerationRate>
 		<speedMultiplier>3</speedMultiplier>
